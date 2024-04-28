@@ -9,10 +9,13 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@repo/ui": "*",
+    "framer-motion": "^11.1.7",
+    "lucide-react": "^0.376.0",
+    "next": "14.2.1",
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.2.1",
-    "@repo/ui": "*"
+    "react-icons": "^5.1.0"
   },
   "devDependencies": {
     "typescript": "^5",
