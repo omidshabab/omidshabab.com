@@ -1,7 +1,7 @@
 const Page = () => {
      return (
-          <div>
-               Page
+          <div className="flex grid-cols-2">
+               <div></div>
           </div>
      );
 }
