@@ -3,24 +3,29 @@
 import { PauseIcon, PlayIcon } from "lucide-react";
 import Block from "../Block";
 import { useState } from "react";
+import VideoPlayButton from "../buttons/VideoPlayButton";
+import VideoMuteButton from "../buttons/VideoMuteButton";
 
 const VideoBlock = () => {
      const [isPlaying, setIsPlaying] = useState<boolean>(false)
+     const [isMuted, setIsMuted] = useState<boolean>(false)
 
      const handlePlaying = () => {
           setIsPlaying(!isPlaying)
      }
 
+     const handleVolume = () => {
+          setIsMuted(!isMuted)
+     }
+
      return (
           <Block
                onClick={() => handlePlaying()}
-               className="md:col-span-4 row-span-4 flex justify-center items-center cursor-pointer">
-               <div
-                    className="p-[20px] bg-primary/5 hover:bg-primary/10 transition-all duration-500 rounded-full backdrop-blur-sm">
-                    {isPlaying ?
-                         <PauseIcon className="w-[35px] h-[35px]" /> :
-                         <PlayIcon className="w-[35px] h-[35px]" />
-                    }
+               card="md:col-span-5 row-span-4 flex aspect-video sm:aspect-auto justify-end items-end"
+               content="px-[10px] py-[10px]">
+               <div className="flex gap-x-[8px]">
+                    {/* <VideoMuteButton onClick={() => handleVolume()} isMuted={isMuted} /> */}
+                    <VideoPlayButton isPlaying={isPlaying} />
                </div>
           </Block>
      );

@@ -5,14 +5,14 @@ import PortfolioSection from "./_components/sections/PortfolioSection";
 
 const Page = () => {
      return (
-          <div className="mx-auto grid grid-cols-12 grid-flow-dense max-w-6xl gap-5 py-[30px] px-[30px] sm:py-[80px] sm:px-0">
+          <div className="grid grid-cols-12 grid-flow-dense gap-5">
                <IntroSection />
 
-               <PortfolioSection />
+               {/* <PortfolioSection /> */}
 
                <BlogSection />
 
-               <LastSection />
+               {/* <LastSection /> */}
           </div>
      );
 }

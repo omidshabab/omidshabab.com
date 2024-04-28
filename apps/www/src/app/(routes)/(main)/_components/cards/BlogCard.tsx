@@ -1,17 +1,24 @@
 import { cn } from "@repo/ui/lib/utils";
 import Block from "../Block";
+import CallToActionLink from "@/src/components/CallToActionLink";
 
 const BlogCard = ({
-     className
+     className,
+     cta
 }: {
-     className?: string
+     className?: string,
+     cta?: boolean | false
 }) => {
      return (
-          <Block className={cn(
-               "md:col-span-6",
+          <Block card={cn(
+               "md:col-span-6 min-h-[250px] cursor-pointer hover:bg-primary/10 transition-all duration-500",
                className
-          )}>
-               Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex, nisi, molestiae iusto rerum dignissimos maxime consequuntur aspernatur doloribus iste voluptatum recusandae saepe aliquam. Accusamus magnam qui, voluptates inventore saepe quam.
+          )}
+               content="flex flex-col justify-end gap-y-[15px]">
+               <div className="line-clamp-2">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+               </div>
+               {cta && <CallToActionLink text="Read Now" />}
           </Block>
      );
 }
