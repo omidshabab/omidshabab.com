@@ -6,7 +6,7 @@ export default function layout({
      children: ReactNode,
 }) {
      return (
-          <div>
+          <div className="w-full h-full">
                {children}
           </div>
      )

@@ -21,7 +21,7 @@ const VideoBlock = () => {
      return (
           <Block
                onClick={() => handlePlaying()}
-               card="md:col-span-5 row-span-4 flex aspect-video sm:aspect-auto justify-end items-end"
+               card="group/video md:col-span-5 row-span-4 flex aspect-video sm:aspect-auto justify-end items-end"
                content="px-[10px] py-[10px]">
                <div className="flex gap-x-[8px]">
                     {/* <VideoMuteButton onClick={() => handleVolume()} isMuted={isMuted} /> */}

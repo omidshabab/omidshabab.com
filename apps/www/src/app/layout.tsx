@@ -2,6 +2,7 @@ import "@repo/ui/globals.css";
 import type { Metadata } from "next";
 import { Bricolage_Grotesque } from "next/font/google";
 import { site } from "../config/site";
+import { cn } from "@repo/ui/lib/utils";
 
 const font = Bricolage_Grotesque({ subsets: ["latin"] });
 
@@ -57,7 +58,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={font.className}>
+      <body className={cn(
+        font.className,
+        "cursor-default"
+      )}>
         {children}
       </body>
     </html>

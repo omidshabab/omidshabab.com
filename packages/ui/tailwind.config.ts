@@ -76,6 +76,11 @@ const config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      cursor: {
+        default: "url(/cursors/default-cursor.svg), default",
+        pointer: "url(/cursors/pointer-cursor.svg), pointer",
+        text: "url(/cursors/text-cursor.svg), text",
+      },
     },
   },
   plugins: [tailwindcssAnimate],
