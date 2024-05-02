@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@repo/ui": "*",
+    "@repo/ui": "workspace:*",
     "contentlayer": "^0.3.4",
     "date-fns": "^3.6.0",
     "framer-motion": "^11.1.7",
