@@ -50,7 +50,7 @@ const Block = ({
 
                <motion.div
                     className={cn(
-                         "absolute flex w-full h-full opacity-0 rounded-[25px] group-hover/card:opacity-15 bg-primary",
+                         "absolute flex w-full h-full opacity-0 rounded-[25px] sm:group-hover/card:opacity-15 bg-primary transition-all duration-500",
                          !hover && "opacity-0 group-hover/card:opacity-0"
                     )}
                     style={style}

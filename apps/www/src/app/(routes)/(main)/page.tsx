@@ -8,11 +8,11 @@ const Page = () => {
           <div className="grid grid-cols-12 grid-flow-dense gap-5">
                <IntroSection />
 
-               {/* <PortfolioSection /> */}
+               <PortfolioSection />
 
                <BlogSection />
 
-               {/* <LastSection /> */}
+               <LastSection />
           </div>
      );
 }
