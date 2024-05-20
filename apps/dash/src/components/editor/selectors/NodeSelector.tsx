@@ -114,7 +114,7 @@ export const NodeSelector = ({ open, onOpenChange }: NodeSelectorProps) => {
                          <ChevronDown className="h-4 w-4" />
                     </Button>
                </PopoverTrigger>
-               <PopoverContent sideOffset={5} align="start" className="w-[150px] p-1 border-none bg-primary/5 backdrop-blur-md">
+               <PopoverContent sideOffset={15} align="start" className="w-[150px] p-1 border-none rounded-[15px] bg-primary/20 backdrop-blur-3xl border-[1px] border-primary/20">
                     {items.map((item, index) => (
                          <EditorBubbleItem
                               key={index}
@@ -122,12 +122,12 @@ export const NodeSelector = ({ open, onOpenChange }: NodeSelectorProps) => {
                                    item.command(editor);
                                    onOpenChange(false);
                               }}
-                              className="flex cursor-pointer items-center justify-between rounded-sm px-2 py-1 text-sm hover:bg-primary/5">
+                              className="flex cursor-pointer items-center justify-between rounded-sm px-[8px] py-[6px] text-sm hover:bg-primary/10">
                               <div className="flex items-center space-x-2">
                                    <div className="rounded-sm p-1">
                                         <item.icon className="h-[15px] w-[15px]" />
                                    </div>
-                                   <span>{item.name}</span>
+                                   <span className="text-[15px]">{item.name}</span>
                               </div>
                               {activeItem.name === item.name && <Check className="h-4 w-4" />}
                          </EditorBubbleItem>

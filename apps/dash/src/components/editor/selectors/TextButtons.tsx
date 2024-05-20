@@ -36,8 +36,7 @@ export const TextButtons = () => {
                          key={index}
                          onSelect={(editor) => {
                               item.command(editor);
-                         }}
-                    >
+                         }}>
                          <Button size="sm" className="rounded-none" variant="ghost">
                               <item.icon
                                    className={cn("h-4 w-4", {
