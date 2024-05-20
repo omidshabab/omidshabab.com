@@ -29,8 +29,7 @@ export default function Layout({ children }: { children?: ReactNode }) {
                                    ? "pl-0 peer-[[data-state=open]]:md:pl-[250px]"
                                    : "pr-0 peer-[[data-state=open]]:md:pr-[250px]",
                               "group w-full h-full overflow-auto"
-                         )}
-                    >
+                         )}>
                          <div className="w-full h-full px-[35px] text-[20px] font-medium leading-[2.5rem]">
                               {children}
                          </div>

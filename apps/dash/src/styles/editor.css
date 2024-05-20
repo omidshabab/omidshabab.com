@@ -5,6 +5,7 @@
   pointer-events: none;
   height: 0;
 }
+
 .ProseMirror .is-empty::before {
   content: attr(data-placeholder);
   float: left;
@@ -75,6 +76,7 @@ ul[data-type="taskList"] li > label input[type="checkbox"] {
   position: relative;
   top: 5px;
   border: 2px solid hsl(var(--border));
+  border-radius: 10px;
   margin-right: 0.3rem;
   display: grid;
   place-content: center;
@@ -120,6 +122,27 @@ ul[data-type="taskList"] li[data-checked="true"] > div > p {
   background-color: var(--novel-highlight-blue);
   transition: background-color 0.2s;
   box-shadow: none;
+}
+
+.ProseMirror h2 {
+  font-size: 28px;
+  line-height: 2.5rem;
+  padding: 0 0 20px 0;
+  font-weight: 500;
+}
+
+.ProseMirror h3 {
+  font-size: 25px;
+  line-height: 2.5rem;
+  padding: 0 0 20px 0;
+  font-weight: 500;
+}
+
+.ProseMirror p {
+  font-size: 22px;
+  line-height: 2.5rem;
+  padding: 0 0 20px 0;
+  font-weight: 300;
 }
 
 .drag-handle {
