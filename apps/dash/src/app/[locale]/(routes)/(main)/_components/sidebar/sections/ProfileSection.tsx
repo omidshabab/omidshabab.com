@@ -1,18 +1,24 @@
+import { useSelectedLayoutSegments } from "next/navigation";
 import SidebarItem from "../SidebarItem";
+import { dashRoutes } from "@/config/routes";
 
 const ProfileSection = () => {
-     return ( 
-          <div className="flex flex-col gap-y-2">
-              Profile
-              <SidebarItem>
-                Lorem ipsum dolor
-              </SidebarItem>
+  const segments = useSelectedLayoutSegments();
 
-              <SidebarItem>
-                Lorem ipsum dolor
-              </SidebarItem>
-            </div>
-      );
+  return (
+    <div className="flex flex-col gap-y-2">
+      Profile
+      <SidebarItem
+        href={dashRoutes.profile}
+        active={segments[0] === "profile"}>
+        Edit your Profile Account
+      </SidebarItem>
+
+      <SidebarItem>
+        Settings of your Profile
+      </SidebarItem>
+    </div>
+  );
 }
- 
+
 export default ProfileSection;

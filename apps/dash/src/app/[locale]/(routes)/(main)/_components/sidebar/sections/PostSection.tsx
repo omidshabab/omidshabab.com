@@ -1,15 +1,27 @@
+import { useSearchParams, useSelectedLayoutSegments } from "next/navigation";
 import SidebarItem from "../SidebarItem";
+import { dashRoutes } from "@/config/routes";
 
 const PostSection = () => {
+     const segments = useSelectedLayoutSegments();
+
+     const searchParams = useSearchParams()
+
+     const id = searchParams.get("id")
+
      return (
           <div className="flex flex-col gap-y-2">
                Posts
-               <SidebarItem active>
-                    Lorem ipsum dolor Lorem ipsum dolor
+               <SidebarItem
+                    href={dashRoutes.posts}
+                    active={segments[0] === "posts" && segments[1] === undefined}>
+                    Your Created Posts
                </SidebarItem>
 
-               <SidebarItem>
-                    Lorem ipsum dolor
+               <SidebarItem
+                    href={dashRoutes.editPost}
+                    active={segments[0] === "posts" && segments[1] === "edit" && id === null && true}>
+                    Add a new amazing Post
                </SidebarItem>
           </div>
      );

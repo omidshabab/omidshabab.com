@@ -5,11 +5,11 @@ const KeySection = () => {
           <div className="flex flex-col gap-y-2">
                API Keys
                <SidebarItem>
-                    Lorem ipsum dolor
+                    Your Created API Keys
                </SidebarItem>
 
                <SidebarItem>
-                    Lorem ipsum dolor
+                    Usage of API Keys
                </SidebarItem>
           </div>
      );
