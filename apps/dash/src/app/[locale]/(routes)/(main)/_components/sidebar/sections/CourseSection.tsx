@@ -5,11 +5,11 @@ const CourseSection = () => {
           <div className="flex flex-col gap-y-2">
                Courses
                <SidebarItem>
-                    Lorem ipsum dolor
+                    Your Created Courses
                </SidebarItem>
 
                <SidebarItem>
-                    Lorem ipsum dolor
+                    Add a new amazing Course
                </SidebarItem>
           </div>
      );

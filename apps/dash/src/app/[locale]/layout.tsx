@@ -7,7 +7,7 @@ import { Toaster } from "@repo/ui/components/ui/sonner";
 import { getTranslations } from "next-intl/server";
 import { capitalize } from '@/lib/utils';
 import { cn } from "@repo/ui/lib/utils";
-import Providers from "@/components/providers";
+import Providers from "@/components/Providers";
 
 // Dynamic Metadata based on locales
 export async function generateMetadata(): Promise<Metadata> {
