@@ -37,7 +37,7 @@ export const TextButtons = () => {
                          onSelect={(editor) => {
                               item.command(editor);
                          }}>
-                         <Button size="sm" className="rounded-none" variant="ghost">
+                         <Button size="sm" className="rounded-none hover:bg-primary/15" variant="ghost">
                               <item.icon
                                    className={cn("h-4 w-4", {
                                         "text-text": item.isActive(editor),

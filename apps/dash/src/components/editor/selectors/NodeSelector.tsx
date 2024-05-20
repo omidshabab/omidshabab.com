@@ -55,34 +55,34 @@ const items: SelectorItem[] = [
                editor.chain().focus().clearNodes().toggleHeading({ level: 3 }).run(),
           isActive: (editor) => editor.isActive("heading", { level: 3 }),
      },
-     {
-          name: "To-do List",
-          icon: CheckSquare,
-          command: (editor) =>
-               editor.chain().focus().clearNodes().toggleTaskList().run(),
-          isActive: (editor) => editor.isActive("taskItem"),
-     },
-     {
-          name: "Bullet List",
-          icon: ListOrdered,
-          command: (editor) =>
-               editor.chain().focus().clearNodes().toggleBulletList().run(),
-          isActive: (editor) => editor.isActive("bulletList"),
-     },
-     {
-          name: "Numbered List",
-          icon: ListOrdered,
-          command: (editor) =>
-               editor.chain().focus().clearNodes().toggleOrderedList().run(),
-          isActive: (editor) => editor.isActive("orderedList"),
-     },
-     {
-          name: "Quote",
-          icon: TextQuote,
-          command: (editor) =>
-               editor.chain().focus().clearNodes().toggleBlockquote().run(),
-          isActive: (editor) => editor.isActive("blockquote"),
-     },
+     // {
+     //      name: "To-do List",
+     //      icon: CheckSquare,
+     //      command: (editor) =>
+     //           editor.chain().focus().clearNodes().toggleTaskList().run(),
+     //      isActive: (editor) => editor.isActive("taskItem"),
+     // },
+     // {
+     //      name: "Bullet List",
+     //      icon: ListOrdered,
+     //      command: (editor) =>
+     //           editor.chain().focus().clearNodes().toggleBulletList().run(),
+     //      isActive: (editor) => editor.isActive("bulletList"),
+     // },
+     // {
+     //      name: "Numbered List",
+     //      icon: ListOrdered,
+     //      command: (editor) =>
+     //           editor.chain().focus().clearNodes().toggleOrderedList().run(),
+     //      isActive: (editor) => editor.isActive("orderedList"),
+     // },
+     // {
+     //      name: "Quote",
+     //      icon: TextQuote,
+     //      command: (editor) =>
+     //           editor.chain().focus().clearNodes().toggleBlockquote().run(),
+     //      isActive: (editor) => editor.isActive("blockquote"),
+     // },
      {
           name: "Code",
           icon: Code,

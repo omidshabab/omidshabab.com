@@ -29,15 +29,15 @@ export const suggestionItems = createSuggestionItems([
                     .run();
           },
      },
-     {
-          title: "To-do List",
-          description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati dolorem fugiat dolore a ut, doloremque sed maiores similique doloribus eius dolores quasi est consectetur ipsum vel iusto et incidunt dignissimos?",
-          searchTerms: ["todo", "task", "list", "check", "checkbox"],
-          icon: <CheckSquare size={18} />,
-          command: ({ editor, range }) => {
-               editor.chain().focus().deleteRange(range).toggleTaskList().run();
-          },
-     },
+     // {
+     //      title: "To-do List",
+     //      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati dolorem fugiat dolore a ut, doloremque sed maiores similique doloribus eius dolores quasi est consectetur ipsum vel iusto et incidunt dignissimos?",
+     //      searchTerms: ["todo", "task", "list", "check", "checkbox"],
+     //      icon: <CheckSquare size={18} />,
+     //      command: ({ editor, range }) => {
+     //           editor.chain().focus().deleteRange(range).toggleTaskList().run();
+     //      },
+     // },
      {
           title: "Heading 1",
           description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati dolorem fugiat dolore a ut, doloremque sed maiores similique doloribus eius dolores quasi est consectetur ipsum vel iusto et incidunt dignissimos?",
@@ -80,38 +80,38 @@ export const suggestionItems = createSuggestionItems([
                     .run();
           },
      },
-     {
-          title: "Bullet List",
-          description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati dolorem fugiat dolore a ut, doloremque sed maiores similique doloribus eius dolores quasi est consectetur ipsum vel iusto et incidunt dignissimos?",
-          searchTerms: ["unordered", "point"],
-          icon: <List size={18} />,
-          command: ({ editor, range }) => {
-               editor.chain().focus().deleteRange(range).toggleBulletList().run();
-          },
-     },
-     {
-          title: "Numbered List",
-          description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati dolorem fugiat dolore a ut, doloremque sed maiores similique doloribus eius dolores quasi est consectetur ipsum vel iusto et incidunt dignissimos?",
-          searchTerms: ["ordered"],
-          icon: <ListOrdered size={18} />,
-          command: ({ editor, range }) => {
-               editor.chain().focus().deleteRange(range).toggleOrderedList().run();
-          },
-     },
-     {
-          title: "Quote",
-          description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati dolorem fugiat dolore a ut, doloremque sed maiores similique doloribus eius dolores quasi est consectetur ipsum vel iusto et incidunt dignissimos?",
-          searchTerms: ["blockquote"],
-          icon: <TextQuote size={18} />,
-          command: ({ editor, range }) =>
-               editor
-                    .chain()
-                    .focus()
-                    .deleteRange(range)
-                    .toggleNode("paragraph", "paragraph")
-                    .toggleBlockquote()
-                    .run(),
-     },
+     // {
+     //      title: "Bullet List",
+     //      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati dolorem fugiat dolore a ut, doloremque sed maiores similique doloribus eius dolores quasi est consectetur ipsum vel iusto et incidunt dignissimos?",
+     //      searchTerms: ["unordered", "point"],
+     //      icon: <List size={18} />,
+     //      command: ({ editor, range }) => {
+     //           editor.chain().focus().deleteRange(range).toggleBulletList().run();
+     //      },
+     // },
+     // {
+     //      title: "Numbered List",
+     //      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati dolorem fugiat dolore a ut, doloremque sed maiores similique doloribus eius dolores quasi est consectetur ipsum vel iusto et incidunt dignissimos?",
+     //      searchTerms: ["ordered"],
+     //      icon: <ListOrdered size={18} />,
+     //      command: ({ editor, range }) => {
+     //           editor.chain().focus().deleteRange(range).toggleOrderedList().run();
+     //      },
+     // },
+     // {
+     //      title: "Quote",
+     //      description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati dolorem fugiat dolore a ut, doloremque sed maiores similique doloribus eius dolores quasi est consectetur ipsum vel iusto et incidunt dignissimos?",
+     //      searchTerms: ["blockquote"],
+     //      icon: <TextQuote size={18} />,
+     //      command: ({ editor, range }) =>
+     //           editor
+     //                .chain()
+     //                .focus()
+     //                .deleteRange(range)
+     //                .toggleNode("paragraph", "paragraph")
+     //                .toggleBlockquote()
+     //                .run(),
+     // },
      {
           title: "Code",
           description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati dolorem fugiat dolore a ut, doloremque sed maiores similique doloribus eius dolores quasi est consectetur ipsum vel iusto et incidunt dignissimos?",
