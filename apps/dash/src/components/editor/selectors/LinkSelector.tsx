@@ -1,6 +1,6 @@
 import { cn } from "@repo/ui/lib/utils";
 import { useEditor } from "novel";
-import { Check, Trash } from "lucide-react";
+import { Check, X } from "lucide-react";
 import {
      type Dispatch,
      type FC,
@@ -63,7 +63,7 @@ export const LinkSelector = ({ open, onOpenChange }: LinkSelectorProps) => {
                          </p>
                     </Button>
                </PopoverTrigger>
-               <PopoverContent align="start" className="w-[200px] p-0 bg-primary/5 backdrop-blur-md border-[2px] border-text/10 rounded-[10px]" sideOffset={10}>
+               <PopoverContent align="start" className="w-[200px] p-0 bg-primary/20 backdrop-blur-3xl border-[1px] border-primary/20 rounded-[10px]" sideOffset={10}>
                     <form
                          onSubmit={(e) => {
                               const target = e.currentTarget as HTMLFormElement;
@@ -77,25 +77,29 @@ export const LinkSelector = ({ open, onOpenChange }: LinkSelectorProps) => {
                               ref={inputRef}
                               type="text"
                               placeholder="Paste a link"
-                              className="flex-grow bg-transparent px-[12px] py-[10px] text-sm outline-none"
+                              className="flex-grow bg-transparent min-w-[150px] px-[12px] py-[10px] text-sm outline-none"
                               defaultValue={editor.getAttributes("link").href || ""} />
-                         {editor.getAttributes("link").href ? (
-                              <Button
-                                   size="icon"
-                                   variant="outline"
-                                   type="button"
-                                   className="rounded-sm px-[5px] py-[5px] bg-primary/5 text-red-600 transition-all hover:bg-red-100 dark:hover:bg-red-800"
-                                   onClick={() => {
-                                        editor.chain().focus().unsetLink().run();
-                                   }}
-                              >
-                                   <Trash className="w-[25px] h-[25px]" />
-                              </Button>
-                         ) : (
-                              <Button size="icon" className="h-full aspect-square bg-primary/10 px-[5px] py-[5px] text-text hover:bg-primary/15">
-                                   <Check className="w-[20px] h-[20px]" />
-                              </Button>
-                         )}
+                         <div className="px-[10px] py-[5px]">
+                              {editor.getAttributes("link").href ? (
+                                   <Button
+                                        size="icon"
+                                        variant="ghost"
+                                        type="button"
+                                        className="flex h-min w-min px-0 py-0 text-text hover:bg-transparent hover:text-text/80"
+                                        onClick={() => {
+                                             editor.chain().focus().unsetLink().run();
+                                        }}>
+                                        <X className="w-[18px] h-[18px]" />
+                                   </Button>
+                              ) : (
+                                   <Button
+                                        size="icon"
+                                        variant="ghost"
+                                        className="flex h-min w-min px-0 py-0 text-text hover:bg-transparent">
+                                        <Check className="w-[20px] h-[20px]" />
+                                   </Button>
+                              )}
+                         </div>
                     </form>
                </PopoverContent>
           </Popover>

@@ -1,4 +1,4 @@
-import { useLocale } from "next-intl";
+// import { useLocale } from "next-intl";
 import { isRtlLang } from "rtl-detect";
 import localFont from "next/font/local";
 
@@ -93,7 +93,7 @@ export function LangFont(locale: string): string {
 }
 
 export function LangDir(locale: string) {
-  const defaultLocale = useLocale();
-  if (!locale) locale = defaultLocale;
+  // const defaultLocale = useLocale();
+  // if (!locale) locale = defaultLocale;
   return isRtlLang(locale) ? "rtl" : "ltr";
 }

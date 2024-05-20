@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState } from "react";
 import {
      EditorRoot,
@@ -52,7 +53,7 @@ const Editor = ({ initialValue, onChange }: EditorProp) => {
                          onChange(editor.getJSON());
                     }}
                     slotAfter={<ImageResizer />}>
-                    <EditorCommand className="z-50 none-scroll-bar w-[160px] h-auto max-h-[300px] overflow-y-auto rounded-[15px] bg-primary/5 backdrop-blur-md px-[5px] py-[5px] transition-all">
+                    <EditorCommand className="z-50 none-scroll-bar w-[160px] h-auto max-h-[300px] overflow-y-auto rounded-[15px] bg-primary/10 backdrop-blur-3xl border-[1px] border-primary/20 px-[5px] py-[5px] transition-all">
                          <EditorCommandEmpty className="px-[20px] text-text">
                               No results
                          </EditorCommandEmpty>
@@ -61,12 +62,12 @@ const Editor = ({ initialValue, onChange }: EditorProp) => {
                                    <EditorCommandItem
                                         value={item.title}
                                         onCommand={(val) => item.command?.(val)}
-                                        className={`flex w-full items-center gap-x-[10px] rounded-[10px] px-[10px] py-[10px] hover:bg-primary/10 aria-selected:bg-primary/10 cursor-pointer`}
+                                        className={`flex w-full items-center gap-x-[10px] rounded-[10px] px-[10px] py-[8px] hover:bg-primary/10 aria-selected:bg-primary/10 cursor-pointer`}
                                         key={item.title}>
                                         <div>
                                              {item.icon}
                                         </div>
-                                        <p className="font-medium">
+                                        <p className="font-medium text-[15px]">
                                              {item.title}
                                         </p>
                                    </EditorCommandItem>
@@ -78,12 +79,14 @@ const Editor = ({ initialValue, onChange }: EditorProp) => {
                          tippyOptions={{
                               placement: "top",
                          }}
-                         className="flex w-fit max-w-[90vw] h-full overflow-hidden rounded-[8px] bg-primary/5 backdrop-blur-md">
+                         className="flex w-fit max-w-[90vw] h-full overflow-hidden rounded-[10px] bg-primary/20 backdrop-blur-3xl border-[1px] border-primary/20">
+                         {/* <div className="flex bg-primary/5"> */}
                          <NodeSelector open={openNode} onOpenChange={setOpenNode} />
                          <Separator orientation="vertical" />
                          <LinkSelector open={openLink} onOpenChange={setOpenLink} />
                          <Separator orientation="vertical" />
                          <TextButtons />
+                         {/* </div> */}
                     </EditorBubble>
                </EditorContent>
           </EditorRoot>
