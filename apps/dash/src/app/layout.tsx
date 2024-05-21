@@ -4,7 +4,7 @@ import { LangDir, LangFont } from "@/lib/fonts";
 import getRequestConfig from "@/i18n";
 import { NextIntlClientProvider } from "next-intl";
 import { Toaster } from "@repo/ui/components/ui/sonner";
-import { getTranslations } from "next-intl/server";
+import { getLocale, getMessages, getTranslations } from "next-intl/server";
 import { capitalize } from '@/lib/utils';
 import { cn } from "@repo/ui/lib/utils";
 import Providers from "@/components/ProvidersWrapper";
@@ -27,19 +27,15 @@ export async function generateMetadata(): Promise<Metadata> {
 
 export default async function RootLayout({
   children,
-  params: {
-    locale,
-  }
 }: Readonly<{
   children: React.ReactNode;
-  params: {
-    locale: string,
-  }
 }>) {
+  const locale = await getLocale();
+
+  const messages = await getMessages();
+
   const font = LangFont(locale);
   const dir = LangDir(locale);
-
-  const { messages } = await getRequestConfig({ locale })
 
   return (
     <html lang={locale} dir={dir}>

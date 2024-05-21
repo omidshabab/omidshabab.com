@@ -32,6 +32,21 @@ export const defaultEditorValue = {
       ],
     },
     {
+      type: "codeBlock",
+      content: [
+        {
+          type: "text",
+          text: `codeBlock: {
+            HTMLAttributes: {
+                 class: cx(
+                      "rounded-[20px] bg-primary/[3%] text-[18px] leading-[2.5rem] text-text px-[30px] py-[20px] mb-[25px] mt-[10px] font-sans font-medium",
+                 ),
+            },
+       },`,
+        },
+      ],
+    },
+    {
       type: "paragraph",
       content: [
         {
