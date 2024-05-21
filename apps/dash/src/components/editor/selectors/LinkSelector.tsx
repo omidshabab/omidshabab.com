@@ -77,7 +77,7 @@ export const LinkSelector = ({ open, onOpenChange }: LinkSelectorProps) => {
                               ref={inputRef}
                               type="text"
                               placeholder="Paste a link"
-                              className="flex-grow bg-transparent min-w-[150px] px-[12px] py-[10px] text-sm outline-none"
+                              className="flex-grow bg-transparent placeholder:text-slate-600 min-w-[150px] px-[12px] py-[10px] text-sm outline-none"
                               defaultValue={editor.getAttributes("link").href || ""} />
                          <div className="px-[10px] py-[5px]">
                               {editor.getAttributes("link").href ? (
@@ -85,7 +85,7 @@ export const LinkSelector = ({ open, onOpenChange }: LinkSelectorProps) => {
                                         size="icon"
                                         variant="ghost"
                                         type="button"
-                                        className="flex h-min w-min px-0 py-0 text-text hover:bg-transparent hover:text-text/80"
+                                        className="flex h-min w-min px-0 py-0 text-text hover:text-text/80"
                                         onClick={() => {
                                              editor.chain().focus().unsetLink().run();
                                         }}>

@@ -11,14 +11,17 @@ import React, { useState } from "react"
 import { AuthFormEmailSchema, AuthFormPasswordSchema, AuthFormSchema } from "@/types"
 import GoogleButton from "./GoogleButton"
 import IconButton from "@/components/buttons/icon-button"
-import { Redo } from "lucide-react"
+import { RedoIcon, UndoIcon } from "lucide-react"
 import GithubButton from "./GithubButton"
 import TextButton from "@/components/buttons/text-button"
 import { useRouter } from "next/navigation"
+import { dashRoutes } from "@/config/routes"
 
 type AuthStep = "email" | "password" | "confirm"
 
 const AuthForm = () => {
+     const [direction] = useState(document.documentElement.dir);
+
      const tRegister = useTranslations("register")
 
      const router = useRouter();
@@ -48,34 +51,28 @@ const AuthForm = () => {
      })
 
      async function onEmailSubmit(values: AuthFormEmailSchema) {
+          setEmail(values.email)
           setAuthStep("password")
      }
 
      async function onPasswordSubmit(values: AuthFormPasswordSchema) {
-          console.log("Done!")
-     }
+          setIsLoading(true);
+          setErrors(null);
 
-     async function onAuthSubmit(values: AuthFormSchema) {
-          console.log(`Email is: ${values.email}`)
-          console.log(`Password is: ${values.password}`)
+          const response = await fetch(action, {
+               method: "POST",
+               body: JSON.stringify({
+                    email, password: values.password
+               }),
+               redirect: "manual"
+          })
 
-          // values.preventDefault();
+          if (response.status === 200) {
+               return router.push(dashRoutes.default);
+          }
 
-          // setIsLoading(true);
-          // setErrors(null);
-          // const formData = new FormData(values.currentTarget)
-          // const response = await fetch("/api/register", {
-          //      method: "POST",
-          //      body: formData,
-          //      redirect: "manual"
-          // })
-
-          // if (response.status === 0) {
-          //      return router.refresh();
-          // }
-
-          // setErrors(await response.json());
-          // setIsLoading(false);
+          setErrors(await response.json());
+          setIsLoading(false);
      }
 
      function googleRegister() {
@@ -185,7 +182,11 @@ const AuthForm = () => {
                                              disabled={isLoading}
                                              className="flex w-min text-[20px] font-bold py-[30px] px-[25px] rounded-[12px] transform hover:-translate-y-1 transition duration-400"
                                         >
-                                             <Redo size={30} className="text-orange-600" />
+                                             {direction === "ltr" ?
+                                                  <UndoIcon size={30} className="text-orange-600" />
+                                                  :
+                                                  <RedoIcon size={30} className="text-orange-600" />
+                                             }
                                         </IconButton>
 
                                         <TextButton

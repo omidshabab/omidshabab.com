@@ -1,5 +1,5 @@
 import {
-     TiptapImage,
+     // TiptapImage,
      TiptapLink,
      UpdatedImage,
      // TaskList,
@@ -12,31 +12,32 @@ import {
 import { UploadImagesPlugin } from "novel/plugins";
 
 import { cx } from "class-variance-authority";
+import { englishBricolageGrotesqueFont } from "@/lib/fonts";
 
 const aiHighlight = AIHighlight;
 const placeholder = Placeholder;
 const tiptapLink = TiptapLink.configure({
      HTMLAttributes: {
           class: cx(
-               "text-muted-foreground underline underline-offset-[3px] hover:text-primary transition-colors cursor-pointer",
+               "text-text underline underline-offset-[1px] hover:text-primary transition-colors cursor-pointer",
           ),
      },
 });
 
-const tiptapImage = TiptapImage.extend({
-     addProseMirrorPlugins() {
-          return [
-               UploadImagesPlugin({
-                    imageClass: cx("opacity-40 rounded-lg border border-stone-200"),
-               }),
-          ];
-     },
-}).configure({
-     allowBase64: true,
-     HTMLAttributes: {
-          class: cx("rounded-lg border border-muted"),
-     },
-});
+// const tiptapImage = TiptapImage.extend({
+//      addProseMirrorPlugins() {
+//           return [
+//                UploadImagesPlugin({
+//                     imageClass: cx("opacity-40 rounded-lg border border-stone-200"),
+//                }),
+//           ];
+//      },
+// }).configure({
+//      allowBase64: true,
+//      HTMLAttributes: {
+//           class: cx("rounded-lg border border-muted"),
+//      },
+// });
 
 const updatedImage = UpdatedImage.configure({
      HTMLAttributes: {
@@ -87,13 +88,14 @@ const starterKit = StarterKit.configure({
      codeBlock: {
           HTMLAttributes: {
                class: cx(
-                    "rounded-md bg-muted text-muted-foreground border p-5 font-mono font-medium",
+                    "rounded-[20px] bg-primary/[3%] text-[22px] leading-[2.5rem] text-text px-[30px] py-[20px] mb-[25px] mt-[10px] font-normal",
+                    englishBricolageGrotesqueFont.className,
                ),
           },
      },
      code: {
           HTMLAttributes: {
-               class: cx("rounded-md bg-muted px-1.5 py-1 font-mono font-medium"),
+               class: cx("rounded-[8px] bg-primary/5 px-[10px] py-1 font-medium"),
                spellcheck: "false",
           },
      },
@@ -109,7 +111,7 @@ export const defaultExtensions = [
      starterKit,
      placeholder,
      tiptapLink,
-     tiptapImage,
+     // tiptapImage,
      updatedImage,
      // taskList,
      // taskItem,

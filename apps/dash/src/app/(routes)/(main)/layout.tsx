@@ -6,7 +6,7 @@ export default async function layout({
 }: {
      children: ReactNode
 }) {
-     // await checkAuth();
+     await checkAuth();
 
      return (
           <div className="flex w-full h-full">
