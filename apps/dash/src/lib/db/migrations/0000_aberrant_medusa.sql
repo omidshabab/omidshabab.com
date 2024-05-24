@@ -21,6 +21,16 @@ CREATE TABLE IF NOT EXISTS "auth_user" (
 	CONSTRAINT "auth_user_username_unique" UNIQUE("username")
 );
 --> statement-breakpoint
+CREATE TABLE IF NOT EXISTS "posts" (
+	"id" varchar(191) PRIMARY KEY NOT NULL,
+	"title" varchar(150) NOT NULL,
+	"desc" text NOT NULL,
+	"published" boolean DEFAULT false NOT NULL,
+	"user_id" varchar(256) NOT NULL,
+	"created_at" timestamp DEFAULT now() NOT NULL,
+	"updated_at" timestamp DEFAULT now() NOT NULL
+);
+--> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "subscriptions" (
 	"user_id" varchar(255),
 	"stripe_customer_id" varchar(255),
