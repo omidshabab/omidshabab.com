@@ -1,9 +1,8 @@
+import { dashRoutes } from "@/config/routes";
+import { redirect } from "next/navigation";
+
 const Page = () => {
-  return (
-    <div>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-    </div>
-  );
+  return redirect(dashRoutes.posts)
 }
 
 export default Page;

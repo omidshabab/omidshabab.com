@@ -124,6 +124,13 @@ ul[data-type="taskList"] li[data-checked="true"] > div > p {
   box-shadow: none;
 }
 
+.ProseMirror h1 {
+  font-size: 30px;
+  line-height: 3rem;
+  padding: 0 0 20px 0;
+  font-weight: 600;
+}
+
 .ProseMirror h2 {
   font-size: 28px;
   line-height: 2.5rem;

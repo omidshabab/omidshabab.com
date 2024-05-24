@@ -3,11 +3,11 @@ export default function Loading() {
     <div className="flex h-screen items-center justify-center">
       <div className="grid place-items-center animate-pulse text-neutral-300 p-4">
         <div
-          className="p-5 rounded-lg text-orange-600 bg-orange-600 bg-opacity-5 backdrop-blur-sm"
+          className="p-5 rounded-lg text-primary bg-primary/5 backdrop-blur-sm"
           role="status">
           <svg
             aria-hidden="true"
-            className="w-8 h-8 text-neutral-200 dark:text-neutral-600 fill-neutral-600 animate-spin"
+            className="w-8 h-8 text-primary/20 dark:text-neutral-600 fill-primary/25 animate-spin"
             viewBox="0 0 100 101"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"

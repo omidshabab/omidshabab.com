@@ -67,12 +67,12 @@ const AuthForm = () => {
                redirect: "manual"
           })
 
+          setErrors(await response.json());
+          setIsLoading(false);
+
           if (response.status === 200) {
                return router.push(dashRoutes.default);
           }
-
-          setErrors(await response.json());
-          setIsLoading(false);
      }
 
      function googleRegister() {
