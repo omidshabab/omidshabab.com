@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import "@repo/ui/globals.css"
 import { LangDir, LangFont } from "@/lib/fonts";
-import getRequestConfig from "@/i18n";
 import { NextIntlClientProvider } from "next-intl";
 import { Toaster } from "@repo/ui/components/ui/sonner";
 import { getLocale, getMessages, getTranslations } from "next-intl/server";
