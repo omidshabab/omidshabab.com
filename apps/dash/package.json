@@ -28,6 +28,7 @@
     "@trpc/react-query": "^10.37.1",
     "@trpc/server": "^10.45.2",
     "@types/rtl-detect": "^1.0.3",
+    "antd": "^5.17.4",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "drizzle-orm": "^0.30.10",
