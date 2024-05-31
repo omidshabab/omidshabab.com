@@ -3,6 +3,7 @@ import { nanoid, timestamps } from "@/lib/utils";
 import { sql } from "drizzle-orm";
 import {
   boolean,
+  json,
   pgTable,
   text,
   timestamp,
@@ -16,7 +17,7 @@ export const posts = pgTable("posts", {
     .primaryKey()
     .$defaultFn(() => nanoid()),
   title: varchar("title", { length: 150 }).notNull(),
-  desc: text("desc").notNull(),
+  desc: json("desc").notNull(),
   published: boolean("published").notNull().default(false),
   userId: varchar("user_id", { length: 256 }).notNull(),
 

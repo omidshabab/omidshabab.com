@@ -29,7 +29,7 @@ const PostForm = ({ post }: { post?: Post }) => {
 
      const [title, setTitle] = useState<string>(post?.title ?? "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis pariatur quos possimus beatae")
 
-     const [desc, setDesc] = useState<JSONContent>(defaultEditorValue);
+     const [desc, setDesc] = useState<JSONContent>(post?.desc ?? defaultEditorValue);
 
      const form = useForm<z.infer<typeof insertPostParams>>({
           resolver: zodResolver(insertPostParams),
@@ -106,7 +106,7 @@ const PostForm = ({ post }: { post?: Post }) => {
                                                                       maxLength={150}
                                                                       onChange={(value) => setTitle(value.currentTarget.value)}
                                                                       className={cn(
-                                                                           "text-start h-min text-[32px] px-0 py-0 none-scroll-bar",
+                                                                           "text-start h-min text-[32px] px-0 py-0 none-scroll-bar cursor-text font-semibold",
                                                                            englishBricolageGrotesqueFont.className,
                                                                       )} />
                                                             </div>
@@ -127,7 +127,7 @@ const PostForm = ({ post }: { post?: Post }) => {
                                    buttons={
                                         <>
                                              <Button
-                                                  onClick={() => handleSubmit({ title: title, desc: desc.content?.toString() ?? "lorem", published: false })}
+                                                  onClick={() => handleSubmit({ title: title, desc: desc ?? "lorem", published: false })}
                                                   disabled={isCreating || isUpdating}
                                                   variant="secondary"
                                                   size="sm">
