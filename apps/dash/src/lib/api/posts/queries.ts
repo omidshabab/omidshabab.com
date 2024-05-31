@@ -1,6 +1,12 @@
 import { getUserAuth } from "@/lib/auth/utils";
 import { db } from "@/lib/db/index";
-import { PostId, postIdSchema, posts } from "@/lib/db/schema/posts";
+import {
+  PostId,
+  postIdSchema,
+  posts,
+  PostSlug,
+  postSlugSchema,
+} from "@/lib/db/schema/posts";
 import { eq, and } from "drizzle-orm";
 
 export const getPosts = async () => {
@@ -21,6 +27,17 @@ export const getPostById = async (id?: PostId) => {
     .select()
     .from(posts)
     .where(and(eq(posts.id, postId), eq(posts.userId, session?.user.id!)));
+  if (row === undefined) return {};
+  const t = row;
+  return { post: t };
+};
+
+export const getPostBySlug = async (slug?: PostSlug) => {
+  const { slug: postSlug } = postSlugSchema.parse({ slug });
+  const [row] = await db
+    .select()
+    .from(posts)
+    .where(and(eq(posts.slug, postSlug)));
   if (row === undefined) return {};
   const t = row;
   return { post: t };

@@ -7,24 +7,14 @@ import ToggleButton from "../_components/ToggleButton"
 import { cn } from "@repo/ui/lib/utils";
 import ProfileAvatar from "@/components/ProfileAvatar";
 import { Spacer } from "@nextui-org/spacer";
+import Navbar from "../_components/Navbar";
 
 export default function Layout({ children }: { children?: ReactNode }) {
      const [direction, setDirection] = useState(document.documentElement.dir);
 
      return (
           <div className="flex flex-1 flex-col w-full h-full">
-               <div className="flex sticky top-0 z-50 items-center justify-between gap-x-5 shrink-0 px-[25px] py-[20px]">
-                    <div className="flex gap-x-5 items-center">
-                         <ToggleButton />
-
-                         <div>
-                              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
-                              reiciendis a sit ducimus exercitationem deleniti incidunt fugit
-                         </div>
-                    </div>
-
-                    <ProfileAvatar />
-               </div>
+               <Navbar />
 
                <div className="relative flex h-[calc(100vh_-_theme(spacing.16))] overflow-hidden">
                     <SidebarDesktop />

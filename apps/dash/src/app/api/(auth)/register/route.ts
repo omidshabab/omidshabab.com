@@ -51,14 +51,9 @@ export const POST = async (req: NextRequest) => {
     const authRequest = auth.handleRequest(req.method, context);
     authRequest.setSession(session);
 
-    return new Response(
-      JSON.stringify({
-        message: session,
-      }),
-      {
-        status: 200,
-      }
-    );
+    return NextResponse.json(session, {
+      status: 200,
+    });
   } catch (e) {
     if (
       e instanceof LuciaError &&
@@ -87,14 +82,9 @@ export const POST = async (req: NextRequest) => {
         const authRequest = auth.handleRequest(req.method, context);
         authRequest.setSession(session);
 
-        return new Response(
-          JSON.stringify({
-            message: session,
-          }),
-          {
-            status: 201,
-          }
-        );
+        return NextResponse.json(session, {
+          status: 201,
+        });
       } catch (e) {
         // user does not exist or invalid password
         return NextResponse.json(

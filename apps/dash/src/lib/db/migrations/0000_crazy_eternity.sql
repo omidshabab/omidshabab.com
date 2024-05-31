@@ -24,11 +24,13 @@ CREATE TABLE IF NOT EXISTS "auth_user" (
 CREATE TABLE IF NOT EXISTS "posts" (
 	"id" varchar(191) PRIMARY KEY NOT NULL,
 	"title" varchar(150) NOT NULL,
-	"desc" text NOT NULL,
+	"desc" json NOT NULL,
+	"slug" varchar(100) NOT NULL,
 	"published" boolean DEFAULT false NOT NULL,
 	"user_id" varchar(256) NOT NULL,
 	"created_at" timestamp DEFAULT now() NOT NULL,
-	"updated_at" timestamp DEFAULT now() NOT NULL
+	"updated_at" timestamp DEFAULT now() NOT NULL,
+	CONSTRAINT "posts_slug_unique" UNIQUE("slug")
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "subscriptions" (

@@ -1,5 +1,5 @@
 {
-  "id": "b444fdf3-9151-4557-b83c-4a8d31f2a72d",
+  "id": "c853d6ce-2755-47b9-bf66-8e15e15d0624",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "5",
   "dialect": "pg",
@@ -168,7 +168,13 @@
         },
         "desc": {
           "name": "desc",
-          "type": "text",
+          "type": "json",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "slug": {
+          "name": "slug",
+          "type": "varchar(100)",
           "primaryKey": false,
           "notNull": true
         },
@@ -203,7 +209,15 @@
       "indexes": {},
       "foreignKeys": {},
       "compositePrimaryKeys": {},
-      "uniqueConstraints": {}
+      "uniqueConstraints": {
+        "posts_slug_unique": {
+          "name": "posts_slug_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "slug"
+          ]
+        }
+      }
     },
     "subscriptions": {
       "name": "subscriptions",
