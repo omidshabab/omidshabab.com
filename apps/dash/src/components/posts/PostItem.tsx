@@ -14,7 +14,7 @@ const PostItem = ({
      return (
           <div
                onClick={() => router.push(`${dashRoutes.posts}/${post.id}`)}
-               className="group/item col-span-4 lg:col-span-1 md:col-span-2 flex flex-col gap-y-[15px] cursor-pointer">
+               className="group/item col-span-1 flex flex-col gap-y-[15px] cursor-pointer">
                <div className="aspect-[6/3.5] bg-primary/[3%] rounded-[15px] group-hover/item:bg-primary/[6%] transition-all duration-500">
 
                </div>
