@@ -18,6 +18,7 @@ import { useState } from "react";
 import { cn } from "@repo/ui/lib/utils";
 import { englishBricolageGrotesqueFont } from "@/lib/fonts";
 import PostSettings from "./PostSettings";
+import { dashRoutes } from "@/config/routes";
 
 const { TextArea } = Input;
 
@@ -39,14 +40,19 @@ const PostForm = ({ post }: { post?: Post }) => {
           },
      });
 
-     const onSuccess = async (action: "create" | "update" | "delete", data?: { error?: string }) => {
+     const onSuccess = async (action: "create" | "update" | "delete", data?: { error?: string, post: Post }) => {
           if (data?.error) {
                toast.error(data.error);
                return;
           }
 
           await utils.posts.getPosts.invalidate();
-          router.refresh();
+
+          if (action === "create") {
+               router.push(dashRoutes.posts + "/" + data?.post?.id);
+          } else if (action === "update") {
+               router.refresh();
+          }
 
           toast.success(`Post ${action}d!`);
      };
@@ -61,7 +67,7 @@ const PostForm = ({ post }: { post?: Post }) => {
      };
 
      const { mutate: createPost, isLoading: isCreating } = trpc.posts.createPost.useMutation({
-          onSuccess: () => onSuccess("create"),
+          onSuccess: (data) => onSuccess("create", data),
           onError: (err) => onError("create", { error: err.message }),
      });
 

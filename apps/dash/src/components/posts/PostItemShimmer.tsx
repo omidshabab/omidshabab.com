@@ -1,7 +1,7 @@
 const PostItemShimmer = () => {
      return (
           <div
-               className="group/item col-span-4 lg:col-span-1 md:col-span-2 flex flex-col gap-y-[25px] animate-pulse">
+               className="group/item col-span-1 flex flex-col gap-y-[25px] animate-pulse">
                <div className="aspect-[6/3.5] bg-primary/5 rounded-[15px] group-hover/item:bg-primary/[6%] transition-all duration-500">
 
                </div>
