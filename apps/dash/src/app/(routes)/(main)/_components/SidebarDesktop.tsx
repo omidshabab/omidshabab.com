@@ -5,7 +5,7 @@ import KeySection from "./sidebar/sections/KeySection";
 import PortfolioSection from "./sidebar/sections/PortfolioSection";
 import PostSection from "./sidebar/sections/PostSection";
 import ProfileSection from "./sidebar/sections/ProfileSection";
-import { useState } from 'react';
+import { useState } from "react";
 
 const SidebarDesktop = () => {
      const [direction] = useState(document.documentElement.dir);
