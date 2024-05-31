@@ -1,7 +1,18 @@
+"use client"
+
+import { PostType } from "@/src/types";
+import { useEffect, useState } from "react";
+
 const Page = () => {
+     const [posts, setPosts] = useState<PostType[]>([]);
+
      return (
           <div>
-               Page
+               {posts.map((post, index) => (
+                    <div key={index}>
+                         {post.slug}
+                    </div>
+               ))}
           </div>
      );
 }

@@ -20,14 +20,9 @@ export const POST = async (request: NextRequest) => {
 
     // delete session cookie
     authRequest.setSession(null);
-    return new Response(
-      JSON.stringify({
-        message: session,
-      }),
-      {
-        status: 200,
-      }
-    );
+    return NextResponse.json(session, {
+      status: 200,
+    });
   } catch (e) {
     return NextResponse.json(
       {

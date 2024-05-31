@@ -1,10 +1,11 @@
 import {
   insertPostParams,
   postIdSchema,
+  postSlugSchema,
   updatePostParams,
 } from "@/lib/db/schema/posts";
 import { publicProcedure, router } from "../trpc";
-import { getPostById, getPosts } from "@/lib/api/posts/queries";
+import { getPostById, getPostBySlug, getPosts } from "@/lib/api/posts/queries";
 import { createPost, updatePost } from "@/lib/api/posts/mutations";
 
 export const postsRouter = router({
@@ -14,6 +15,11 @@ export const postsRouter = router({
   getPostById: publicProcedure.input(postIdSchema).query(async ({ input }) => {
     return getPostById(input.id);
   }),
+  getPostBySlug: publicProcedure
+    .input(postSlugSchema)
+    .query(async ({ input }) => {
+      return getPostBySlug(input.slug);
+    }),
   createPost: publicProcedure
     .input(insertPostParams)
     .mutation(async ({ input }) => {

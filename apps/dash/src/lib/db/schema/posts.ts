@@ -18,6 +18,7 @@ export const posts = pgTable("posts", {
     .$defaultFn(() => nanoid()),
   title: varchar("title", { length: 150 }).notNull(),
   desc: json("desc").notNull(),
+  slug: varchar("slug", { length: 100 }).notNull().unique(),
   published: boolean("published").notNull().default(false),
   userId: varchar("user_id", { length: 256 }).notNull(),
 
@@ -51,6 +52,7 @@ export const updatePostParams = baseSchema
     userId: true,
   });
 export const postIdSchema = baseSchema.pick({ id: true });
+export const postSlugSchema = baseSchema.pick({ slug: true });
 
 // Types for posts - used to type API request params and within Components
 export type Post = typeof posts.$inferSelect;
@@ -58,6 +60,7 @@ export type NewPost = z.infer<typeof insertPostSchema>;
 export type NewPostParams = z.infer<typeof insertPostParams>;
 export type UpdatePostParams = z.infer<typeof updatePostParams>;
 export type PostId = z.infer<typeof postIdSchema>["id"];
+export type PostSlug = z.infer<typeof postSlugSchema>["slug"];
 
 // this type infers the return from getPost() - meaning it will include any joins
 export type CompletePost = Awaited<

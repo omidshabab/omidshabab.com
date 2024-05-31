@@ -14,11 +14,11 @@ import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { trpc } from "@/lib/trpc/client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { cn } from "@repo/ui/lib/utils";
 import { englishBricolageGrotesqueFont } from "@/lib/fonts";
-import PostSettings from "./PostSettings";
 import { dashRoutes } from "@/config/routes";
+import { createSlug } from "@/lib/utils";
 
 const { TextArea } = Input;
 
@@ -31,6 +31,12 @@ const PostForm = ({ post }: { post?: Post }) => {
      const [title, setTitle] = useState<string>(post?.title ?? "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis pariatur quos possimus beatae")
 
      const [desc, setDesc] = useState<JSONContent>(post?.desc ?? defaultEditorValue);
+
+     const [slug, setSlug] = useState<string>(post?.slug ?? createSlug(title))
+
+     useEffect(() => {
+          if (post?.slug === "" || post?.slug === undefined || post.slug === "post-slug") setSlug(createSlug(title))
+     }, [post?.slug, title])
 
      const form = useForm<z.infer<typeof insertPostParams>>({
           resolver: zodResolver(insertPostParams),
@@ -92,7 +98,9 @@ const PostForm = ({ post }: { post?: Post }) => {
      return (
           <div className="w-full h-full">
                <Form {...form}>
-                    <form onSubmit={form.handleSubmit(handleSubmit)} className="flex h-full gap-x-[30px] flex-grow">
+                    <form
+                         onSubmit={form.handleSubmit(handleSubmit)}
+                         className="flex flex-col md:flex-row h-full gap-x-[30px] flex-grow">
                          <ScrollArea className="w-full h-full scroll-mx-12 none-scroll-bar overflow-y-hidden">
                               <div className="flex flex-col h-full flex-grow overflow-y-hidden gap-y-[20px]">
                                    <div className="h-min">
@@ -128,12 +136,38 @@ const PostForm = ({ post }: { post?: Post }) => {
                                    </div>
                               </div>
                          </ScrollArea>
-                         <div className="h-full">
-                              <PostSettings
-                                   buttons={
-                                        <>
+                         <div className="hidden lg:block h-full">
+                              <div className="h-full">
+                                   <div className="flex h-fit flex-col min-w-[300px] max-w-[350px] bg-primary/[3%] rounded-[20px] mb-[35px]">
+                                        <div className="flex-grow px-[25px] py-[15px]">
+                                             <div className="text-[18px]">Post Settings</div>
+                                             <p className="text-[16px] leading-[1.8rem] text-slate-800 font-normal">
+                                                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
+                                                  pariatur quos possimus beatae.
+                                             </p>
+
+                                             <div className="border-b-[2px] border-primary/10 mb-[5px]">
+                                                  <TextArea
+                                                       value={slug}
+                                                       placeholder="type the post slug here ..."
+                                                       autoSize
+                                                       variant="borderless"
+                                                       maxLength={100}
+                                                       onChange={(value) => setSlug(value.currentTarget.value)}
+                                                       className={cn(
+                                                            "text-start sm:text-[16px] py-[10px] leading-[1.5rem] h-min text-[32px] px-0 none-scroll-bar cursor-text",
+                                                            englishBricolageGrotesqueFont.className,
+                                                       )}
+                                                  />
+                                             </div>
+
+                                             <p className="text-[13px] leading-[1.5rem] text-slate-600 font-normal">
+                                                  seperate words with a dash
+                                             </p>
+                                        </div>
+                                        <div className="border-t-[1px] border-primary/10 h-min w-full flex items-end justify-end gap-x-[10px] px-[20px] py-[15px]">
                                              <Button
-                                                  onClick={() => handleSubmit({ title: title, desc: desc ?? "lorem", published: false })}
+                                                  onClick={() => handleSubmit({ title: title, desc: desc ?? defaultEditorValue, slug: slug === "" ? "post-slug" : slug, published: false, })}
                                                   disabled={isCreating || isUpdating}
                                                   variant="secondary"
                                                   size="sm">
@@ -145,8 +179,9 @@ const PostForm = ({ post }: { post?: Post }) => {
                                                   size="sm">
                                                   Publish
                                              </Button>
-                                        </>
-                                   } />
+                                        </div>
+                                   </div>
+                              </div>
                          </div>
                     </form>
                </Form>
