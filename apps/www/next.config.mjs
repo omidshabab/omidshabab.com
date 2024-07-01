@@ -1,4 +1,6 @@
-import { withContentlayer } from "next-contentlayer";
+import createNextIntlPlugin from "next-intl/plugin";
+
+const withNextIntl = createNextIntlPlugin();
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -12,6 +14,11 @@ const nextConfig = {
       },
     ],
   },
+  env: {
+    API_BASE_URL: process.env.API_BASE_URL,
+    GOOGLE_ANALYTICS_ID: process.env.GOOGLE_ANALYTICS_ID,
+    SITE_URL: process.env.SITE_URL,
+  },
 };
 
-export default withContentlayer(nextConfig);
+export default withNextIntl(nextConfig);
