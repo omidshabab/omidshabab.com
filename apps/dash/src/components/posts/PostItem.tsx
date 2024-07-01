@@ -13,6 +13,7 @@ import {
      ContextMenuTrigger,
 } from "@repo/ui/components/ui/context-menu";
 import { Delete, EditSquare, CaretRight } from "react-iconly";
+import { generateRandomString } from "@/lib/utils";
 
 const PostItem = ({
      post
@@ -61,9 +62,11 @@ const PostItem = ({
      const handleDuplicate = () => {
           const { id, userId, published, createdAt, updatedAt, slug, ...restPost } = post;
 
+          const randomString = generateRandomString(10)
+
           const newPostData: NewPostParams = {
                ...restPost,
-               slug: `${slug}-1`,
+               slug: `${slug}-${randomString}`,
                published: false
           };
 

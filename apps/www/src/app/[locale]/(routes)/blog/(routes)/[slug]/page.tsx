@@ -33,7 +33,7 @@ const Page = ({
 
      const output = useMemo(() => {
           if (post) {
-               return generateHTML(post.desc, defaultExtensions);
+               return generateHTML(JSON.parse(post.desc), defaultExtensions);
           }
           return "";
      }, [post]);

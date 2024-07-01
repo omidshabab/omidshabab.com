@@ -8,7 +8,7 @@ export const generateMetadata = async ({ params }: { params: { slug: string } })
 
      return {
           title: post.title.toLowerCase(),
-          description: post.desc.content[0]?.content[0]?.text || 'Post description',
+          description: JSON.parse(post.desc).content[0]?.content[0]?.text || 'Post description',
      };
 };
 

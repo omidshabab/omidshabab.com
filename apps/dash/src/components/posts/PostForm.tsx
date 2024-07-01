@@ -18,7 +18,7 @@ import { useEffect, useState } from "react";
 import { cn } from "@repo/ui/lib/utils";
 import { englishBricolageGrotesqueFont } from "@/lib/fonts";
 import { dashRoutes } from "@/config/routes";
-import { createSlug } from "@/lib/utils";
+import { createSlug, generateRandomString } from "@/lib/utils";
 import { onUpload } from "../editor/ImageUpload";
 
 const { TextArea } = Input;
@@ -40,7 +40,7 @@ const PostForm = ({ post }: { post?: Post }) => {
      const [published, setPublished] = useState<boolean>(post?.published ?? false)
 
      useEffect(() => {
-          if (post?.slug === "" || post?.slug === undefined || post.slug === "post-slug") setSlug(createSlug(title))
+          if (post?.slug === "" || post?.slug === undefined) setSlug(createSlug(title))
      }, [post?.slug, title])
 
      const form = useForm<z.infer<typeof insertPostParams>>({
@@ -228,7 +228,7 @@ const PostForm = ({ post }: { post?: Post }) => {
                                                   onClick={() => handleSubmit({
                                                        title: title,
                                                        desc: JSON.stringify(desc) ?? defaultEditorValue,
-                                                       slug: slug === "" ? "post-slug" : slug,
+                                                       slug: slug === "" ? generateRandomString(20) : slug,
                                                        image: image,
                                                        published: published,
                                                   })}
@@ -237,19 +237,36 @@ const PostForm = ({ post }: { post?: Post }) => {
                                                   size="sm">
                                                   Save the Post
                                              </Button>
-                                             <Button
-                                                  onClick={() => handleSubmit({
-                                                       title: title,
-                                                       desc: JSON.stringify(desc) ?? defaultEditorValue,
-                                                       slug: slug === "" ? "post-slug" : slug,
-                                                       image: image,
-                                                       published: published,
-                                                  })}
-                                                  disabled={isCreating || isUpdating}
-                                                  variant="default"
-                                                  size="sm">
-                                                  Publish
-                                             </Button>
+
+                                             {post?.published ? (
+                                                  <Button
+                                                       onClick={() => handleSubmit({
+                                                            title: title,
+                                                            desc: JSON.stringify(desc) ?? defaultEditorValue,
+                                                            slug: slug === "" ? generateRandomString(20) : slug,
+                                                            image: image,
+                                                            published: false,
+                                                       })}
+                                                       disabled={isCreating || isUpdating}
+                                                       variant="secondary"
+                                                       size="sm">
+                                                       Published
+                                                  </Button>
+                                             ) : (
+                                                  <Button
+                                                       onClick={() => handleSubmit({
+                                                            title: title,
+                                                            desc: JSON.stringify(desc) ?? defaultEditorValue,
+                                                            slug: slug === "" ? generateRandomString(20) : slug,
+                                                            image: image,
+                                                            published: true,
+                                                       })}
+                                                       disabled={isCreating || isUpdating}
+                                                       variant="default"
+                                                       size="sm">
+                                                       Publish
+                                                  </Button>
+                                             )}
                                         </div>
                                    </div>
                               </div>
