@@ -14,6 +14,7 @@ import {
 } from "@repo/ui/components/ui/context-menu";
 import { Delete, EditSquare, CaretRight } from "react-iconly";
 import { generateRandomString } from "@/lib/utils";
+import { cn } from "@repo/ui/lib/utils";
 
 const PostItem = ({
      post
@@ -70,8 +71,6 @@ const PostItem = ({
                published: false
           };
 
-          console.log(`=- post duplicated: ${JSON.stringify(newPostData)}`)
-
           createPost(newPostData)
      }
 
@@ -81,8 +80,17 @@ const PostItem = ({
                     <div
                          onClick={() => router.push(`${dashRoutes.posts}/${post.id}`)}
                          className="group/item col-span-1 flex flex-col gap-y-[15px] cursor-pointer">
-                         <div className="aspect-[6/3.5] bg-primary/[3%] rounded-[15px] group-hover/item:bg-primary/[6%] transition-all duration-500">
-
+                         <div className={cn(
+                              "min-h-[150px] bg-primary/[3%] rounded-[15px] group-hover:item:bg-primary/[6%] transition-all duration-500 overflow-hidden",
+                              post.image && "rounded-none"
+                         )}>
+                              {post.image && (
+                                   <img
+                                        alt={post?.slug}
+                                        src={post.image}
+                                        className="w-full h-full object-cover"
+                                   />
+                              )}
                          </div>
                          <div className="flex flex-col gap-y-[5px]">
                               <div className="group-hover/item:text-text transition-all duration-500 font-normal text-[16px] leading-[1.5rem] line-clamp-2">

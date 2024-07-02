@@ -45,7 +45,7 @@ const Page = () => {
 
                     {posts?.length === 0 &&
                          <div className="flex w-full min-w-max h-full">
-                              Not found any Post!
+                              Not Found Any Post!
                          </div>}
                </div>
           </div>

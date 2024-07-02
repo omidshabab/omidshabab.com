@@ -11,7 +11,10 @@ import {
      EditorCommandList,
      EditorBubble,
 } from "novel"
-import { ImageResizer, handleCommandNavigation } from "novel/extensions"
+import {
+     // ImageResizer, 
+     handleCommandNavigation
+} from "novel/extensions"
 import { defaultExtensions } from "./Extensions"
 import { NodeSelector } from "./selectors/NodeSelector"
 import { LinkSelector } from "./selectors/LinkSelector"
@@ -51,7 +54,8 @@ const Editor = ({ initialValue, onChange }: EditorProp) => {
                     onUpdate={({ editor }) => {
                          onChange(editor.getJSON());
                     }}
-                    slotAfter={<ImageResizer />}>
+               // slotAfter={<ImageResizer />}
+               >
                     <EditorCommand className="z-50 none-scroll-bar w-[160px] h-auto max-h-[300px] overflow-y-auto rounded-[15px] bg-primary/10 backdrop-blur-3xl border-[1px] border-primary/20 px-[5px] py-[5px] transition-all">
                          <EditorCommandEmpty className="px-[20px] text-text">
                               No results

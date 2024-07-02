@@ -2,6 +2,7 @@
 
 import { defaultRoutes } from "@/config/routes";
 import { Post } from "@/types";
+import { cn } from "@repo/ui/lib/utils";
 import { useRouter } from "next/navigation";
 
 const PostItem = ({
@@ -15,8 +16,16 @@ const PostItem = ({
           <div
                onClick={() => router.push(`${defaultRoutes.blog}/${post.slug}`)}
                className="group/item col-span-1 flex flex-col gap-y-[15px] cursor-pointer">
-               <div className="aspect-[6/3.5] bg-primary/[3%] rounded-[15px] group-hover/item:bg-primary/[6%] transition-all duration-500">
-
+               <div className={cn(
+                    "min-h-[150px] bg-primary/[3%] rounded-[15px] group-hover/item:bg-primary/[6%] transition-all duration-500 overflow-hidden",
+                    post.image && "rounded-none"
+               )}>
+                    {post.image && (
+                         <img
+                              alt={post?.slug}
+                              src={post.image}
+                              className="w-full h-full object-cover" />
+                    )}
                </div>
                <div className="flex flex-col gap-y-[5px]">
                     <div className="group-hover/item:text-text transition-all duration-500 font-normal text-[16px] leading-[1.5rem] line-clamp-2">
