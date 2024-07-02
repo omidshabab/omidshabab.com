@@ -58,7 +58,7 @@ export default async function RootLayout({
         </Providers>
       </body>
       <Analytics />
-      <GoogleAnalytics gaId={env.GOOGLE_ANALYTICS_ID} />
+      <GoogleAnalytics gaId={env.DASHBOARD_GOOGLE_ANALYTICS_ID} />
     </html>
   );
 }
