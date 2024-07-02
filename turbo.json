@@ -1,19 +1,31 @@
 {
-  "$schema": "https://turbo.build/schema.json",
-  "globalDependencies": [],
   "tasks": {
     "build": {
-      "dependsOn": ["^build"],
-      "outputs": ["dist/**", ".next/**", "!.next/cache/**"]
+      "env": [
+        "DATABASE_URL",
+        "RESEND_API_KEY",
+        "STRIPE_SECRET_KEY",
+        "STRIPE_WEBHOOK_SECRET",
+        "DATABASE_URL",
+        "GOOGLE_ANALYTICS_ID"
+      ],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        ".env.production.local",
+        ".env.local",
+        ".env.production",
+        ".env"
+      ]
     },
-    "lint": {},
-    "type-check": {},
     "dev": {
-      "cache": false,
-      "persistent": true
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        ".env.development.local",
+        ".env.local",
+        ".env.development",
+        ".env"
+      ]
     },
-    "clean": {
-      "cache": false
-    }
+    "test": {}
   }
 }
