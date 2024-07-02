@@ -14,6 +14,11 @@ const nextConfig = {
       },
     ],
   },
+  env: {
+    API_BASE_URL: process.env.API_BASE_URL,
+    GOOGLE_ANALYTICS_ID: process.env.GOOGLE_ANALYTICS_ID,
+    SITE_URL: process.env.SITE_URL,
+  },
 };
 
 export default withNextIntl(nextConfig);

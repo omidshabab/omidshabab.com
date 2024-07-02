@@ -11,6 +11,7 @@ import { LangDir, LangFont } from "@/lib/fonts";
 import { NextIntlClientProvider } from "next-intl";
 
 import "@/styles/editor.css";
+import Head from "next/head";
 
 // Dynamic Metadata based on locales
 export async function generateMetadata(): Promise<Metadata> {
@@ -79,6 +80,20 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} dir={dir}>
+      <Head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(){
+                var fullres = document.createElement('script');
+                fullres.async = true;
+                fullres.src = 'https://t.fullres.net/omidshabab.js?' + (new Date() - new Date() % 43200000);
+                document.head.appendChild(fullres);
+              })();
+            `,
+          }}
+        />
+      </Head>
       <body className={cn(
         font,
         "cursor-default"

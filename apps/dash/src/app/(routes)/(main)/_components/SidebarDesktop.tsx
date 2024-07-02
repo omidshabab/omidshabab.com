@@ -51,8 +51,8 @@ const SidebarDesktop = () => {
                <div className="fixed flex w-full items-center justify-center h-[100px] bottom-0 bg-orange-50 border-t-[1px] border-primary/5">
                     <Card className="mx-auto max-w-sm bg-transparent ring-0">
                          <p className="text-tremor-default text-tremor-content dark:text-dark-tremor-content flex items-center justify-between">
-                              <span>$9,012 &bull; 45%</span>
-                              <span>$20,000</span>
+                              <span>12 of 30 days left</span>
+                              <span>45%</span>
                          </p>
                          <ProgressBar value={45} color="orange" className="mt-[5px] opacity-20 bg-opacity-10" />
                          <p className="text-[12px] text-slate-600 font-normal py-[5px]">

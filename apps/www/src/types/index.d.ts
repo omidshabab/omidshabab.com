@@ -1,7 +1,8 @@
 export type Post = {
   title: string;
-  desc: string; // Adjust the type according to your data structure
+  desc: string;
   slug: string;
+  image: string;
   published: boolean;
   createdAt: string;
   updatedAt: string;

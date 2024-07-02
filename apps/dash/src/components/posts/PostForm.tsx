@@ -19,7 +19,7 @@ import { cn } from "@repo/ui/lib/utils";
 import { englishBricolageGrotesqueFont } from "@/lib/fonts";
 import { dashRoutes } from "@/config/routes";
 import { createSlug, generateRandomString } from "@/lib/utils";
-import { onUpload } from "../editor/ImageUpload";
+
 
 const { TextArea } = Input;
 
@@ -108,18 +108,14 @@ const PostForm = ({ post }: { post?: Post }) => {
           return new Promise((resolve) => {
                toast.promise(
                     promise.then(async (res) => {
-                         // Successfully uploaded image
                          if (res.status === 200) {
                               const { url } = (await res.json()) as any;
-                              // preload the image
                               let image = new Image();
                               image.src = url;
                               image.onload = () => {
+                                   setImage(url);
                                    resolve(url);
                               };
-                              // No blob store configured
-
-                              console.log(`this upload api result: ${JSON.stringify(url)}`)
                          } else if (res.status === 401) {
                               resolve(file);
                               throw new Error(
@@ -164,7 +160,7 @@ const PostForm = ({ post }: { post?: Post }) => {
                                                                       maxLength={150}
                                                                       onChange={(value) => setTitle(value.currentTarget.value)}
                                                                       className={cn(
-                                                                           "text-start h-min text-[32px] px-0 py-0 none-scroll-bar focus:ring-0 focus-visible:ring-0 cursor-text font-semibold",
+                                                                           "text-start h-min text-[32px] px-0 py-0 none-scroll-bar focus:ring-0 focus-visible:ring-0 cursor-text font-semibold rounded-[0px]",
                                                                            englishBricolageGrotesqueFont.className,
                                                                       )} />
                                                             </div>
@@ -176,7 +172,6 @@ const PostForm = ({ post }: { post?: Post }) => {
                                    </div>
                                    <div
                                         onClick={() => {
-                                             // upload image
                                              const input = document.createElement("input");
                                              input.type = "file";
                                              input.accept = "image/*";
@@ -188,7 +183,19 @@ const PostForm = ({ post }: { post?: Post }) => {
                                              };
                                              input.click();
                                         }}
-                                        className="w-full aspect-[6/3] rounded-[20px] bg-primary/[3%] hover:bg-primary/[6%] transition-all duration-500 cursor-pointer mb-[10px]"></div>
+                                        className={cn(
+                                             "min-h-[450px] w-full rounded-[20px] bg-primary/[3%] hover:bg-primary/[6%] transition-all duration-500 cursor-pointer mb-[10px] overflow-hidden",
+                                             image !== "" && "rounded-none"
+                                        )}>
+
+                                        {image && (
+                                             <img
+                                                  alt={post?.slug}
+                                                  src={image}
+                                                  className="w-full h-full object-cover" />
+                                        )}
+
+                                   </div>
                                    <div className="pb-[35px]">
                                         <Editor initialValue={desc} onChange={setDesc} />
                                    </div>

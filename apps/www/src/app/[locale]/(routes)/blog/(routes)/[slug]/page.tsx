@@ -8,6 +8,8 @@ import { defaultExtensions } from '@/components/editor/Extensions';
 import TableOfContents from '@/components/TableOfContents';
 import Loading from "@/app/[locale]/loading";
 import { Post } from "@/types";
+import { cn } from "@repo/ui/lib/utils";
+import { formatDateString } from "@/lib/utils";
 
 const Page = ({
      params,
@@ -48,11 +50,26 @@ const Page = ({
           <Suspense fallback={<Loading />}>
                <div className="relative flex flex-col sm:flex-row w-full h-full gap-x-[45px] py-[20px] sm:py-[25px]">
                     <div className="flex flex-col w-full flex-grow gap-y-[20px] text-[20px] leading-[2.5rem]">
-                         <div className="text-[32px] font-semibold cursor-text leading-[3rem] text-slate-800">
-                              {post.title}
+                         <div>
+                              <div className="text-[32px] font-semibold cursor-text leading-[3rem] text-slate-800">
+                                   {post.title}
+                              </div>
+
+                              <div className="text-[15px] font-light text-slate-600">
+                                   {formatDateString(post.updatedAt)}
+                              </div>
                          </div>
 
-                         <div className="w-full aspect-[6/3] rounded-[20px] bg-primary/[3%] mb-[10px]">
+                         <div className={cn(
+                              "w-full rounded-[20px] bg-primary/[3%] mb-[10px] overflow-hidden",
+                              post.image && "rounded-none"
+                         )}>
+                              {post.image && (
+                                   <img
+                                        alt={post?.slug}
+                                        src={post.image}
+                                        className="w-full h-full object-cover" />
+                              )}
                          </div>
 
                          <div className="w-full flex flex-col cursor-text">
@@ -60,7 +77,7 @@ const Page = ({
                          </div>
                     </div>
 
-                    <div className="relative container min-w-[250px] max-w-[280px] text-slate-600 leading-[2rem] cursor-text px-0">
+                    <div className="hidden md:block relative container min-w-[250px] max-w-[280px] text-slate-600 leading-[2rem] cursor-text px-0">
                          <div className="sticky top-[97px] flex flex-col w-full">
                               <div className="text-[18px] font-medium text-slate-800">
                                    Table of Contents
