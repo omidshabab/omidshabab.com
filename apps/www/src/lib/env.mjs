@@ -11,11 +11,11 @@ export const env = createEnv({
   },
   client: {
     API_BASE_URL: z.string().min(1),
-    GOOGLE_ANALYTICS_ID: z.string().min(1),
+    WWW_GOOGLE_ANALYTICS_ID: z.string().min(1),
   },
   // For Next.js >= 13.4.4, you only need to destructure client variables:
   experimental__runtimeEnv: {
     API_BASE_URL: process.env.API_BASE_URL,
-    GOOGLE_ANALYTICS_ID: process.env.GOOGLE_ANALYTICS_ID,
+    WWW_GOOGLE_ANALYTICS_ID: process.env.WWW_GOOGLE_ANALYTICS_ID,
   },
 });

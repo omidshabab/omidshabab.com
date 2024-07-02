@@ -104,7 +104,7 @@ export default async function RootLayout({
         </NextIntlClientProvider>
       </body>
       <Analytics />
-      <GoogleAnalytics gaId={env.GOOGLE_ANALYTICS_ID} />
+      <GoogleAnalytics gaId={env.WWW_GOOGLE_ANALYTICS_ID} />
     </html>
   );
 }
