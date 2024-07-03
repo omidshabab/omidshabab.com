@@ -10,7 +10,7 @@ const Avatar = () => {
                     width={80}
                     height={80}
                     src="https://avatars.githubusercontent.com/u/100057185?v=4" />
-               <div className="absolute flex p-[2px] items-center justify-center aspect-square bg-white/50 rounded-full bottom-0 right-0 backdrop-blur-sm border-[2px] border-foreground/10">
+               <div className="absolute flex p-[2px] items-center justify-center aspect-square bg-white/50 rounded-full bottom-0 right-0 rtl:left-0 rtl:right-auto backdrop-blur-sm border-[2px] border-foreground/10">
                     <ChevronDownIcon className="w-5 h-5 text-foreground" />
                </div>
           </div>

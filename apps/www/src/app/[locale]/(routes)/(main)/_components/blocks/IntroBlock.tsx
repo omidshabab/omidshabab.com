@@ -2,20 +2,23 @@ import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
 import Block from "../Block";
 import Avatar from "../Avatar";
 import CallToActionLink from "@/components/CallToActionLink";
+import { useTranslations } from "next-intl";
 
 const IntroBlock = () => {
+     const tHomePage = useTranslations("home_page");
+
      return (
           <Block card="md:col-span-4 row-span-4">
                <Avatar />
                <div className="flex flex-col gap-y-[5px]">
                     <div className="text-[22px] font-semibold">
-                         omidshabab.
+                         {tHomePage("title")}
                     </div>
                     <div className="text-[18px] leading-[1.8rem] text-foreground">
-                         dreaming, designing, and building world-changing softwares is my business. welcome to my world
+                         {tHomePage("desc")}
                     </div>
                </div>
-               <CallToActionLink text="Contact me" />
+               <CallToActionLink text={tHomePage("contact_me")} />
           </Block>
      );
 }

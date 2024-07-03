@@ -6,58 +6,70 @@ import {
      NavigationMenuLink,
      NavigationMenuList,
      NavigationMenuTrigger,
-     navigationMenuTriggerStyle,
 } from "@repo/ui/components/ui/navigation-menu"
 import { cn } from "@repo/ui/lib/utils";
-import { PauseIcon } from "lucide-react";
+import { useTranslations } from "next-intl";
 import React from "react";
 
-const tabs: { title: string; href: string; description: string }[] = [
-     {
-          title: "blog - posts",
-          href: defaultRoutes.blog,
-          description:
-               "A modal dialog that interrupts the user with important content and expects a response.",
-     },
-     {
-          title: "portfolio",
-          href: defaultRoutes.portfolio,
-          description:
-               "For sighted users to preview content available behind a link.",
-     },
-     {
-          title: "courses",
-          href: defaultRoutes.courses,
-          description:
-               "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
-     },
-     {
-          title: "books",
-          href: defaultRoutes.books,
-          description: "Visually or semantically separates content.",
-     },
-     {
-          title: "podcasts",
-          href: defaultRoutes.podcasts,
-          description:
-               "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-     },
-     {
-          title: "components",
-          href: defaultRoutes.components,
-          description:
-               "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
-     },
-]
+const Menu = ({
+     dir = "ltr"
+}: {
+     dir?: "rtl" | "ltr"
+}) => {
+     const tGeneral = useTranslations("general");
+     const tMenu = useTranslations("menu");
 
-const Menu = () => {
+     const tabs: { title: string; href: string; description: string }[] = [
+          {
+               title: `${tMenu("blog")} - ${tMenu("posts")}`,
+               href: defaultRoutes.blog,
+               description: tMenu("blog_desc"),
+          },
+          {
+               title: `${tMenu("portfolio")}`,
+               href: defaultRoutes.portfolio,
+               description: tMenu("portfolio_desc"),
+          },
+          {
+               title: `${tMenu("courses")}`,
+               href: defaultRoutes.courses,
+               description: tMenu("courses_desc"),
+          },
+          {
+               title: `${tMenu("books")}`,
+               href: defaultRoutes.books,
+               description: tMenu("books_desc"),
+          },
+          {
+               title: `${tMenu("podcasts")}`,
+               href: defaultRoutes.podcasts,
+               description: tMenu("podcasts_desc"),
+          },
+          {
+               title: `${tMenu("components")}`,
+               href: defaultRoutes.components,
+               description: tMenu("components_desc"),
+          },
+          {
+               title: `${tMenu("subscription")}`,
+               href: defaultRoutes.subscription,
+               description: tMenu("subscription_desc"),
+          },
+          {
+               title: `${tMenu("about")}`,
+               href: defaultRoutes.about,
+               description: tMenu("about_desc"),
+          },
+     ];
+
+
      return (
-          <NavigationMenu>
+          <NavigationMenu dir={dir}>
                <NavigationMenuList>
                     <NavigationMenuItem>
-                         <NavigationMenuTrigger className="cursor-pointer">menu</NavigationMenuTrigger>
+                         <NavigationMenuTrigger className="cursor-pointer">{tGeneral("menu")}</NavigationMenuTrigger>
                          <NavigationMenuContent>
-                              <ul className="grid w-[300px] gap-3 p-4 md:w-[400px] md:grid-cols-2 lg:w-[600px] ">
+                              <ul className="grid w-[300px] gap-3 p-4 md:w-[400px] md:grid-cols-2 lg:w-[600px] rtl:grid-rtl">
                                    {tabs.map((tab) => (
                                         <ListItem
                                              key={tab.title}
@@ -76,7 +88,6 @@ const Menu = () => {
 }
 
 export default Menu;
-
 
 const ListItem = React.forwardRef<
      React.ElementRef<"a">,

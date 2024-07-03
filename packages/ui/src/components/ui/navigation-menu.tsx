@@ -50,10 +50,13 @@ const NavigationMenuTrigger = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
      <NavigationMenuPrimitive.Trigger
           ref={ref}
-          className={cn(navigationMenuTriggerStyle(), "group", className)}
+          className={cn(navigationMenuTriggerStyle(), "group flex gap-x-[5px]", className)}
           {...props}
      >
-          {children}{" "}
+          <div>
+               {children}
+          </div>
+
           <ChevronDown
                className="relative top-[1px] ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180"
                aria-hidden="true"
@@ -83,7 +86,7 @@ const NavigationMenuViewport = React.forwardRef<
      React.ElementRef<typeof NavigationMenuPrimitive.Viewport>,
      React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Viewport>
 >(({ className, ...props }, ref) => (
-     <div className={cn("absolute left-0 top-full flex justify-center")}>
+     <div className={cn("absolute left-0 rtl:right-0 rtl:left-auto top-full flex justify-center")}>
           <NavigationMenuPrimitive.Viewport
                className={cn(
                     "origin-top-center relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-[30px] bg-primary/5 backdrop-blur-3xl text-slate-600 data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 md:w-[var(--radix-navigation-menu-viewport-width)]",

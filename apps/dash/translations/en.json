@@ -5,6 +5,7 @@
     "create": "create",
     "edit": "edit",
     "language": "language",
+    "separator": ",",
     "lorem": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure mollitia at consectetur ducimus expedita minus debitis nisi perspiciatis accusantium asperiores, vero libero ab quisquam quod sed eius sequi rem nam!"
   },
   "metadata": {

@@ -1,22 +1,9 @@
-import { getTranslations } from "next-intl/server";
+"use client"
+
 import BlogSection from "./_components/sections/BlogSection";
 import IntroSection from "./_components/sections/IntroSection";
 import LastSection from "./_components/sections/LastSection";
 import PortfolioSection from "./_components/sections/PortfolioSection";
-import { Metadata } from "next";
-
-// Dynamic Metadata based on locales
-export async function generateMetadata(): Promise<Metadata> {
-     const tMetadata = getTranslations("home_metadata")
-
-     return {
-          title: {
-               default: (await tMetadata)("title"),
-               template: `%s, ${(await tMetadata)("title")}`,
-          },
-          description: (await tMetadata)("desc"),
-     }
-}
 
 const Page = () => {
      return (

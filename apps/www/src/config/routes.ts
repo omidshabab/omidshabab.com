@@ -1,4 +1,4 @@
-export const baseApiUrl = "https://dash.omidshabab.com/api";
+export const baseApiUrl = process.env.API_BASE_URL;
 
 export const defaultRoutes = {
   default: "/",
@@ -8,4 +8,6 @@ export const defaultRoutes = {
   components: "/components",
   books: "/books",
   podcasts: "/podcasts",
+  subscription: "/subscription",
+  about: "/about",
 };

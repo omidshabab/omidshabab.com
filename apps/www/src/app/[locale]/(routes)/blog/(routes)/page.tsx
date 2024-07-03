@@ -6,8 +6,11 @@ import { useEffect, useState } from "react";
 import PostItem from "../_components/PostItem";
 import PostItemShimmer from "../_components/PostItemShimmer";
 import { baseApiUrl } from "@/config/routes";
+import { useTranslations } from "next-intl";
 
 const Page = () => {
+     const tBlogPage = useTranslations("blog_page");
+
      const [posts, setPosts] = useState<Post[] | null>(null);
 
      useEffect(() => {
@@ -26,7 +29,7 @@ const Page = () => {
      return (
           <div className="flex flex-col flex-grow w-full h-full gap-y-[20px] py-[20px] sm:py-[25px]">
                <h2 className="text-[20px] font-medium leading-[1.8rem] sm:leading-[2.5rem]">
-                    Mastering Software Creation: Your Guide
+                    {tBlogPage("desc")}
                </h2>
                <div className="flex flex-col w-full">
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-[20px] gap-y-[30px] leading-[2rem]">

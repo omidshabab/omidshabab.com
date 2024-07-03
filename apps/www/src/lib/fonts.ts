@@ -92,8 +92,13 @@ export function LangFont(locale: string): string {
   }
 }
 
-export function LangDir(locale: string) {
-  // const defaultLocale = useLocale();
-  // if (!locale) locale = defaultLocale;
-  return isRtlLang(locale) ? "rtl" : "ltr";
+export function LangDir(locale: "en" | "fa"): "rtl" | "ltr" {
+  switch (locale) {
+    case "en":
+      return "ltr";
+    case "fa":
+      return "rtl";
+    default:
+      return "ltr";
+  }
 }

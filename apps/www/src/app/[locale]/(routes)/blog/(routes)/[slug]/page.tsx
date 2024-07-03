@@ -10,6 +10,7 @@ import { Post } from "@/types";
 import { cn } from "@repo/ui/lib/utils";
 import { formatDateString } from "@/lib/utils";
 import { baseApiUrl } from "@/config/routes";
+import { useTranslations } from "next-intl";
 
 const Page = ({
      params,
@@ -18,6 +19,8 @@ const Page = ({
           slug: string
      }
 }) => {
+     const tGeneral = useTranslations("general");
+
      const [post, setPost] = useState<Post | null>(null);
 
      useEffect(() => {
@@ -80,7 +83,7 @@ const Page = ({
                     <div className="hidden md:block relative container min-w-[250px] max-w-[280px] text-slate-600 leading-[2rem] cursor-text px-0">
                          <div className="sticky top-[97px] flex flex-col w-full">
                               <div className="text-[18px] font-medium text-slate-800">
-                                   Table of Contents
+                                   {tGeneral("table_of_contents")}
                               </div>
 
                               <TableOfContents content={output} />

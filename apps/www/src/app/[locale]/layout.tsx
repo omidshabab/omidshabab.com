@@ -20,7 +20,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: {
       default: (await tGeneral)("site_name"),
-      template: `%s, ${(await tGeneral)("site_name")}`,
+      template: `%s${(await tGeneral)("separator")} ${(await tGeneral)("site_name")}`,
     },
     metadataBase: new URL(site.url),
     description: site.description,
