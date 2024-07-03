@@ -13,16 +13,16 @@ export const generateMetadata = async ({ params }: { params: { slug: string } })
      };
 };
 
-export async function generateStaticParams() {
-     const res = await axios.get(`${process.env.API_BASE_URL}/posts`);
-     const posts: Post[] = res.data;
+// export async function generateStaticParams() {
+//      const res = await axios.get(`${process.env.API_BASE_URL}/posts`);
+//      const posts: Post[] = res.data;
 
-     return posts.map(post => ({
-          params: {
-               slug: post.slug
-          }
-     }));
-}
+//      return posts.map(post => ({
+//           params: {
+//                slug: post.slug
+//           }
+//      }));
+// }
 
 export default function layout({
      children
