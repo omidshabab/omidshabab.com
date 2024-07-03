@@ -1,3 +1,5 @@
+export const baseApiUrl = "https://dash.omidshabab.com/api";
+
 export const defaultRoutes = {
   default: "/",
   blog: "/blog",
