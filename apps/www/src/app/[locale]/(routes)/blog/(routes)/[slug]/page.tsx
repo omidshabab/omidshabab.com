@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState, useMemo, Suspense } from "react";
-import { ScrollArea } from "@repo/ui/components/ui/scroll-area";
 import axios from 'axios';
 import { generateHTML } from '@tiptap/html';
 import { defaultExtensions } from '@/components/editor/Extensions';
@@ -10,6 +9,7 @@ import Loading from "@/app/[locale]/loading";
 import { Post } from "@/types";
 import { cn } from "@repo/ui/lib/utils";
 import { formatDateString } from "@/lib/utils";
+import { baseApiUrl } from "@/config/routes";
 
 const Page = ({
      params,
@@ -23,7 +23,7 @@ const Page = ({
      useEffect(() => {
           const fetchPost = async () => {
                try {
-                    const response = await axios.get(`${process.env.API_BASE_URL}/posts/${params.slug}`);
+                    const response = await axios.get(`${baseApiUrl}/posts/${params.slug}`);
                     setPost(response.data);
                } catch (error) {
                     console.error('Error fetching the post:', error);
