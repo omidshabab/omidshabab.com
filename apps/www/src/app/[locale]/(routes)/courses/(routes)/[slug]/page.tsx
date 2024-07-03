@@ -1,6 +1,10 @@
+import { useTranslations } from "next-intl";
+
 const Page = () => {
+     const tGeneral = useTranslations("general");
+
      return (
-          <div>Page</div>
+          <div>{tGeneral("soon")} ...</div>
      );
 }
 

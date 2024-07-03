@@ -2,15 +2,48 @@
   "general": {
     "omidshabab": "omidshabab",
     "omid shabab": "omid shabab",
-    "site_name": "omidshabab."
+    "omidshababcom": "omidshabab.com",
+    "site_name": "omidshabab.",
+    "separator": ",",
+    "software": "software",
+    "menu": "menu",
+    "read_now": "read now",
+    "soon": "soon",
+    "table_of_contents": "Table of Contents",
+    "copyright": "Crafted with care by omidshabab. All Rights Preserved and Protected.",
+    "default_title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+  },
+  "lang": {
+    "english": "english",
+    "persian": "persian"
+  },
+  "menu": {
+    "blog": "blog",
+    "posts": "posts",
+    "blog_desc": "Read insightful articles and latest posts on various topics.",
+    "portfolio": "portfolio",
+    "portfolio_desc": "Explore my professional work, projects, and achievements.",
+    "courses": "courses",
+    "courses_desc": "Discover and enroll in the courses I offer.",
+    "books": "books",
+    "books_desc": "A collection of books I recommend or have authored.",
+    "podcasts": "podcasts",
+    "podcasts_desc": "Listen to my latest podcast episodes and series.",
+    "components": "components",
+    "components_desc": "Reusable components and tools for developers.",
+    "subscription": "subscription",
+    "subscription_desc": "Subscribe to get the latest updates and exclusive content.",
+    "about": "about",
+    "about_desc": "Learn more about me and this website.\nGet to know my journey and purpose."
   },
   "home_page": {
     "title": "omidshabab.",
-    "desc": ""
+    "desc": "dreaming, designing, and building world-changing softwares is my business. welcome to my world",
+    "contact_me": "contact me"
   },
   "blog_page": {
     "title": "blog",
-    "desc": ""
+    "desc": "Mastering Software Creation: Your Guide"
   },
   "home_metadata": {
     "title": "software",

@@ -9,6 +9,8 @@ const config = {
     "/courses/*",
     "/podcasts/*",
     "/portfolio/*",
+    "/subscription",
+    "/about",
   ],
   robotsTxtOptions: {
     policies: [
@@ -24,6 +26,8 @@ const config = {
           "/courses/*",
           "/podcasts/*",
           "/portfolio/*",
+          "/subscription",
+          "/about",
         ],
       },
     ],
