@@ -14,7 +14,7 @@ export const generateMetadata = async ({ params }: { params: { slug: string } })
 };
 
 export async function generateStaticParams() {
-     const res = await axios.get(`${process.env.API_BASE_URL}/posts`);
+     const res = await axios.get(`${baseApiUrl}/posts`);
      const posts: Post[] = res.data;
 
      return posts.map(post => ({
