@@ -3,7 +3,6 @@ import { nanoid, timestamps } from "@/lib/utils";
 import { sql } from "drizzle-orm";
 import {
   boolean,
-  json,
   pgTable,
   text,
   timestamp,
@@ -22,6 +21,7 @@ export const posts = pgTable("posts", {
   slug: varchar("slug", { length: 100 }).notNull().unique(),
   published: boolean("published").default(false),
   userId: varchar("user_id", { length: 256 }).notNull(),
+  locale: varchar("locale", { length: 2 }).notNull().default("en"),
 
   createdAt: timestamp("created_at")
     .notNull()
@@ -38,6 +38,7 @@ export const insertPostSchema = createInsertSchema(posts).omit(timestamps);
 export const insertPostParams = baseSchema
   .extend({
     published: z.coerce.boolean(),
+    locale: z.enum(["en", "fa"]),
   })
   .omit({
     id: true,
@@ -48,10 +49,12 @@ export const updatePostSchema = baseSchema;
 export const updatePostParams = baseSchema
   .extend({
     published: z.coerce.boolean(),
+    locale: z.enum(["en", "fa"]),
   })
   .omit({
     userId: true,
   });
+
 export const postIdSchema = baseSchema.pick({ id: true });
 export const postSlugSchema = baseSchema.pick({ slug: true });
 

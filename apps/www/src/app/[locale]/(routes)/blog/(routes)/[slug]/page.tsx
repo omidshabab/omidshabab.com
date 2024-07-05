@@ -64,7 +64,7 @@ const Page = ({
                          </div>
 
                          <div className={cn(
-                              "w-full rounded-[20px] bg-primary/[3%] mb-[10px] overflow-hidden",
+                              "min-h-[450px] w-full rounded-[20px] bg-primary/[3%] mb-[10px] overflow-hidden",
                               post.image && "rounded-none"
                          )}>
                               {post.image && (

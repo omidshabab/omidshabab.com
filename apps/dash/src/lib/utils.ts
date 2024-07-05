@@ -34,3 +34,7 @@ export const generateRandomString = (length: number): string => {
   }
   return result;
 };
+
+export const isValidLocale = (locale: string): locale is "en" | "fa" => {
+  return locale === "en" || locale === "fa";
+};

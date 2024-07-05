@@ -8,10 +8,16 @@ import ApiStatsCard from "../_components/cards/ApiStatsCard";
 import MembersCard from "../_components/cards/MembersCard";
 import CourseStatsCard from "../_components/cards/CourseStatsCard";
 import { ScrollArea } from "@repo/ui/components/ui/scroll-area";
+import { useLocale } from "next-intl";
+import { LangDir } from "@/lib/fonts";
 
 const Page = () => {
+  const locale = useLocale();
+
+  const dir = LangDir(locale)
+
   return (
-    <ScrollArea className="w-full h-full none-scroll-bar overflow-y-hidden">
+    <ScrollArea dir={dir} className="w-full h-full none-scroll-bar overflow-y-hidden">
       <div className="flex flex-col gap-y-[30px]">
         <OverviewCard />
         {/* <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-2">

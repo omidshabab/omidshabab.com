@@ -1,6 +1,7 @@
 import { dashRoutes } from "@/config/routes";
 import SidebarItem from "../SidebarItem";
 import { useSearchParams, useSelectedLayoutSegments } from "next/navigation";
+import { useTranslations } from "next-intl";
 
 const BookSection = () => {
      const segments = useSelectedLayoutSegments();
@@ -9,19 +10,21 @@ const BookSection = () => {
 
      const id = searchParams.get("id")
 
+     const tSidebar = useTranslations("sidebar")
+
      return (
           <div className="flex flex-col gap-y-2">
-               Books
+               {tSidebar("books")}
                <SidebarItem
                     href={dashRoutes.books}
                     active={segments[0] === "books" && segments[1] === undefined}>
-                    Your Created Books
+                    {tSidebar("created_books")}
                </SidebarItem>
 
                <SidebarItem
                     href={dashRoutes.createBook}
                     active={segments[0] === "books" && segments[1] === "create" && id === null && true}>
-                    Add a new amazing Book
+                    {tSidebar("add_book")}
                </SidebarItem>
           </div>
      );

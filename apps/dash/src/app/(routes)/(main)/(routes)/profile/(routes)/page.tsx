@@ -3,18 +3,23 @@
 import { UploadCloud, CheckIcon, ShareIcon, LogOutIcon, TrashIcon } from 'lucide-react';
 import { Input } from "antd";
 import { cn } from "@repo/ui/lib/utils";
-import { englishBricolageGrotesqueFont } from "@/lib/fonts";
+import { englishBricolageGrotesqueFont, LangDir } from "@/lib/fonts";
 import { Spacer } from "@nextui-org/spacer";
 import { Button } from "@repo/ui/components/ui/button";
 import IconButton from "@/components/buttons/icon-button";
 import { ScrollArea } from "@repo/ui/components/ui/scroll-area";
+import { useLocale } from 'next-intl';
 
 const { TextArea } = Input
 
 const Page = () => {
+     const locale = useLocale()
+
+     const dir = LangDir(locale)
+
      return (
           <div className="flex flex-col sm:flex-row w-full h-full flex-grow">
-               <ScrollArea className="flex w-full h-full flex-grow">
+               <ScrollArea dir={dir} className="flex w-full h-full flex-grow">
                     <div className="flex flex-col w-full h-full flex-grow gap-y-[20px]">
                          Profile
 
@@ -159,7 +164,7 @@ const Page = () => {
 
                <Spacer className="hidden sm:flex w-[55px]" />
 
-               <ScrollArea className="flex w-full h-full flex-grow none-scroll-bar">
+               <ScrollArea dir={dir} className="flex w-full h-full flex-grow none-scroll-bar">
                     <div className="relative flex flex-col gap-y-[20px] bg-primary/[3%] rounded-[20px] h-full w-full px-[35px] py-[20px]">
                          <div className="flex flex-col">
                               Preview of your Profile

@@ -1,11 +1,12 @@
 import { db } from "@/lib/db";
 import { Post, posts } from "@/lib/db/schema/posts";
 import { NextRequest, NextResponse } from "next/server";
-import { eq } from "drizzle-orm";
+import { eq, and } from "drizzle-orm";
 
 export async function GET(request: NextRequest) {
   // Get the 'count' and 'page' query parameters from the request URL
   const { searchParams } = new URL(request.url);
+  const locale = searchParams.get("locale") ?? "en";
   const count = parseInt(searchParams.get("count") || "10", 10); // Default to 10 if 'count' is not provided
   const page = parseInt(searchParams.get("page") || "1", 10); // Default to 1 if 'page' is not provided
 
@@ -16,7 +17,7 @@ export async function GET(request: NextRequest) {
   const results: Post[] = await db
     .select()
     .from(posts)
-    .where(eq(posts.published, true))
+    .where(and(eq(posts.published, true), eq(posts.locale, locale)))
     .limit(count)
     .offset(offset); // Apply the offset based on the 'page' query parameter
 

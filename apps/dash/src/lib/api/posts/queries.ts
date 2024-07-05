@@ -1,4 +1,3 @@
-import { getUserAuth } from "@/lib/auth/utils";
 import { db } from "@/lib/db/index";
 import {
   Post,
@@ -9,25 +8,25 @@ import {
   postSlugSchema,
 } from "@/lib/db/schema/posts";
 import { eq, and } from "drizzle-orm";
+import { getLocale } from "next-intl/server";
 
 export const getPosts = async () => {
-  const { session } = await getUserAuth();
-  const rows = await db
-    .select()
-    .from(posts)
-    .where(eq(posts.userId, session?.user.id!));
+  const locale = await getLocale();
+
+  const rows = await db.select().from(posts).where(eq(posts.locale, locale));
 
   const t: Post[] = rows;
   return { posts: t };
 };
 
 export const getPostById = async (id?: PostId) => {
-  const { session } = await getUserAuth();
+  const locale = await getLocale();
+
   const { id: postId } = postIdSchema.parse({ id });
   const [row] = await db
     .select()
     .from(posts)
-    .where(and(eq(posts.id, postId), eq(posts.userId, session?.user.id!)));
+    .where(and(eq(posts.id, postId), eq(posts.locale, locale)));
   if (row === undefined) return {};
   const t = row;
   return { post: t };

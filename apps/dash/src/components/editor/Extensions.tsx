@@ -87,6 +87,7 @@ const starterKit = StarterKit.configure({
      // },
      codeBlock: {
           HTMLAttributes: {
+               dir: "ltr",
                class: cx(
                     "rounded-[20px] bg-primary/[3%] text-[22px] leading-[2.5rem] text-text px-[30px] py-[20px] mb-[25px] mt-[10px] font-normal",
                     englishBricolageGrotesqueFont.className,

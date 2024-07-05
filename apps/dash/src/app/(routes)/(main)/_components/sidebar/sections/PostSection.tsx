@@ -1,6 +1,7 @@
 import { useSearchParams, useSelectedLayoutSegments } from "next/navigation";
 import SidebarItem from "../SidebarItem";
 import { dashRoutes } from "@/config/routes";
+import { useTranslations } from "next-intl";
 
 const PostSection = () => {
      const segments = useSelectedLayoutSegments();
@@ -9,19 +10,21 @@ const PostSection = () => {
 
      const id = searchParams.get("id")
 
+     const tSidebar = useTranslations("sidebar")
+
      return (
           <div className="flex flex-col gap-y-2">
-               Posts
+               {tSidebar("posts")}
                <SidebarItem
                     href={dashRoutes.posts}
                     active={segments[0] === "posts" && segments[1] === undefined}>
-                    Your Created Posts
+                    {tSidebar("created_posts")}
                </SidebarItem>
 
                <SidebarItem
                     href={dashRoutes.createPost}
                     active={segments[0] === "posts" && segments[1] === "create" && id === null && true}>
-                    Add a new amazing Post
+                    {tSidebar("add_post")}
                </SidebarItem>
           </div>
      );

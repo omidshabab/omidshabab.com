@@ -6,17 +6,19 @@ import { useEffect, useState } from "react";
 import PostItem from "../_components/PostItem";
 import PostItemShimmer from "../_components/PostItemShimmer";
 import { baseApiUrl } from "@/config/routes";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
 const Page = () => {
      const tBlogPage = useTranslations("blog_page");
 
      const [posts, setPosts] = useState<Post[] | null>(null);
 
+     const locale = useLocale()
+
      useEffect(() => {
           const fetchPost = async () => {
                try {
-                    const response = await axios.get(`${baseApiUrl}/posts`);
+                    const response = await axios.get(`${baseApiUrl}/posts?locale=${locale}`);
                     setPosts(response.data);
                } catch (error) {
                     console.error('Error fetching the post:', error);
@@ -24,7 +26,7 @@ const Page = () => {
           };
 
           fetchPost();
-     }, []);
+     }, [locale]);
 
      return (
           <div className="flex flex-col flex-grow w-full h-full gap-y-[20px] py-[20px] sm:py-[25px]">
