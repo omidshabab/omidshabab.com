@@ -3,7 +3,7 @@
 import Editor from "@/components/editor/Editor";
 import { ScrollArea } from "@repo/ui/components/ui/scroll-area";
 import { useRouter } from "next/navigation";
-import { defaultEditorValue } from "@/config/defaultEditorValue";
+import { defaultEditorValue, defaultPersianEditorValue } from "@/config/defaultEditorValue";
 import { JSONContent } from "novel";
 import { Input } from 'antd';
 import { Button } from "@repo/ui/components/ui/button";
@@ -16,9 +16,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { trpc } from "@/lib/trpc/client";
 import { useEffect, useState } from "react";
 import { cn } from "@repo/ui/lib/utils";
-import { englishBricolageGrotesqueFont } from "@/lib/fonts";
+import { englishBricolageGrotesqueFont, LangDir, LangFont } from "@/lib/fonts";
 import { dashRoutes } from "@/config/routes";
-import { createSlug, generateRandomString } from "@/lib/utils";
+import { createSlug, generateRandomString, isValidLocale } from "@/lib/utils";
+import { useLocale, useTranslations } from "next-intl";
 
 
 const { TextArea } = Input;
@@ -29,9 +30,23 @@ const PostForm = ({ post }: { post?: Post }) => {
      const router = useRouter();
      const utils = trpc.useUtils();
 
-     const [title, setTitle] = useState<string>(post?.title ?? "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis pariatur quos possimus beatae")
+     const locale = useLocale()
 
-     const [desc, setDesc] = useState<JSONContent>((post && post.desc) ? (JSON.parse(post.desc)) : defaultEditorValue);
+     let newLocale: "en" | "fa" = "en"; // Default value or handle appropriately
+
+     if (isValidLocale(locale)) {
+          newLocale = locale;
+     }
+
+     const tGeneral = useTranslations("general")
+     const tPostPage = useTranslations("post_page")
+
+     const dir = LangDir(locale)
+     const font = LangFont(locale)
+
+     const [title, setTitle] = useState<string>(post?.title ?? tPostPage("default_title"))
+
+     const [desc, setDesc] = useState<JSONContent>((post && post.desc) ? (JSON.parse(post.desc)) : locale === "en" ? defaultEditorValue : defaultPersianEditorValue);
 
      const [slug, setSlug] = useState<string>(post?.slug ?? createSlug(title))
 
@@ -47,6 +62,10 @@ const PostForm = ({ post }: { post?: Post }) => {
           resolver: zodResolver(insertPostParams),
           defaultValues: {
                title: "",
+               desc: "",
+               slug: "",
+               image: "",
+               locale: newLocale,
                published: false,
           },
      });
@@ -141,10 +160,10 @@ const PostForm = ({ post }: { post?: Post }) => {
                     <form
                          onSubmit={form.handleSubmit(handleSubmit)}
                          className="flex flex-col md:flex-row h-full gap-x-[30px] flex-grow">
-                         <ScrollArea className="w-full h-full scroll-mx-12 none-scroll-bar overflow-y-hidden">
+                         <ScrollArea dir={dir} className="w-full h-full scroll-mx-12 none-scroll-bar overflow-y-hidden">
                               <div className="flex flex-col h-full flex-grow overflow-y-hidden gap-y-[20px]">
                                    <div className="h-min">
-                                        Edit Post:
+                                        {tPostPage("edit_post")}:
                                         <FormField
                                              control={form.control}
                                              name="title"
@@ -161,7 +180,7 @@ const PostForm = ({ post }: { post?: Post }) => {
                                                                       onChange={(value) => setTitle(value.currentTarget.value)}
                                                                       className={cn(
                                                                            "text-start h-min text-[32px] px-0 py-0 none-scroll-bar focus:ring-0 focus-visible:ring-0 cursor-text font-semibold rounded-[0px]",
-                                                                           englishBricolageGrotesqueFont.className,
+                                                                           font,
                                                                       )} />
                                                             </div>
                                                        </FormControl>
@@ -205,10 +224,9 @@ const PostForm = ({ post }: { post?: Post }) => {
                               <div className="h-full">
                                    <div className="flex h-fit flex-col min-w-[300px] max-w-[350px] bg-primary/[3%] rounded-[20px] mb-[35px]">
                                         <div className="flex-grow px-[25px] py-[15px]">
-                                             <div className="text-[18px]">Post Settings</div>
+                                             <div className="text-[18px]">{tPostPage("post_settings")}</div>
                                              <p className="text-[16px] leading-[1.8rem] text-slate-800 font-normal">
-                                                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis
-                                                  pariatur quos possimus beatae.
+                                                  {tGeneral("lorem")}
                                              </p>
 
                                              <div className="border-b-[2px] border-primary/10 mb-[5px]">
@@ -217,6 +235,7 @@ const PostForm = ({ post }: { post?: Post }) => {
                                                        placeholder="type the post slug here ..."
                                                        autoSize
                                                        variant="borderless"
+                                                       dir="ltr"
                                                        maxLength={100}
                                                        onChange={(value) => setSlug(value.currentTarget.value)}
                                                        className={cn(
@@ -227,7 +246,7 @@ const PostForm = ({ post }: { post?: Post }) => {
                                              </div>
 
                                              <p className="text-[13px] leading-[1.5rem] text-slate-600 font-normal">
-                                                  seperate words with a dash
+                                                  {tPostPage("slug_seperate_hint")}
                                              </p>
                                         </div>
                                         <div className="border-t-[1px] border-primary/10 h-min w-full flex items-end justify-end gap-x-[10px] px-[20px] py-[15px]">
@@ -238,11 +257,12 @@ const PostForm = ({ post }: { post?: Post }) => {
                                                        slug: slug === "" ? generateRandomString(20) : slug,
                                                        image: image,
                                                        published: published,
+                                                       locale: newLocale,
                                                   })}
                                                   disabled={isCreating || isUpdating}
                                                   variant="secondary"
                                                   size="sm">
-                                                  Save the Post
+                                                  {tPostPage("save_post")}
                                              </Button>
 
                                              {post?.published ? (
@@ -253,11 +273,12 @@ const PostForm = ({ post }: { post?: Post }) => {
                                                             slug: slug === "" ? generateRandomString(20) : slug,
                                                             image: image,
                                                             published: false,
+                                                            locale: newLocale
                                                        })}
                                                        disabled={isCreating || isUpdating}
                                                        variant="secondary"
                                                        size="sm">
-                                                       Published
+                                                       {tPostPage("published")}
                                                   </Button>
                                              ) : (
                                                   <Button
@@ -267,11 +288,12 @@ const PostForm = ({ post }: { post?: Post }) => {
                                                             slug: slug === "" ? generateRandomString(20) : slug,
                                                             image: image,
                                                             published: true,
+                                                            locale: newLocale,
                                                        })}
                                                        disabled={isCreating || isUpdating}
                                                        variant="default"
                                                        size="sm">
-                                                       Publish
+                                                       {tPostPage("publish")}
                                                   </Button>
                                              )}
                                         </div>

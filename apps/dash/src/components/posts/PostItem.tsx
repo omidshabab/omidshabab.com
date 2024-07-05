@@ -1,7 +1,7 @@
 "use client"
 
 import { dashRoutes } from "@/config/routes";
-import { CompletePost, NewPostParams, Post } from "@/lib/db/schema/posts";
+import { NewPostParams, Post } from "@/lib/db/schema/posts";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner"
 import { trpc } from "@/lib/trpc/client";
@@ -13,8 +13,9 @@ import {
      ContextMenuTrigger,
 } from "@repo/ui/components/ui/context-menu";
 import { Delete, EditSquare, CaretRight } from "react-iconly";
-import { generateRandomString } from "@/lib/utils";
+import { generateRandomString, isValidLocale } from "@/lib/utils";
 import { cn } from "@repo/ui/lib/utils";
+import { useLocale, useTranslations } from "next-intl";
 
 const PostItem = ({
      post
@@ -23,6 +24,16 @@ const PostItem = ({
 }) => {
      const router = useRouter()
      const utils = trpc.useUtils();
+
+     const locale = useLocale()
+
+     let newLocale: "en" | "fa" = "en"; // Default value or handle appropriately
+
+     if (isValidLocale(locale)) {
+          newLocale = locale;
+     }
+
+     const tPostPage = useTranslations("post_page")
 
      const onSuccess = async (action: "create" | "update" | "delete", data?: { error?: string, post: Post }) => {
           if (data?.error) {
@@ -68,7 +79,8 @@ const PostItem = ({
           const newPostData: NewPostParams = {
                ...restPost,
                slug: `${slug}-${randomString}`,
-               published: false
+               published: false,
+               locale: newLocale,
           };
 
           createPost(newPostData)
@@ -99,11 +111,11 @@ const PostItem = ({
                               <div className="font-light text-[14px] leading-[1.5rem] line-clamp-1">
                                    {post.published ? (
                                         <div className="text-green-900 group-hover/item:text-green-900/80 transition-all duration-500">
-                                             / published
+                                             / {tPostPage("published")}
                                         </div>
                                    ) : (
                                         <div className="text-text group-hover/item:text-text/80 transition-all duration-500">
-                                             / drafted
+                                             / {tPostPage("drafted")}
                                         </div>
                                    )}
                               </div>

@@ -3,10 +3,53 @@
     "omidshabab": "امید شباب",
     "omidshabab.": "امید شباب.",
     "dashboard": "داشبورد",
-    "create": "create",
+    "create": "ایجاد کردن",
+    "edit": "ویرایش",
     "language": "زبان",
     "separator": "،",
     "lorem": "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است"
+  },
+  "lang": {
+    "english": "انگلیسی",
+    "persian": "فارسی"
+  },
+  "sidebar": {
+    "posts": "پست‌ها",
+    "created_posts": "پست‌های ایجاد شده توسط شما",
+    "add_post": "افزودن یک پست شگفت‌انگیز جدید",
+    "portfolio": "نمونه کارها",
+    "created_portfolio": "نمونه کارهای ایجاد شده توسط شما",
+    "add_portfolio": "افزودن یک نمونه کار شگفت‌انگیز جدید",
+    "courses": "دوره‌ها",
+    "created_courses": "دوره‌های ایجاد شده توسط شما",
+    "add_course": "افزودن یک دوره شگفت‌انگیز جدید",
+    "components": "کامپوننت ها",
+    "created_components": "کامپوننت های ایجاد شده توسط شما",
+    "add_component": "افزودن یک کامپوننت شگفت‌انگیز جدید",
+    "books": "کتاب‌ها",
+    "created_books": "کتاب‌های ایجاد شده توسط شما",
+    "add_book": "افزودن یک کتاب شگفت‌انگیز جدید",
+    "podcasts": "پادکست‌ها",
+    "created_podcasts": "پادکست‌های ایجاد شده توسط شما",
+    "add_podcast": "افزودن یک پادکست شگفت‌انگیز جدید",
+    "api_keys": "کلیدهای ای پی آی",
+    "created_api_keys": "کلیدهای ای پی آی ایجاد شده توسط شما",
+    "usage_api_keys": "استفاده از کلیدهای ای پی آی",
+    "profile": "پروفایل",
+    "edit_profile_details": "ویرایش جزئیات پروفایل شما",
+    "account_settings": "تنظیمات حساب شما"
+  },
+  "breadcrumb": {
+    "books": "کتاب‌ها",
+    "components": "اجزا",
+    "courses": "دوره‌ها",
+    "keys": "کلیدها",
+    "podcasts": "پادکست‌ها",
+    "portfolio": "نمونه کارها",
+    "posts": "پست‌ها",
+    "profile": "پروفایل",
+    "settings": "تنظیمات",
+    "usage": "میزان استفاده"
   },
   "metadata": {
     "name": "امید شباب",
@@ -16,12 +59,16 @@
     "title": "register",
     "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure mollitia at consectetur ducimus expedita minus debitis nisi perspiciatis accusantium asperiores, vero libero ab quisquam quod sed eius sequi rem nam!"
   },
-  "dashboard_metadata": {
-    "title": "dashboard",
+  "dash_metadata": {
+    "title": "داشبورد",
     "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure mollitia at consectetur ducimus expedita minus debitis nisi perspiciatis accusantium asperiores, vero libero ab quisquam quod sed eius sequi rem nam!"
   },
   "posts_metadata": {
-    "title": "posts",
+    "title": "پست ها",
+    "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure mollitia at consectetur ducimus expedita minus debitis nisi perspiciatis accusantium asperiores, vero libero ab quisquam quod sed eius sequi rem nam!"
+  },
+  "profile_metadata": {
+    "title": "پروفایل",
     "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure mollitia at consectetur ducimus expedita minus debitis nisi perspiciatis accusantium asperiores, vero libero ab quisquam quod sed eius sequi rem nam!"
   },
   "not_found": {
@@ -34,15 +81,14 @@
     "persian": "فارسی"
   },
   "navigation": {
-    "home": "صفحه اصلی",
-    "about": "درباره"
+    "home": "صفحه اصلی"
   },
-  "home": {
+  "home_page": {
     "title": "امید شباب",
     "description": "نحوه طراحی ☡، ساخت ⏚ و مدیریت 〄 اهدافی که برایتان اهمیت دارند. این کار را همراه با رودی مپ انجام دهید.",
     "get_started": "همین الان شروع کنید"
   },
-  "register": {
+  "register_page": {
     "title": "ورود به حساب کاربری",
     "description": "فرقی نمی کنه حساب کاربری داری یا نه، برای ورود آدرس ایمیلت رو وارد کن. من یک لینک تأیید برات از طریق ایمیل ارسال می کنم.",
     "submit_email": "تاییدیه رو به ایمیلم ارسال کن",
@@ -51,6 +97,17 @@
     "in_progress": "یک لحظه صبر کن. در حال انجام است ...",
     "success": "خیلی خوش آمدی 😊 ورودت موفقیت آمیز بود",
     "error": "ورودت موفقیت آمیز نبود. باید دوباره امتحان کنی یا با پشتیبانی در تماس باشی 😔"
+  },
+  "post_page": {
+    "edit_post": "ویرایش مقاله",
+    "post_settings": "تنظیمات مقاله",
+    "publish": "منتشر کردن",
+    "published": "منتشر شده",
+    "drafted": "پیش نویس شده",
+    "save_post": "ذخیره کردن",
+    "slug_seperate_hint": "کلمات را با خط تیره از هم جدا کنید",
+    "created_posts": "پست‌های ایجاد شده توسط شما",
+    "default_title": "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است"
   },
   "server": {
     "error": "An error occurred while trying to connect to the server."

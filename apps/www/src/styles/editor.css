@@ -46,6 +46,8 @@ code, kbd, samp, pre {
 
 .prose > pre {
   white-space: pre-wrap;
+  font-family: '__englishBricolageGrotesqueFont_4a6a66' !important;
+  direction: ltr;
 }
 
 .prose > img {

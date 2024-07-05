@@ -8,6 +8,48 @@
     "separator": ",",
     "lorem": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure mollitia at consectetur ducimus expedita minus debitis nisi perspiciatis accusantium asperiores, vero libero ab quisquam quod sed eius sequi rem nam!"
   },
+  "lang": {
+    "english": "english",
+    "persian": "persian"
+  },
+  "sidebar": {
+    "posts": "Posts",
+    "created_posts": "Your Created Posts",
+    "add_post": "Add a new amazing Post",
+    "portfolio": "Portfolio",
+    "created_portfolio": "Your Created Portfolio",
+    "add_portfolio": "Add a new amazing Portfolio",
+    "courses": "Courses",
+    "created_courses": "Your Created Courses",
+    "add_course": "Add a new amazing Course",
+    "components": "Components",
+    "created_components": "Your Created Components",
+    "add_component": "Add a new amazing Component",
+    "books": "Books",
+    "created_books": "Your Created Books",
+    "add_book": "Add a new amazing Book",
+    "podcasts": "Podcasts",
+    "created_podcasts": "Your Created Podcasts",
+    "add_podcast": "Add a new amazing Podcast",
+    "api_keys": "API Keys",
+    "created_api_keys": "Your Created API Keys",
+    "usage_api_keys": "Usage of API Keys",
+    "profile": "Profile",
+    "edit_profile_details": "Edit your Profile Details",
+    "account_settings": "Settings of your Account"
+  },
+  "breadcrumb": {
+    "books": "books",
+    "components": "components",
+    "courses": "courses",
+    "keys": "keys",
+    "podcasts": "podcasts",
+    "portfolio": "portfolio",
+    "posts": "posts",
+    "profile": "profile",
+    "settings": "settings",
+    "usage": "usage"
+  },
   "metadata": {
     "name": "omidshabab.",
     "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure mollitia at consectetur ducimus expedita minus debitis nisi perspiciatis accusantium asperiores, vero libero ab quisquam quod sed eius sequi rem nam!"
@@ -38,23 +80,32 @@
     "persian": "Persian"
   },
   "navigation": {
-    "home": "Home",
-    "about": "About"
+    "home": "Home"
   },
-  "home": {
-    "title": "Omid Shabab",
-    "description": "How to design ☡, build ⏚ and manage 〄 goals that matter to you. Do this with Roadimap.",
-    "get_started": "Get started now"
+  "home_page": {
+    "title": "dashboard",
+    "desc": ""
   },
-  "register": {
+  "register_page": {
     "title": "Register",
-    "description": "Don't matter you have an account or not, to login enter your email address. I send you a verification link through email to you.",
+    "desc": "Don't matter you have an account or not, to login enter your email address. I send you a verification link through email to you.",
     "submit_email": "Send a verification to my email",
     "google": "Register with Google",
     "github": "Register with Github",
     "in_progress": "Please wait a minute. It's in progress ...",
     "success": "You are very welcome 😊 Your login was successful",
     "error": "Your login was not successful. You should try again or contact support"
+  },
+  "post_page": {
+    "edit_post": "Edit Post",
+    "post_settings": "Post Settings",
+    "publish": "publish",
+    "published": "published",
+    "drafted": "drafted",
+    "save_post": "Save the Post",
+    "slug_seperate_hint": "seperate words with a dash",
+    "created_posts": "Your Created Posts",
+    "default_title": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis pariatur quos possimus beatae"
   },
   "server": {
     "error": "An error occurred while trying to connect to the server."

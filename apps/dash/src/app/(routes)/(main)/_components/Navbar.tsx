@@ -13,11 +13,42 @@ import {
 } from "@repo/ui/components/ui/breadcrumb"
 
 import { dashRoutes } from "@/config/routes";
-import { useSelectedLayoutSegments } from "next/navigation";
+import { useRouter, useSelectedLayoutSegments } from "next/navigation";
 import { capitalize } from "@/lib/utils";
+import { useLocale, useTranslations } from "next-intl";
+import { useEffect, useState, useTransition } from "react";
+import { Locale } from "@/config/locale";
+import { setUserLocale } from "@/services/locale";
+import { cn } from "@repo/ui/lib/utils";
+import { LangDir } from "@/lib/fonts";
 
 const Navbar = () => {
      const segments = useSelectedLayoutSegments();
+
+     const router = useRouter();
+
+     const locale = useLocale();
+
+     const dir = LangDir(locale)
+
+     const tGeneral = useTranslations("general");
+     const tBreadcrumb = useTranslations("breadcrumb");
+     const tLang = useTranslations("lang");
+
+     const [isPending, startTransition] = useTransition();
+
+     function onChange(value: string) {
+          const locale = value as Locale;
+
+          new Promise<void>((resolve) => {
+               startTransition(async () => {
+                    await setUserLocale(locale);
+                    resolve();
+               });
+          }).then(() => {
+               window.location.reload();
+          });
+     }
 
      return (
           <div className="flex sticky top-0 z-50 items-center justify-between gap-x-5 shrink-0 px-[25px] py-[20px]">
@@ -40,7 +71,7 @@ const Navbar = () => {
                               <BreadcrumbList>
                                    <BreadcrumbItem>
                                         <BreadcrumbLink>
-                                             <Link href={dashRoutes.default}>Dashboard</Link>
+                                             <Link href={dashRoutes.default}>{capitalize(tGeneral("dashboard"))}</Link>
                                         </BreadcrumbLink>
                                    </BreadcrumbItem>
                                    {segments[0] && (
@@ -48,7 +79,7 @@ const Navbar = () => {
                                              <BreadcrumbSeparator />
                                              <BreadcrumbItem>
                                                   <BreadcrumbLink>
-                                                       <Link href={`/${segments[0]}`}>{capitalize(segments[0])}</Link>
+                                                       <Link href={`/${segments[0]}`}>{capitalize(tBreadcrumb(segments[0]))}</Link>
                                                   </BreadcrumbLink>
                                              </BreadcrumbItem>
                                         </>
@@ -58,7 +89,7 @@ const Navbar = () => {
                                         <>
                                              <BreadcrumbSeparator />
                                              <BreadcrumbItem>
-                                                  <BreadcrumbPage>{capitalize(segments[2])}</BreadcrumbPage>
+                                                  <BreadcrumbPage>{capitalize(tBreadcrumb(segments[2]))}</BreadcrumbPage>
                                              </BreadcrumbItem>
                                         </>
                                    )}
@@ -68,9 +99,12 @@ const Navbar = () => {
                </div>
 
                <div className="flex w-min min-w-[50px] sm:w-auto sm:min-w-auto gap-x-[20px] items-center justify-end">
-                    <div className="text-[15px] font-light text-slate-600 cursor-pointer">
-                         english / persian
+                    <div className="hidden sm:flex gap-x-[5px] text-[15px] font-light text-slate-600 cursor-pointer">
+                         <div className={cn(locale === "en" && "text-text")} onClick={() => onChange("en")}>{tLang("english")}</div>
+                         <div className="text-text"> / </div>
+                         <div className={cn(locale === "fa" && "text-text")} onClick={() => onChange("fa")}>{tLang("persian")}</div>
                     </div>
+
                     <ProfileAvatar />
                </div>
           </div>
