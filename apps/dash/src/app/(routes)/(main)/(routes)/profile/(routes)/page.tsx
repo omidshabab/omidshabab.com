@@ -8,7 +8,10 @@ import { Spacer } from "@nextui-org/spacer";
 import { Button } from "@repo/ui/components/ui/button";
 import IconButton from "@/components/buttons/icon-button";
 import { ScrollArea } from "@repo/ui/components/ui/scroll-area";
-import { useLocale } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { toast } from 'sonner';
 
 const { TextArea } = Input
 
@@ -16,6 +19,37 @@ const Page = () => {
      const locale = useLocale()
 
      const dir = LangDir(locale)
+
+     const tRegister = useTranslations("register_page")
+
+     const router = useRouter();
+
+     const [isLoggingOut, setIsLoggingOut] = useState(false)
+
+     const signOut = async () => {
+          const response = await fetch("/api/sign-out", {
+               method: "POST",
+               redirect: "manual",
+          });
+
+          if (response.status === 0) {
+               return router.refresh();
+          }
+     }
+
+     const handleSignOut = async () => {
+          setIsLoggingOut(true);
+
+          toast.promise(signOut().then(() => {
+               setIsLoggingOut(false);
+          }), {
+               loading: `${tRegister("in_progress")}`,
+          })
+
+          setIsLoggingOut(false)
+
+          return router.refresh();
+     };
 
      return (
           <div className="flex flex-col sm:flex-row w-full h-full flex-grow">
@@ -122,7 +156,7 @@ const Page = () => {
                               <div className="flex flex-grow gap-x-[15px]">
                                    <div className="flex items-center justify-end gap-x-[10px]">
                                         <IconButton
-                                             onClick={() => null}
+                                             onClick={() => handleSignOut()}
                                              className="p-[10px]">
                                              <LogOutIcon className="size-[20px] sm:size-[25px] text-primary" />
                                         </IconButton>

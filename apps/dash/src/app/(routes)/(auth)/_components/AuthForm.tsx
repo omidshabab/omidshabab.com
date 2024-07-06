@@ -22,7 +22,7 @@ type AuthStep = "email" | "password" | "confirm"
 const AuthForm = () => {
      const [direction] = useState(document.documentElement.dir);
 
-     const tRegister = useTranslations("register")
+     const tRegister = useTranslations("register_page")
 
      const router = useRouter();
 
@@ -99,7 +99,7 @@ const AuthForm = () => {
                                    disabled={isLoading} />
                          </div>
                          <div className="text-[25px] sm:text-[30px] text-slate-800 font-bold leading-[3rem] sm:leading-[3.5rem] cursor-text">
-                              {tRegister("description")}
+                              {tRegister("desc")}
                          </div>
                          <Form {...authEmailForm}>
                               <form
@@ -128,12 +128,12 @@ const AuthForm = () => {
                                         )}
                                    />
                                    <div
-                                        className="relative flex gap-5">
+                                        className="relative flex gap-x-[15px] sm:gap-x-[20px]">
                                         <TextButton
                                              onClick={() => { }}
                                              disabled={isLoading}
                                              type="default">
-                                             {tRegister("submit_email")}
+                                             {tRegister("go_to_next_button")}
                                         </TextButton>
                                    </div>
                               </form>
@@ -144,7 +144,7 @@ const AuthForm = () => {
                {authStep === "password" &&
                     <div className="flex flex-col gap-y-10">
                          <div className="text-[25px] sm:text-[30px] text-slate-800 font-bold leading-[3rem] sm:leading-[3.5rem] cursor-text">
-                              {tRegister("description")}
+                              {tRegister("password_desc")}
                          </div>
                          <Form {...authPasswordForm} formState={authPasswordForm.formState}>
                               <form
@@ -174,7 +174,7 @@ const AuthForm = () => {
                                         )}
                                    />
                                    <div
-                                        className="relative flex gap-5">
+                                        className="relative flex gap-x-[15px] sm:gap-x-[20px]">
                                         <IconButton
                                              onClick={() => {
                                                   authPasswordForm.reset()
@@ -195,7 +195,7 @@ const AuthForm = () => {
                                              onClick={() => { }}
                                              disabled={isLoading}
                                              type="default">
-                                             {tRegister("submit_email")}
+                                             {tRegister("login_button")}
                                         </TextButton>
                                    </div>
                               </form>

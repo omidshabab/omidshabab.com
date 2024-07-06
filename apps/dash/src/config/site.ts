@@ -1,5 +1,5 @@
 export const site = {
-  name: "metadata_name",
+  name: "omidshabab.",
   url: "https://omidshabab.com",
   ogImage: "https://omidshabab.com/og.jpg",
   description: "default_metadata_description",

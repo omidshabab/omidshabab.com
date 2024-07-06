@@ -18,7 +18,7 @@ import { useEffect, useState } from "react";
 import { cn } from "@repo/ui/lib/utils";
 import { englishBricolageGrotesqueFont, LangDir, LangFont } from "@/lib/fonts";
 import { dashRoutes } from "@/config/routes";
-import { createSlug, generateRandomString, isValidLocale } from "@/lib/utils";
+import { capitalize, createSlug, generateRandomString, isValidLocale } from "@/lib/utils";
 import { useLocale, useTranslations } from "next-intl";
 
 
@@ -62,10 +62,6 @@ const PostForm = ({ post }: { post?: Post }) => {
           resolver: zodResolver(insertPostParams),
           defaultValues: {
                title: "",
-               desc: "",
-               slug: "",
-               image: "",
-               locale: newLocale,
                published: false,
           },
      });
@@ -258,6 +254,7 @@ const PostForm = ({ post }: { post?: Post }) => {
                                                        image: image,
                                                        published: published,
                                                        locale: newLocale,
+                                                       type: "free"
                                                   })}
                                                   disabled={isCreating || isUpdating}
                                                   variant="secondary"
@@ -273,12 +270,13 @@ const PostForm = ({ post }: { post?: Post }) => {
                                                             slug: slug === "" ? generateRandomString(20) : slug,
                                                             image: image,
                                                             published: false,
-                                                            locale: newLocale
+                                                            locale: newLocale,
+                                                            type: "free"
                                                        })}
                                                        disabled={isCreating || isUpdating}
                                                        variant="secondary"
                                                        size="sm">
-                                                       {tPostPage("published")}
+                                                       {capitalize(tPostPage("published"))}
                                                   </Button>
                                              ) : (
                                                   <Button
@@ -289,11 +287,12 @@ const PostForm = ({ post }: { post?: Post }) => {
                                                             image: image,
                                                             published: true,
                                                             locale: newLocale,
+                                                            type: "free"
                                                        })}
                                                        disabled={isCreating || isUpdating}
                                                        variant="default"
                                                        size="sm">
-                                                       {tPostPage("publish")}
+                                                       {capitalize(tPostPage("publish"))}
                                                   </Button>
                                              )}
                                         </div>

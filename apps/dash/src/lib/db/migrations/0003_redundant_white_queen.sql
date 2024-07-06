@@ -1,1 +1,0 @@
-ALTER TABLE "posts" ADD COLUMN "locale" varchar(2) DEFAULT 'en' NOT NULL;

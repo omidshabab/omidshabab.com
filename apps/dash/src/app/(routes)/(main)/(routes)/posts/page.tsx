@@ -36,7 +36,7 @@ const Page = () => {
 
                          {posts?.length === 0 &&
                               <div className="flex w-full min-w-max h-full text-[16px] font-light text-slate-600">
-                                   Not Found Any Post!
+                         {tPostPage("not_found")}
                               </div>}
                     </div>
                </div>

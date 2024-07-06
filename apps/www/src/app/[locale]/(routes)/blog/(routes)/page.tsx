@@ -15,6 +15,8 @@ const Page = () => {
 
      const locale = useLocale()
 
+     const tPostPage = useTranslations("blog_page")
+
      useEffect(() => {
           const fetchPost = async () => {
                try {
@@ -49,7 +51,7 @@ const Page = () => {
 
                     {posts?.length === 0 &&
                          <div className="flex w-full min-w-max h-full">
-                              Not Found Any Post!
+                              {tPostPage("not_found")}
                          </div>}
                </div>
           </div>

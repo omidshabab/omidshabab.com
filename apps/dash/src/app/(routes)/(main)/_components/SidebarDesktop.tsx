@@ -13,8 +13,12 @@ import BookSection from "./sidebar/sections/BookSection";
 import PodcastSection from "./sidebar/sections/PodcastSection";
 import { LangDir } from "@/lib/fonts";
 import { useLocale } from "next-intl";
+import { trpc } from "@/lib/trpc/client";
+import Loading from "@/components/Loading";
 
 const SidebarDesktop = () => {
+     const user = trpc.account.getUser.useQuery().data?.user
+
      const locale = useLocale()
 
      const dir = LangDir(locale)
@@ -24,33 +28,45 @@ const SidebarDesktop = () => {
                "ltr:-translate-x-full ltr:rounded-tr-[20px] rtl:translate-x-full rtl:rounded-tl-[20px]",
                "bg-primary/[3%] peer absolute inset-y-0 z-30 hidden duration-300 ease-in-out data-[state=open]:translate-x-0 md:flex md:flex-col md:justify-between md:min-w-[250px] md:max-w-[250px]"
           )}>
-               <ScrollArea dir={dir}>
-                    <div className="flex flex-col justify-between gap-y-[20px] px-[25px] py-[15px] pb-[30px]">
-                         {/* Posts Section */}
-                         <PostSection />
+               {user && (
+                    <ScrollArea dir={dir}>
+                         <div className="flex flex-col justify-between gap-y-[20px] px-[25px] py-[15px] pb-[30px]">
+                              {(user?.role === "admin" || user?.role === "manager") && (
+                                   <>
+                                        {/* Posts Section */}
+                                        <PostSection />
 
-                         {/* Portfolio Section */}
-                         <PortfolioSection />
+                                        {/* Portfolio Section */}
+                                        <PortfolioSection />
 
-                         {/* Courses Section */}
-                         <CourseSection />
+                                        {/* Courses Section */}
+                                        <CourseSection />
 
-                         {/* Component Section */}
-                         <ComponentSection />
+                                        {/* Component Section */}
+                                        <ComponentSection />
 
-                         {/* Book Section */}
-                         <BookSection />
+                                        {/* Book Section */}
+                                        <BookSection />
 
-                         {/* Podcast Section */}
-                         <PodcastSection />
+                                        {/* Podcast Section */}
+                                        <PodcastSection />
 
-                         {/* Key Section */}
-                         <KeySection />
+                                        {/* Key Section */}
+                                        <KeySection />
+                                   </>
+                              )}
 
-                         {/* Profile Section */}
-                         <ProfileSection />
+                              {/* Profile Section */}
+                              <ProfileSection />
+                         </div>
+                    </ScrollArea>
+               )}
+
+               {!user && (
+                    <div className="w-full h-full flex justify-center items-center">
+                         <Loading />
                     </div>
-               </ScrollArea>
+               )}
 
                {/* -- Subscription -- */}
                {/* <div className="flex w-full items-center justify-center h-[100px] bottom-0 bg-orange-50 border-t-[1px] border-primary/5">
