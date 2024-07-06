@@ -1,5 +1,5 @@
 {
-  "id": "f57bdbb8-3899-456f-93e4-eca31e6d30dd",
+  "id": "a0ce6385-31cd-444f-8a08-5a682bef1ff4",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "5",
   "dialect": "pg",
@@ -121,6 +121,19 @@
           "type": "varchar(255)",
           "primaryKey": false,
           "notNull": false
+        },
+        "phone": {
+          "name": "phone",
+          "type": "varchar(15)",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "role": {
+          "name": "role",
+          "type": "role",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'user'"
         }
       },
       "indexes": {},
@@ -147,6 +160,13 @@
           "columns": [
             "username"
           ]
+        },
+        "auth_user_phone_unique": {
+          "name": "auth_user_phone_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "phone"
+          ]
         }
       }
     },
@@ -164,25 +184,25 @@
           "name": "title",
           "type": "varchar(150)",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "desc": {
           "name": "desc",
-          "type": "json",
+          "type": "text",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "image": {
           "name": "image",
           "type": "varchar(500)",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "slug": {
           "name": "slug",
           "type": "varchar(100)",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "published": {
           "name": "published",
@@ -196,6 +216,20 @@
           "type": "varchar(256)",
           "primaryKey": false,
           "notNull": true
+        },
+        "locale": {
+          "name": "locale",
+          "type": "locale",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'en'"
+        },
+        "type": {
+          "name": "type",
+          "type": "type",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'free'"
         },
         "created_at": {
           "name": "created_at",
@@ -296,7 +330,30 @@
       }
     }
   },
-  "enums": {},
+  "enums": {
+    "role": {
+      "name": "role",
+      "values": {
+        "user": "user",
+        "admin": "admin",
+        "manager": "manager"
+      }
+    },
+    "locale": {
+      "name": "locale",
+      "values": {
+        "en": "en",
+        "fa": "fa"
+      }
+    },
+    "type": {
+      "name": "type",
+      "values": {
+        "free": "free",
+        "paid": "paid"
+      }
+    }
+  },
   "schemas": {},
   "_meta": {
     "columns": {},

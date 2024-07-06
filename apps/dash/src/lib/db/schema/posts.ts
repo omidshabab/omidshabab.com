@@ -3,6 +3,7 @@ import { nanoid, timestamps } from "@/lib/utils";
 import { sql } from "drizzle-orm";
 import {
   boolean,
+  pgEnum,
   pgTable,
   text,
   timestamp,
@@ -10,6 +11,9 @@ import {
 } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
+
+export const localeEnums = pgEnum("locale", ["en", "fa"]);
+export const typeEnums = pgEnum("type", ["free", "paid"]);
 
 export const posts = pgTable("posts", {
   id: varchar("id", { length: 191 })
@@ -21,7 +25,8 @@ export const posts = pgTable("posts", {
   slug: varchar("slug", { length: 100 }).notNull().unique(),
   published: boolean("published").default(false),
   userId: varchar("user_id", { length: 256 }).notNull(),
-  locale: varchar("locale", { length: 2 }).notNull().default("en"),
+  locale: localeEnums("locale").notNull().default("en"),
+  type: typeEnums("type").notNull().default("free"),
 
   createdAt: timestamp("created_at")
     .notNull()

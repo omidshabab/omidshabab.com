@@ -1,1 +1,0 @@
-ALTER TABLE "posts" ALTER COLUMN "desc" SET DATA TYPE text;

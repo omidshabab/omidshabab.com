@@ -1,4 +1,6 @@
-import { pgTable, bigint, varchar } from "drizzle-orm/pg-core";
+import { pgTable, bigint, varchar, pgEnum } from "drizzle-orm/pg-core";
+
+export const roleEnums = pgEnum("role", ["user", "admin", "manager"]);
 
 export const users = pgTable("auth_user", {
   id: varchar("id", {
@@ -10,6 +12,8 @@ export const users = pgTable("auth_user", {
   name: varchar("name", { length: 255 }),
   email: varchar("email", { length: 255 }).unique(),
   username: varchar("username", { length: 255 }).unique(),
+  phone: varchar("phone", { length: 15 }).unique(),
+  role: roleEnums("role").notNull().default("user"),
 });
 
 export const sessions = pgTable("user_session", {

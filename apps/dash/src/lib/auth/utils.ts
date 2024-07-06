@@ -1,6 +1,8 @@
 import { redirect } from "next/navigation";
 import { getPageSession } from "@/lib/auth/lucia";
 import { v4 as uuidv4 } from "uuid";
+import { roleEnums } from "../db/schema/auth";
+import { authRoutes } from "@/config/routes";
 
 export type AuthSession = {
   session: {
@@ -9,6 +11,8 @@ export type AuthSession = {
       name?: string;
       email?: string;
       username?: string;
+      phone?: string;
+      role: "user" | "admin" | "manager";
     };
   } | null;
 };
@@ -22,6 +26,8 @@ export const getUserAuth = async (): Promise<AuthSession> => {
         name: session.user?.name,
         email: session.user?.email,
         username: session.user?.username,
+        phone: session.user?.phone,
+        role: session.user?.role,
       },
     },
   };
@@ -29,7 +35,8 @@ export const getUserAuth = async (): Promise<AuthSession> => {
 
 export const checkAuth = async () => {
   const session = await getPageSession();
-  if (!session) redirect("/register");
+
+  if (!session) redirect(authRoutes.default);
 };
 
 export function generateUsername(email: string): string {

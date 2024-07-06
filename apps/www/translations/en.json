@@ -43,7 +43,8 @@
   },
   "blog_page": {
     "title": "blog",
-    "desc": "Mastering Software Creation: Your Guide"
+    "desc": "Mastering Software Creation: Your Guide",
+    "not_found": "Not Found Any Post!"
   },
   "home_metadata": {
     "title": "software",
