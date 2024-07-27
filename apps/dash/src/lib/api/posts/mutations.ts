@@ -37,7 +37,7 @@ export const updatePost = async (id: PostId, post: UpdatePostParams) => {
   try {
     const [t] = await db
       .update(posts)
-      .set({ ...newPost, updatedAt: new Date() })
+      .set({ ...newPost, tags: [], updatedAt: new Date() })
       .where(and(eq(posts.id, postId!), eq(posts.userId, session?.user.id!)))
       .returning();
     return { post: t };

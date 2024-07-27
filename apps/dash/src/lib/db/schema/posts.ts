@@ -1,4 +1,4 @@
-import { type getPosts } from "@/lib/api/posts/queries";
+import { getPosts } from "@/lib/api/posts/queries";
 import { nanoid, timestamps } from "@/lib/utils";
 import { sql } from "drizzle-orm";
 import {
@@ -27,6 +27,10 @@ export const posts = pgTable("posts", {
   userId: varchar("user_id", { length: 256 }).notNull(),
   locale: localeEnums("locale").notNull().default("en"),
   type: typeEnums("type").notNull().default("free"),
+  tags: text("tags")
+    .array()
+    .notNull()
+    .default(sql`ARRAY[]::text[]`),
 
   createdAt: timestamp("created_at")
     .notNull()
@@ -39,11 +43,16 @@ export const posts = pgTable("posts", {
 // Schema for posts - used to validate API requests
 const baseSchema = createSelectSchema(posts).omit(timestamps);
 
-export const insertPostSchema = createInsertSchema(posts).omit(timestamps);
+export const insertPostSchema = createInsertSchema(posts)
+  .omit(timestamps)
+  .extend({
+    tags: z.array(z.string()).default([]),
+  });
 export const insertPostParams = baseSchema
   .extend({
     published: z.coerce.boolean(),
     locale: z.enum(["en", "fa"]),
+    tags: z.array(z.string().min(2).max(10)).default([]),
   })
   .omit({
     id: true,
@@ -55,6 +64,7 @@ export const updatePostParams = baseSchema
   .extend({
     published: z.coerce.boolean(),
     locale: z.enum(["en", "fa"]),
+    tags: z.array(z.string().min(2).max(10)).default([]),
   })
   .omit({
     userId: true,

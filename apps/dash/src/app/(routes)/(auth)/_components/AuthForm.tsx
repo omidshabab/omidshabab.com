@@ -71,7 +71,7 @@ const AuthForm = () => {
           setIsLoading(false);
 
           if (response.status === 200) {
-               return router.push(dashRoutes.default);
+               router.push(dashRoutes.default);
           }
      }
 

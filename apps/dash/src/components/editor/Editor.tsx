@@ -20,7 +20,7 @@ import { NodeSelector } from "./selectors/NodeSelector"
 import { LinkSelector } from "./selectors/LinkSelector"
 
 import { TextButtons } from "./selectors/TextButtons"
-import { slashCommand, suggestionItems } from "./SlashCommand"
+import { slashCommand, SuggestionItems } from "./SlashCommand"
 import { handleImageDrop, handleImagePaste } from "novel/plugins"
 import { uploadFn } from "./ImageUpload"
 
@@ -29,11 +29,14 @@ const extensions = [...defaultExtensions, slashCommand]
 interface EditorProp {
      initialValue?: JSONContent;
      onChange: (value: JSONContent) => void;
+     locale: "en" | "fa"
 }
 
-const Editor = ({ initialValue, onChange }: EditorProp) => {
+const Editor = ({ initialValue, onChange, locale }: EditorProp) => {
      const [openNode, setOpenNode] = useState(false);
      const [openLink, setOpenLink] = useState(false);
+
+     const suggestionItems = SuggestionItems(locale)
 
      return (
           <EditorRoot>

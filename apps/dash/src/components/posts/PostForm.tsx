@@ -104,7 +104,7 @@ const PostForm = ({ post }: { post?: Post }) => {
 
      const handleSubmit = (values: NewPostParams) => {
           if (editing) {
-               updatePost({ ...values, id: post.id });
+               updatePost({ ...values, tags: [], id: post.id });
           } else {
                createPost(values);
           }
@@ -212,7 +212,7 @@ const PostForm = ({ post }: { post?: Post }) => {
 
                                    </div>
                                    <div className="pb-[35px]">
-                                        <Editor initialValue={desc} onChange={setDesc} />
+                                        <Editor initialValue={desc} onChange={setDesc} locale={newLocale} />
                                    </div>
                               </div>
                          </ScrollArea>
@@ -254,7 +254,8 @@ const PostForm = ({ post }: { post?: Post }) => {
                                                        image: image,
                                                        published: published,
                                                        locale: newLocale,
-                                                       type: "free"
+                                                       type: "free",
+                                                       tags: [],
                                                   })}
                                                   disabled={isCreating || isUpdating}
                                                   variant="secondary"
@@ -271,7 +272,8 @@ const PostForm = ({ post }: { post?: Post }) => {
                                                             image: image,
                                                             published: false,
                                                             locale: newLocale,
-                                                            type: "free"
+                                                            type: "free",
+                                                            tags: [],
                                                        })}
                                                        disabled={isCreating || isUpdating}
                                                        variant="secondary"
@@ -287,7 +289,8 @@ const PostForm = ({ post }: { post?: Post }) => {
                                                             image: image,
                                                             published: true,
                                                             locale: newLocale,
-                                                            type: "free"
+                                                            type: "free",
+                                                            tags: [],
                                                        })}
                                                        disabled={isCreating || isUpdating}
                                                        variant="default"

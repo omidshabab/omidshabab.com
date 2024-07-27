@@ -48,7 +48,7 @@ const Navbar = ({
 
                <div className="flex w-min min-w-[50px] sm:w-auto sm:min-w-auto gap-x-[20px] items-center justify-end">
                     <div className="hidden sm:flex gap-x-[5px] text-[15px] font-light text-slate-600 cursor-pointer">
-                         <div onClick={() => changeLanguage("en")}>{tLang("english")}</div> / <div onClick={() => changeLanguage("fa")}>{tLang("persian")}</div>
+                         <div onClick={() => changeLanguage("en")}>{tLang("en")}</div> / <div onClick={() => changeLanguage("fa")}>{tLang("fa")}</div>
                     </div>
                </div>
           </div>

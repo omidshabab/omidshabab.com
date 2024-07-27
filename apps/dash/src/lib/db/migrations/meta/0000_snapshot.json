@@ -1,5 +1,5 @@
 {
-  "id": "a0ce6385-31cd-444f-8a08-5a682bef1ff4",
+  "id": "3362ec6d-9f4e-448c-a344-e52372dc47ef",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "5",
   "dialect": "pg",
@@ -230,6 +230,13 @@
           "primaryKey": false,
           "notNull": true,
           "default": "'free'"
+        },
+        "tags": {
+          "name": "tags",
+          "type": "text[]",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "ARRAY[]::text[]"
         },
         "created_at": {
           "name": "created_at",
