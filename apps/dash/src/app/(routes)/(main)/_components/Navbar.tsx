@@ -100,9 +100,9 @@ const Navbar = () => {
 
                <div className="flex w-min min-w-[50px] sm:w-auto sm:min-w-auto gap-x-[20px] items-center justify-end">
                     <div className="hidden sm:flex gap-x-[5px] text-[15px] font-light text-slate-600 cursor-pointer">
-                         <div className={cn(locale === "en" && "text-text")} onClick={() => onChange("en")}>{tLang("english")}</div>
+                         <div className={cn(locale === "en" && "text-text")} onClick={() => onChange("en")}>{tLang("en")}</div>
                          <div className="text-text"> / </div>
-                         <div className={cn(locale === "fa" && "text-text")} onClick={() => onChange("fa")}>{tLang("persian")}</div>
+                         <div className={cn(locale === "fa" && "text-text")} onClick={() => onChange("fa")}>{tLang("fa")}</div>
                     </div>
 
                     <ProfileAvatar />

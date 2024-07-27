@@ -10,7 +10,9 @@
   },
   "lang": {
     "english": "انگلیسی",
-    "persian": "فارسی"
+    "persian": "فارسی",
+    "en": "انگلیسی",
+    "fa": "فارسی"
   },
   "sidebar": {
     "posts": "پست‌ها",
@@ -110,6 +112,22 @@
     "created_posts": "پست‌های ایجاد شده توسط شما",
     "default_title": "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است",
     "not_found": "هیچ پستی پیدا نشد!"
+  },
+  "suggestion_items": {
+    "textTitle": "متن",
+    "textDescription": "لورم ایپسوم دلار سیت آمیت...",
+    "heading1Title": "هدینگ 1",
+    "heading1Description": "لورم ایپسوم دلار سیت آمیت...",
+    "heading2Title": "هدینگ 2",
+    "heading2Description": "لورم ایپسوم دلار سیت آمیت...",
+    "heading3Title": "هدینگ 3",
+    "heading3Description": "لورم ایپسوم دلار سیت آمیت...",
+    "heading4Title": "هدینگ 4",
+    "heading4Description": "لورم ایپسوم دلار سیت آمیت...",
+    "codeTitle": "کد بلاک",
+    "codeDescription": "لورم ایپسوم دلار سیت آمیت...",
+    "imageTitle": "تصویر",
+    "imageDescription": "لورم ایپسوم دلار سیت آمیت..."
   },
   "server": {
     "error": "An error occurred while trying to connect to the server."

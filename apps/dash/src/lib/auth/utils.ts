@@ -1,7 +1,6 @@
 import { redirect } from "next/navigation";
 import { getPageSession } from "@/lib/auth/lucia";
 import { v4 as uuidv4 } from "uuid";
-import { roleEnums } from "../db/schema/auth";
 import { authRoutes } from "@/config/routes";
 
 export type AuthSession = {

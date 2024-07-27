@@ -15,7 +15,9 @@
   },
   "lang": {
     "english": "english",
-    "persian": "persian"
+    "persian": "persian",
+    "en": "EN",
+    "fa": "FA"
   },
   "menu": {
     "blog": "blog",

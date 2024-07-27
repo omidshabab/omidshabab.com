@@ -52,6 +52,7 @@ CREATE TABLE IF NOT EXISTS "posts" (
 	"user_id" varchar(256) NOT NULL,
 	"locale" "locale" DEFAULT 'en' NOT NULL,
 	"type" "type" DEFAULT 'free' NOT NULL,
+	"tags" text[] DEFAULT ARRAY[]::text[] NOT NULL,
 	"created_at" timestamp DEFAULT now() NOT NULL,
 	"updated_at" timestamp DEFAULT now() NOT NULL,
 	CONSTRAINT "posts_slug_unique" UNIQUE("slug")

@@ -19,8 +19,8 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return {
     title: {
-      default: `${(await tGeneral)("dashboard")} ,${(await tMetadata)("name")}`,
-      template: `%s${(await tGeneral)("separator")} ${(await tMetadata)("name")}`,
+      default: `${(await tGeneral)("dashboard")} ,${(await tMetadata)("name")}.`,
+      template: `%s${(await tGeneral)("separator")} ${(await tMetadata)("name")}.`,
     },
     description: (await tMetadata)("description"),
   }
