@@ -2,6 +2,7 @@ import { useSelectedLayoutSegments } from "next/navigation";
 import SidebarItem from "../SidebarItem";
 import { dashRoutes } from "@/config/routes";
 import { useTranslations } from "next-intl";
+import SidebarSection from "../SidebarSection";
 
 const ProfileSection = () => {
   const segments = useSelectedLayoutSegments();
@@ -9,8 +10,8 @@ const ProfileSection = () => {
   const tSidebar = useTranslations("sidebar")
 
   return (
-    <div className="flex flex-col gap-y-2">
-      {tSidebar("profile")}
+    <SidebarSection
+      name={tSidebar("profile")}>
       <SidebarItem
         href={dashRoutes.profile}
         active={segments[0] === "profile" && segments[2] === undefined}>
@@ -22,7 +23,7 @@ const ProfileSection = () => {
         active={segments[0] === "profile" && segments[2] === "settings"}>
         {tSidebar("account_settings")}
       </SidebarItem>
-    </div>
+    </SidebarSection>
   );
 }
 

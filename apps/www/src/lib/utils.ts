@@ -2,7 +2,11 @@ export function capitalize(text: string) {
   return text.charAt(0).toUpperCase() + text.slice(1);
 }
 
-export function formatDateString(dateString: string): string {
+export function formatDateString(dateString: string): {
+  day: number;
+  month: string;
+  year: number;
+} {
   const date = new Date(dateString);
 
   // Create an array of month names
@@ -25,5 +29,9 @@ export function formatDateString(dateString: string): string {
   const month = monthNames[date.getUTCMonth()];
   const year = date.getUTCFullYear();
 
-  return `Updated at ${day} ${month} of ${year}`;
+  return {
+    day,
+    month,
+    year,
+  };
 }

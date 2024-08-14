@@ -49,6 +49,8 @@ const Page = ({
           )
      }
 
+     const date = formatDateString(post.updatedAt)
+
      return (
           <Suspense fallback={<Loading />}>
                <div className="relative flex flex-col sm:flex-row w-full h-full gap-x-[45px] py-[20px] sm:py-[25px]">
@@ -59,7 +61,7 @@ const Page = ({
                               </div>
 
                               <div className="text-[15px] font-light text-slate-600">
-                                   {formatDateString(post.updatedAt)}
+                                   {tGeneral("updated_at", { day: date.day, month: date.month, year: date.year })}
                               </div>
                          </div>
 

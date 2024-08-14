@@ -2,6 +2,7 @@ import { dashRoutes } from "@/config/routes";
 import SidebarItem from "../SidebarItem";
 import { useSearchParams, useSelectedLayoutSegments } from "next/navigation";
 import { useTranslations } from "next-intl";
+import SidebarSection from "../SidebarSection";
 
 const PodcastSection = () => {
      const segments = useSelectedLayoutSegments();
@@ -13,8 +14,9 @@ const PodcastSection = () => {
      const tSidebar = useTranslations("sidebar")
 
      return (
-          <div className="flex flex-col gap-y-2">
-               {tSidebar("podcasts")}
+          <SidebarSection
+               name={tSidebar("podcasts")}
+               soon={true}>
                <SidebarItem
                     href={dashRoutes.podcasts}
                     active={segments[0] === "podcasts" && segments[1] === undefined}>
@@ -26,7 +28,7 @@ const PodcastSection = () => {
                     active={segments[0] === "podcasts" && segments[1] === "create" && id === null && true}>
                     {tSidebar("add_podcast")}
                </SidebarItem>
-          </div>
+          </SidebarSection>
      );
 }
 

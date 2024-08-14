@@ -15,6 +15,8 @@ import { LangDir } from "@/lib/fonts";
 import { useLocale } from "next-intl";
 import { trpc } from "@/lib/trpc/client";
 import Loading from "@/components/Loading";
+import SidebarSkeleton from "./sidebar/SidebarSkeleton";
+import UserSection from "./sidebar/sections/UserSection";
 
 const SidebarDesktop = () => {
      const user = trpc.account.getUser.useQuery().data?.user
@@ -51,6 +53,9 @@ const SidebarDesktop = () => {
                                         {/* Podcast Section */}
                                         <PodcastSection />
 
+                                        {/* User Section */}
+                                        <UserSection />
+
                                         {/* Key Section */}
                                         <KeySection />
                                    </>
@@ -63,8 +68,10 @@ const SidebarDesktop = () => {
                )}
 
                {!user && (
-                    <div className="w-full h-full flex justify-center items-center">
-                         <Loading />
+                    <div className="flex flex-col justify-between gap-y-[20px] px-[25px] py-[15px]">
+                         {[1, 2, 3, 4, 5].map((index) => (
+                              <SidebarSkeleton key={index} />
+                         ))}
                     </div>
                )}
 

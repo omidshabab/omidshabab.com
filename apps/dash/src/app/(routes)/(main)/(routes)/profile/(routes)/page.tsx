@@ -3,7 +3,7 @@
 import { UploadCloud, CheckIcon, ShareIcon, LogOutIcon, TrashIcon } from 'lucide-react';
 import { Input } from "antd";
 import { cn } from "@repo/ui/lib/utils";
-import { englishBricolageGrotesqueFont, LangDir } from "@/lib/fonts";
+import { englishBricolageGrotesqueFont, LangDir, LangFont } from "@/lib/fonts";
 import { Spacer } from "@nextui-org/spacer";
 import { Button } from "@repo/ui/components/ui/button";
 import IconButton from "@/components/buttons/icon-button";
@@ -12,6 +12,7 @@ import { useLocale, useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
+import { capitalize } from '@/lib/utils';
 
 const { TextArea } = Input
 
@@ -19,8 +20,11 @@ const Page = () => {
      const locale = useLocale()
 
      const dir = LangDir(locale)
+     const font = LangFont(locale)
 
+     const tGeneral = useTranslations("general")
      const tRegister = useTranslations("register_page")
+     const tProfilePage = useTranslations("profile_page")
 
      const router = useRouter();
 
@@ -55,97 +59,97 @@ const Page = () => {
           <div className="flex flex-col sm:flex-row w-full h-full flex-grow">
                <ScrollArea dir={dir} className="flex w-full h-full flex-grow">
                     <div className="flex flex-col w-full h-full flex-grow gap-y-[20px]">
-                         Profile
+                         {capitalize(tProfilePage("profile"))}
 
                          <div className="flex gap-x-[20px] items-center text-[15px] leading-[1.5rem] font-normal none-scroll-bar">
                               <div className="group/avatar flex items-center justify-center w-[120px] h-[120px] rounded-full bg-primary/[3%] text-text cursor-pointer hover:bg-primary/[6%] transition-all duration-500 border-dashed border-[5px] border-primary/5 hover:border-primary/10">
                                    <UploadCloud className="w-[50px] h-[50px] opacity-30 group-hover/avatar:opacity-50 transition-all duration-500" />
                               </div>
                               <p className="max-w-[250px] text-slate-600">
-                                   Drop your Image Avatar here or click on it to choose one
+                                   {tProfilePage("drop_image_avatar")}
                               </p>
                          </div>
 
                          <div className="flex flex-col text-[15px] font-normal text-slate-600">
-                              Name
+                              {capitalize(tProfilePage("name"))}
                               <TextArea
-                                   placeholder="Type your name here..."
+                                   placeholder={tProfilePage("type_your_x_here", { x: tProfilePage("name") })}
                                    autoSize={{ maxRows: 1 }}
                                    maxLength={25}
                                    autoComplete="off"
                                    className={cn(
-                                        "text-left h-full text-[15px] sm:text-[18px] px-[15px] py-[15px] none-scroll-bar focus:ring-0 focus-visible:ring-0 bg-primary/[3%] rounded-none border-0 border-b-[2px] border-primary/10 hover:bg-primary/[5%] focus:bg-primary/[5%] hover:border-primary/10 focus:border-primary/10 transition-all duration-500 cursor-text",
-                                        englishBricolageGrotesqueFont.className,
+                                        "h-full text-[15px] sm:text-[18px] px-[15px] py-[15px] none-scroll-bar focus:ring-0 focus-visible:ring-0 bg-primary/[3%] rounded-none border-0 border-b-[2px] border-primary/10 hover:bg-primary/[5%] focus:bg-primary/[5%] hover:border-primary/10 focus:border-primary/10 transition-all duration-500 cursor-text",
+                                        font,
                                    )}
                               />
                          </div>
 
                          <div className="flex flex-col text-[15px] font-normal text-slate-600">
-                              Username
+                              {capitalize(tProfilePage("username"))}
                               <TextArea
-                                   placeholder="Type your username here..."
+                                   placeholder={tProfilePage("type_your_x_here", { x: tProfilePage("username") })}
                                    autoSize={{ maxRows: 1 }}
                                    maxLength={25}
                                    autoComplete="off"
                                    className={cn(
-                                        "text-left h-full text-[15px] sm:text-[18px] px-[15px] py-[15px] none-scroll-bar focus:ring-0 focus-visible:ring-0 bg-primary/[3%] rounded-none border-0 border-b-[2px] border-primary/10 hover:bg-primary/[5%] focus:bg-primary/[5%] hover:border-primary/10 focus:border-primary/10 transition-all duration-500 cursor-text",
-                                        englishBricolageGrotesqueFont.className,
+                                        "h-full text-[15px] sm:text-[18px] px-[15px] py-[15px] none-scroll-bar focus:ring-0 focus-visible:ring-0 bg-primary/[3%] rounded-none border-0 border-b-[2px] border-primary/10 hover:bg-primary/[5%] focus:bg-primary/[5%] hover:border-primary/10 focus:border-primary/10 transition-all duration-500 cursor-text",
+                                        font,
                                    )}
                               />
                          </div>
 
                          <div className="flex flex-col text-[15px] font-normal text-slate-600">
-                              Display Name
+                              {capitalize(tProfilePage("display_name"))}
                               <TextArea
-                                   placeholder="Type your display name here..."
+                                   placeholder={tProfilePage("type_your_x_here", { x: tProfilePage("display_name") })}
                                    autoSize={{ maxRows: 1 }}
                                    maxLength={25}
                                    autoComplete="off"
                                    className={cn(
-                                        "text-left h-full text-[15px] sm:text-[18px] px-[15px] py-[15px] none-scroll-bar focus:ring-0 focus-visible:ring-0 bg-primary/[3%] rounded-none border-0 border-b-[2px] border-primary/10 hover:bg-primary/[5%] focus:bg-primary/[5%] hover:border-primary/10 focus:border-primary/10 transition-all duration-500 cursor-text",
-                                        englishBricolageGrotesqueFont.className,
+                                        "h-full text-[15px] sm:text-[18px] px-[15px] py-[15px] none-scroll-bar focus:ring-0 focus-visible:ring-0 bg-primary/[3%] rounded-none border-0 border-b-[2px] border-primary/10 hover:bg-primary/[5%] focus:bg-primary/[5%] hover:border-primary/10 focus:border-primary/10 transition-all duration-500 cursor-text",
+                                        font,
                                    )}
                               />
                          </div>
 
                          <div className="flex flex-col text-[15px] font-normal text-slate-600">
-                              Email
+                              {capitalize(tProfilePage("email"))}
                               <TextArea
-                                   placeholder="Type your email here..."
+                                   placeholder={tProfilePage("type_your_x_here", { x: tProfilePage("email") })}
                                    autoSize={{ maxRows: 1 }}
                                    maxLength={25}
                                    autoComplete="off"
                                    className={cn(
-                                        "text-left h-full text-[15px] sm:text-[18px] px-[15px] py-[15px] none-scroll-bar focus:ring-0 focus-visible:ring-0 bg-primary/[3%] rounded-none border-0 border-b-[2px] border-primary/10 hover:bg-primary/[5%] focus:bg-primary/[5%] hover:border-primary/10 focus:border-primary/10 transition-all duration-500 cursor-text",
-                                        englishBricolageGrotesqueFont.className,
+                                        "h-full text-[15px] sm:text-[18px] px-[15px] py-[15px] none-scroll-bar focus:ring-0 focus-visible:ring-0 bg-primary/[3%] rounded-none border-0 border-b-[2px] border-primary/10 hover:bg-primary/[5%] focus:bg-primary/[5%] hover:border-primary/10 focus:border-primary/10 transition-all duration-500 cursor-text",
+                                        font,
                                    )}
                               />
                          </div>
 
                          <div className="flex flex-col text-[15px] font-normal text-slate-600">
-                              Phone
+                              {capitalize(tProfilePage("phone"))}
                               <TextArea
-                                   placeholder="Type your phone here..."
+                                   placeholder={tProfilePage("type_your_x_here", { x: tProfilePage("phone") })}
                                    autoSize={{ maxRows: 1 }}
                                    maxLength={25}
                                    autoComplete="off"
                                    className={cn(
-                                        "text-left h-full text-[15px] sm:text-[18px] px-[15px] py-[15px] none-scroll-bar focus:ring-0 focus-visible:ring-0 bg-primary/[3%] rounded-none border-0 border-b-[2px] border-primary/10 hover:bg-primary/[5%] focus:bg-primary/[5%] hover:border-primary/10 focus:border-primary/10 transition-all duration-500 cursor-text",
-                                        englishBricolageGrotesqueFont.className,
+                                        "h-full text-[15px] sm:text-[18px] px-[15px] py-[15px] none-scroll-bar focus:ring-0 focus-visible:ring-0 bg-primary/[3%] rounded-none border-0 border-b-[2px] border-primary/10 hover:bg-primary/[5%] focus:bg-primary/[5%] hover:border-primary/10 focus:border-primary/10 transition-all duration-500 cursor-text",
+                                        font,
                                    )}
                               />
                          </div>
 
                          <div className="flex flex-col text-[15px] font-normal text-slate-600">
-                              About
+                              {capitalize(tProfilePage("about"))}
                               <TextArea
-                                   placeholder="Type about yourself here..."
-                                   autoSize={{ minRows: 4, maxRows: 6 }}
-                                   maxLength={250}
+                                   placeholder={tProfilePage("type_about_yourself_here")}
+                                   autoSize={{ maxRows: 1 }}
+                                   maxLength={25}
                                    autoComplete="off"
                                    className={cn(
-                                        "text-left h-full text-[15px] sm:text-[18px] px-[15px] py-[15px] none-scroll-bar focus:ring-0 focus-visible:ring-0 bg-primary/[3%] rounded-none border-0 border-b-[2px] border-primary/10 hover:bg-primary/[5%] focus:bg-primary/[5%] hover:border-primary/10 focus:border-primary/10 transition-all duration-500 cursor-text",
-                                        englishBricolageGrotesqueFont.className,
+                                        "h-full text-[15px] sm:text-[18px] px-[15px] py-[15px] none-scroll-bar focus:ring-0 focus-visible:ring-0 bg-primary/[3%] rounded-none border-0 border-b-[2px] border-primary/10 hover:bg-primary/[5%] focus:bg-primary/[5%] hover:border-primary/10 focus:border-primary/10 transition-all duration-500 cursor-text",
+                                        font,
                                    )}
                               />
                          </div>
@@ -162,7 +166,7 @@ const Page = () => {
                                         </IconButton>
 
                                         <p className="w-min min-w-[60px] text-start text-[15px] leading-[1.25rem] text-slate-600 font-normal opacity-50">
-                                             Logout Now
+                                             {tProfilePage("logout")}
                                         </p>
                                    </div>
 
@@ -174,14 +178,14 @@ const Page = () => {
                                         </IconButton>
 
                                         <p className="w-min min-w-[100px] text-start text-[15px] leading-[1.25rem] text-slate-600 font-normal opacity-50">
-                                             Delete your Account
+                                             {tProfilePage("delete_account")}
                                         </p>
                                    </div>
                               </div>
 
                               <div className="flex items-center justify-end gap-x-[10px]">
                                    <p className="w-min min-w-[150px] text-end text-[15px] leading-[1.25rem] text-slate-600 font-normal opacity-50">
-                                        Don&apos;t forget to save your changes
+                                        {tProfilePage("save_changes")}
                                    </p>
 
                                    <IconButton
@@ -201,9 +205,9 @@ const Page = () => {
                <ScrollArea dir={dir} className="flex w-full h-full flex-grow none-scroll-bar">
                     <div className="relative flex flex-col gap-y-[20px] bg-primary/[3%] rounded-[20px] h-full w-full px-[35px] py-[20px]">
                          <div className="flex flex-col">
-                              Preview of your Profile
+                              {tProfilePage("preview_profile")}
                               <span className="text-[15px] font-normal text-slate-600 mt-[-5px]">
-                                   See how others see your profile and change it in real time
+                                   {tProfilePage("preview_desc")}
                               </span>
                          </div>
 
@@ -214,17 +218,17 @@ const Page = () => {
 
                               <div className="flex flex-col gap-y-[5px]">
                                    <div className="text-slate-800 font-semibold text-[20px] line-clamp-1 leading-[1.5rem]">
-                                        Omid Shabab - Indie Hacker
+                                        {tProfilePage("name")}
                                    </div>
 
                                    <div className="flex text-slate-600 font-normal text-[15px] line-clamp-1 leading-[1.5rem]">
-                                        @omidshabab - Offline
+                                        {tProfilePage("username")}
                                    </div>
                               </div>
                          </div>
 
                          <div className="flex text-slate-800 font-normal text-[16px] line-clamp-3 leading-[2.0rem]">
-                              Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit assumenda velit sequi tenetur magni dicta soluta tempore doloribus voluptates cupiditate optio molestias adipisci aspernatur unde exercitationem reprehenderit, sapiente, necessitatibus animi?
+                              {tGeneral("lorem")}
                          </div>
 
                          <div className="flex gap-x-[10px] items-center">
@@ -232,28 +236,26 @@ const Page = () => {
                                    variant="secondary"
                                    size="sm"
                                    className="w-min">
-                                   Follow
+                                   {tProfilePage("follow")}
                               </Button>
 
                               <Button
                                    variant="secondary"
                                    size="sm"
                                    className="w-min">
-                                   Connect
+                                   {tProfilePage("connect")}
                               </Button>
 
                               <Button
                                    variant="secondary"
                                    size="sm"
                                    className="w-min">
-                                   Send message
+                                   {tProfilePage("send_message")}
                               </Button>
-
-                              <ShareIcon className="size-[15px] sm:size-[20px] text-slate-800" />
                          </div>
 
                          <div className="flex text-slate-800 font-normal text-[16px] line-clamp-3 leading-[2.0rem]">
-                              Consectetur adipisicing elit
+                              -- {tProfilePage("continue_of_profile")}
                          </div>
                     </div>
                </ScrollArea>

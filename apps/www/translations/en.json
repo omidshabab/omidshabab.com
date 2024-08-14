@@ -11,7 +11,8 @@
     "soon": "soon",
     "table_of_contents": "Table of Contents",
     "copyright": "Crafted with care by omidshabab. All Rights Preserved and Protected.",
-    "default_title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit"
+    "default_title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    "updated_at": "Updated at {day} {month} of {year}"
   },
   "lang": {
     "english": "english",

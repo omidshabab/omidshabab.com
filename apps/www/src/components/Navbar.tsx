@@ -37,8 +37,6 @@ const Navbar = ({
 
                               <div className="flex gap-x-[5px]">{tGeneral("site_name")}<span className="hidden sm:block font-light text-slate-600">/ {tGeneral("software")}</span></div>
                          </Link>
-
-                         {/* <ToggleButton /> */}
                     </div>
 
                     <div className="hidden sm:flex gap-x-[20px] items-center text-[15px]">
