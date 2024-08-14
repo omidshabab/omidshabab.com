@@ -2,7 +2,7 @@ import { pgTable, bigint, varchar, pgEnum } from "drizzle-orm/pg-core";
 
 export const roleEnums = pgEnum("role", ["user", "admin", "manager"]);
 
-export const users = pgTable("auth_user", {
+export const users = pgTable("users", {
   id: varchar("id", {
     length: 15, // change this when using custom user ids
   })

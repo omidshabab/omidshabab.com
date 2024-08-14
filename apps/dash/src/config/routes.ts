@@ -18,6 +18,8 @@ export const dashRoutes = {
   createBook: "/books/create",
   podcasts: "/podcasts",
   createPodcast: "/podcasts/create",
+  users: "/users",
+  usersAnalytics: "/users/analytics",
   keys: "/keys",
   usage: "/keys/usage",
   profile: "/profile",

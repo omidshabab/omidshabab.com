@@ -2,6 +2,7 @@ import { useSearchParams, useSelectedLayoutSegments } from "next/navigation";
 import SidebarItem from "../SidebarItem";
 import { dashRoutes } from "@/config/routes";
 import { useTranslations } from "next-intl";
+import SidebarSection from "../SidebarSection";
 
 const ComponentSection = () => {
      const segments = useSelectedLayoutSegments();
@@ -13,8 +14,8 @@ const ComponentSection = () => {
      const tSidebar = useTranslations("sidebar")
 
      return (
-          <div className="flex flex-col gap-y-2">
-               {tSidebar("components")}
+          <SidebarSection
+          name={tSidebar("components")}>
                <SidebarItem
                     href={dashRoutes.components}
                     active={segments[0] === "components" && segments[1] === undefined}>
@@ -26,7 +27,7 @@ const ComponentSection = () => {
                     active={segments[0] === "components" && segments[1] === "create" && id === null && true}>
                     {tSidebar("add_component")}
                </SidebarItem>
-          </div>
+          </SidebarSection>
      );
 }
 

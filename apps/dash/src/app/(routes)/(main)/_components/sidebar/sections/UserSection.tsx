@@ -4,7 +4,7 @@ import { dashRoutes } from "@/config/routes";
 import { useTranslations } from "next-intl";
 import SidebarSection from "../SidebarSection";
 
-const CourseSection = () => {
+const UserSection = () => {
      const segments = useSelectedLayoutSegments();
 
      const searchParams = useSearchParams()
@@ -15,21 +15,20 @@ const CourseSection = () => {
 
      return (
           <SidebarSection
-               name={tSidebar("courses")}
-               soon={true}>
+               name={tSidebar("users")}>
                <SidebarItem
-                    href={dashRoutes.courses}
-                    active={segments[0] === "courses" && segments[1] === undefined}>
-                    {tSidebar("created_courses")}
+                    href={dashRoutes.users}
+                    active={segments[0] === "users" && segments[1] === undefined}>
+                    {tSidebar("website_users")}
                </SidebarItem>
 
                <SidebarItem
-                    href={dashRoutes.createCourse}
-                    active={segments[0] === "courses" && segments[1] === "create" && id === null && true}>
-                    {tSidebar("add_course")}
+                    href={dashRoutes.usersAnalytics}
+                    active={segments[0] === "users" && segments[1] === "analytics" && id === null && true}>
+                    {tSidebar("users_analytics")}
                </SidebarItem>
           </SidebarSection>
      );
 }
 
-export default CourseSection;
+export default UserSection;

@@ -7,7 +7,7 @@ import { client } from "@/lib/db/index";
 
 export const auth = lucia({
   adapter: postgresAdapter(client, {
-    user: "auth_user",
+    user: "users",
     key: "user_key",
     session: "user_session",
   }),

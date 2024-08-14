@@ -1,5 +1,5 @@
 {
-  "id": "3362ec6d-9f4e-448c-a344-e52372dc47ef",
+  "id": "b978e928-44b9-4540-892f-82618f9bd4c0",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "5",
   "dialect": "pg",
@@ -29,10 +29,10 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "user_key_user_id_auth_user_id_fk": {
-          "name": "user_key_user_id_auth_user_id_fk",
+        "user_key_user_id_users_id_fk": {
+          "name": "user_key_user_id_users_id_fk",
           "tableFrom": "user_key",
-          "tableTo": "auth_user",
+          "tableTo": "users",
           "columnsFrom": [
             "user_id"
           ],
@@ -77,10 +77,10 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "user_session_user_id_auth_user_id_fk": {
-          "name": "user_session_user_id_auth_user_id_fk",
+        "user_session_user_id_users_id_fk": {
+          "name": "user_session_user_id_users_id_fk",
           "tableFrom": "user_session",
-          "tableTo": "auth_user",
+          "tableTo": "users",
           "columnsFrom": [
             "user_id"
           ],
@@ -94,8 +94,8 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "auth_user": {
-      "name": "auth_user",
+    "users": {
+      "name": "users",
       "schema": "",
       "columns": {
         "id": {
@@ -140,29 +140,29 @@
       "foreignKeys": {},
       "compositePrimaryKeys": {},
       "uniqueConstraints": {
-        "auth_user_id_unique": {
-          "name": "auth_user_id_unique",
+        "users_id_unique": {
+          "name": "users_id_unique",
           "nullsNotDistinct": false,
           "columns": [
             "id"
           ]
         },
-        "auth_user_email_unique": {
-          "name": "auth_user_email_unique",
+        "users_email_unique": {
+          "name": "users_email_unique",
           "nullsNotDistinct": false,
           "columns": [
             "email"
           ]
         },
-        "auth_user_username_unique": {
-          "name": "auth_user_username_unique",
+        "users_username_unique": {
+          "name": "users_username_unique",
           "nullsNotDistinct": false,
           "columns": [
             "username"
           ]
         },
-        "auth_user_phone_unique": {
-          "name": "auth_user_phone_unique",
+        "users_phone_unique": {
+          "name": "users_phone_unique",
           "nullsNotDistinct": false,
           "columns": [
             "phone"

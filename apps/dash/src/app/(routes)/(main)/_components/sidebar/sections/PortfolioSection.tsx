@@ -2,6 +2,7 @@ import { useSearchParams, useSelectedLayoutSegments } from "next/navigation";
 import SidebarItem from "../SidebarItem";
 import { dashRoutes } from "@/config/routes";
 import { useTranslations } from "next-intl";
+import SidebarSection from "../SidebarSection";
 
 const PortfolioSection = () => {
      const segments = useSelectedLayoutSegments();
@@ -13,8 +14,8 @@ const PortfolioSection = () => {
      const tSidebar = useTranslations("sidebar")
 
      return (
-          <div className="flex flex-col gap-y-2">
-               {tSidebar("portfolio")}
+          <SidebarSection
+               name={tSidebar("portfolio")}>
                <SidebarItem
                     href={dashRoutes.portfolio}
                     active={segments[0] === "portfolio" && segments[1] === undefined}>
@@ -26,7 +27,7 @@ const PortfolioSection = () => {
                     active={segments[0] === "portfolio" && segments[1] === "create" && id === null && true}>
                     {tSidebar("add_portfolio")}
                </SidebarItem>
-          </div>
+          </SidebarSection>
      );
 }
 

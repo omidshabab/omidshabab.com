@@ -6,6 +6,7 @@
     "edit": "edit",
     "language": "language",
     "separator": ",",
+    "soon": "soon",
     "lorem": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure mollitia at consectetur ducimus expedita minus debitis nisi perspiciatis accusantium asperiores, vero libero ab quisquam quod sed eius sequi rem nam!"
   },
   "lang": {
@@ -33,12 +34,19 @@
     "podcasts": "Podcasts",
     "created_podcasts": "Your Created Podcasts",
     "add_podcast": "Add a new amazing Podcast",
+    "users": "Users",
+    "website_users": "This Website Users",
+    "users_analytics": "Users Website Analytics",
     "api_keys": "API Keys",
     "created_api_keys": "Your Created API Keys",
     "usage_api_keys": "Usage of API Keys",
     "profile": "Profile",
     "edit_profile_details": "Edit your Profile Details",
-    "account_settings": "Settings of your Account"
+    "account_settings": "Settings of your Account",
+    "follow": "follow",
+    "connect": "connect",
+    "send_message": "send message",
+    "continue_of_profile": "continue of profile start from here!"
   },
   "breadcrumb": {
     "books": "books",
@@ -111,6 +119,23 @@
     "created_posts": "Your Created Posts",
     "default_title": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis pariatur quos possimus beatae",
     "not_found": "Not Found Any Post!"
+  },
+  "profile_page": {
+    "profile": "profile",
+    "name": "name",
+    "username": "username",
+    "display_name": "display name",
+    "email": "email",
+    "phone": "phone",
+    "about": "about",
+    "drop_image_avatar": "Drop your Image Avatar here or click on it to choose one",
+    "save_changes": "Don't forget to save your changes",
+    "delete_account": "Delete your Account",
+    "logout": "Logout Now",
+    "preview_profile": "Preview of your Profile",
+    "preview_desc": "See how others see your profile and change it in real time",
+    "type_your_x_here": "Type your {x} here ...",
+    "type_about_yourself_here": "Type about yourself here ..."
   },
   "suggestion_items": {
     "textTitle": "Text",
