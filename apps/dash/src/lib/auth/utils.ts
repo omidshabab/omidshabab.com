@@ -19,9 +19,9 @@ export type AuthSession = {
 };
 
 export const google = new Google(
-  env.GOOGLE_CLIENT_ID,
-  env.GOOGLE_CLIENT_SECRET,
-  env.NEXTAUTH_URL + "/api/auth/google"
+  process.env.GOOGLE_CLIENT_ID!,
+  process.env.GOOGLE_CLIENT_SECRET!,
+  process.env.NEXTAUTH_URL + "/api/auth/google"
 );
 
 export const getUserAuth = async (): Promise<AuthSession> => {

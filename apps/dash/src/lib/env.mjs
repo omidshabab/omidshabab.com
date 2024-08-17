@@ -18,11 +18,6 @@ export const env = createEnv({
   client: {
     DASHBOARD_GOOGLE_ANALYTICS_ID: z.string().min(1),
 
-    GOOGLE_CLIENT_ID: z.string().min(1),
-    GOOGLE_CLIENT_SECRET: z.string().min(1),
-
-    NEXTAUTH_URL: z.string().min(1),
-
     NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: z.string().min(1).optional(),
     NEXT_PUBLIC_STRIPE_PRO_PRICE_ID: z.string().min(1).optional(), // NEXT_PUBLIC_PUBLISHABLE_KEY: z.string().min(1),
   },
@@ -34,8 +29,5 @@ export const env = createEnv({
       process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
     NEXT_PUBLIC_STRIPE_PRO_PRICE_ID:
       process.env.NEXT_PUBLIC_STRIPE_PRO_PRICE_ID,
-
-    GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
-    GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
   },
 });
