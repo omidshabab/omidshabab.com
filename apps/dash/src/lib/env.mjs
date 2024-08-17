@@ -12,16 +12,16 @@ export const env = createEnv({
 
     RESEND_API_KEY: z.string().min(1),
 
-    GOOGLE_CLIENT_ID: z.string().min(1),
-    GOOGLE_CLIENT_SECRET: z.string().min(1),
-
-    NEXTAUTH_URL: z.string().min(),
-
     STRIPE_SECRET_KEY: z.string().min(1),
     STRIPE_WEBHOOK_SECRET: z.string().min(1),
   },
   client: {
     DASHBOARD_GOOGLE_ANALYTICS_ID: z.string().min(1),
+
+    GOOGLE_CLIENT_ID: z.string().min(1),
+    GOOGLE_CLIENT_SECRET: z.string().min(1),
+
+    NEXTAUTH_URL: z.string().min(1),
 
     NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: z.string().min(1).optional(),
     NEXT_PUBLIC_STRIPE_PRO_PRICE_ID: z.string().min(1).optional(), // NEXT_PUBLIC_PUBLISHABLE_KEY: z.string().min(1),
