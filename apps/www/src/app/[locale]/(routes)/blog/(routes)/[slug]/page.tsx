@@ -11,6 +11,7 @@ import { cn } from "@repo/ui/lib/utils";
 import { formatDateString } from "@/lib/utils";
 import { baseApiUrl } from "@/config/routes";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 
 const Page = ({
      params,
@@ -70,9 +71,10 @@ const Page = ({
                               post.image && "rounded-none"
                          )}>
                               {post.image && (
-                                   <img
+                                   <Image
                                         alt={post?.slug}
                                         src={post.image}
+                                        fill={true}
                                         className="w-full h-full object-cover" />
                               )}
                          </div>

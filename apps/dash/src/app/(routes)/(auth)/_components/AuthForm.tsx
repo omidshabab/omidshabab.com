@@ -6,7 +6,6 @@ import { englishBricolageGrotesqueFont } from "@/lib/fonts"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useTranslations } from "next-intl"
 import { FieldValues, useForm } from "react-hook-form"
-import { toast } from "sonner"
 import { emailFormSchema, passwordFormSchema } from "@/lib/validations/auth"
 import React, { useState } from "react"
 import { AuthFormEmailSchema, AuthFormPasswordSchema, AuthFormSchema } from "@/types"
@@ -15,13 +14,10 @@ import IconButton from "@/components/buttons/icon-button"
 import GithubButton from "./GithubButton"
 import TextButton from "@/components/buttons/text-button"
 import { useRouter } from "next/navigation"
-import { dashRoutes } from "@/config/routes"
 
 type AuthStep = "email" | "password" | "confirm"
 
 const AuthForm = () => {
-     const [direction] = useState(document.documentElement.dir);
-
      const tRegister = useTranslations("register_page")
 
      const router = useRouter();
@@ -71,11 +67,11 @@ const AuthForm = () => {
           setIsLoading(false);
 
           if (response.status === 200) {
-               router.push(dashRoutes.default);
+               router.refresh()
           }
      }
 
-     function googleRegister() {
+     async function googleRegister() {
           setIsLoading(true);
      }
 
@@ -184,11 +180,9 @@ const AuthForm = () => {
                                              disabled={isLoading}
                                              className="flex w-min text-[20px] font-bold transform hover:-translate-y-1 transition duration-400"
                                         >
-                                             {direction === "ltr" ?
-                                                  <UndoIcon className="size-[22px] sm:size-[30px] text-orange-600" />
-                                                  :
-                                                  <RedoIcon className="size-[22px] sm:size-[30px] text-orange-600" />
-                                             }
+                                             <UndoIcon className="hidden ltr:block size-[22px] sm:size-[30px] text-orange-600" />
+
+                                             <RedoIcon className="hidden rtl:block size-[22px] sm:size-[30px] text-orange-600" />
                                         </IconButton>
 
                                         <TextButton

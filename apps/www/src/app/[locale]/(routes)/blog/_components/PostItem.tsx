@@ -3,6 +3,7 @@
 import { defaultRoutes } from "@/config/routes";
 import { Post } from "@/types";
 import { cn } from "@repo/ui/lib/utils";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 
 const PostItem = ({
@@ -21,9 +22,10 @@ const PostItem = ({
                     post.image && "rounded-none"
                )}>
                     {post.image && (
-                         <img
+                         <Image
                               alt={post?.slug}
                               src={post.image}
+                              fill={true}
                               className="w-full h-full object-cover" />
                     )}
                </div>

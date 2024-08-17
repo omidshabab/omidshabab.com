@@ -7,6 +7,9 @@ import { getLocale, getMessages, getTranslations } from "next-intl/server";
 import { GoogleAnalytics } from "@next/third-parties/google"
 import { Analytics } from '@vercel/analytics/react';
 import { cn } from "@repo/ui/lib/utils";
+import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
+import { uploadRouter } from "@/uploadthing/server";
+import { extractRouterConfig } from "uploadthing/server";
 import Providers from "@/components/ProvidersWrapper";
 
 import "@/styles/editor.css";
@@ -48,6 +51,7 @@ export default async function RootLayout({
           <NextIntlClientProvider
             locale={locale}
             messages={messages}>
+            <NextSSRPlugin routerConfig={extractRouterConfig(uploadRouter)} />
             {children}
             <Toaster
               font={font}

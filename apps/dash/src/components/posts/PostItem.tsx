@@ -16,6 +16,7 @@ import { Delete, EditSquare, CaretRight } from "react-iconly";
 import { generateRandomString, isValidLocale } from "@/lib/utils";
 import { cn } from "@repo/ui/lib/utils";
 import { useLocale, useTranslations } from "next-intl";
+import Image from "next/image";
 
 const PostItem = ({
      post
@@ -97,9 +98,10 @@ const PostItem = ({
                               post.image && "rounded-none"
                          )}>
                               {post.image && (
-                                   <img
+                                   <Image
                                         alt={post?.slug}
                                         src={post.image}
+                                        fill={true}
                                         className="w-full h-full object-cover"
                                    />
                               )}

@@ -2,8 +2,6 @@ import {
      TiptapImage,
      TiptapLink,
      UpdatedImage,
-     // TaskList,
-     // TaskItem,
      HorizontalRule,
      StarterKit,
      Placeholder,
@@ -45,19 +43,6 @@ const updatedImage = UpdatedImage.configure({
      },
 });
 
-// const taskList = TaskList.configure({
-//      HTMLAttributes: {
-//           class: cx("not-prose pl-2 "),
-//      },
-// });
-
-// const taskItem = TaskItem.configure({
-//      HTMLAttributes: {
-//           class: cx("flex gap-2 items-start my-4"),
-//      },
-//      nested: true,
-// });
-
 const horizontalRule = HorizontalRule.configure({
      HTMLAttributes: {
           class: cx("mt-4 mb-6 border-t border-muted-foreground"),
@@ -65,26 +50,6 @@ const horizontalRule = HorizontalRule.configure({
 });
 
 const starterKit = StarterKit.configure({
-     // bulletList: {
-     //      HTMLAttributes: {
-     //           class: cx("list-disc list-outside leading-3 -mt-2"),
-     //      },
-     // },
-     // orderedList: {
-     //      HTMLAttributes: {
-     //           class: cx("list-decimal list-outside leading-3 -mt-2"),
-     //      },
-     // },
-     // listItem: {
-     //      HTMLAttributes: {
-     //           class: cx("leading-normal"),
-     //      },
-     // },
-     // blockquote: {
-     //      HTMLAttributes: {
-     //           class: cx("border-l-4 border-primary"),
-     //      },
-     // },
      codeBlock: {
           HTMLAttributes: {
                dir: "ltr",
@@ -114,8 +79,6 @@ export const defaultExtensions = [
      tiptapLink,
      tiptapImage,
      updatedImage,
-     // taskList,
-     // taskItem,
      horizontalRule,
      aiHighlight,
 ];

@@ -139,7 +139,6 @@ export default function MembersCard() {
                                              member.bgColor,
                                              'flex h-12 w-12 shrink-0 items-center justify-center rounded-tremor-full text-tremor-default font-medium',
                                         )}
-                                        aria-hidden={true}
                                    >
                                         {member.initial}
                                    </span>
@@ -147,7 +146,7 @@ export default function MembersCard() {
                                         <p className="truncate text-tremor-default font-medium text-tremor-content-strong dark:text-dark-tremor-content-strong">
                                              <a href={member.href} className="focus:outline-none">
                                                   {/* Extend link to entire card */}
-                                                  <span className="absolute inset-0" aria-hidden={true} />
+                                                  <span className="absolute inset-0" />
                                                   {member.name}
                                              </a>
                                         </p>
@@ -170,7 +169,6 @@ export default function MembersCard() {
                               </div>
                               <span
                                    className="pointer-events-none absolute right-4 top-4 text-tremor-content-subtle group-hover:text-tremor-content dark:text-dark-tremor-content-subtle group-hover:dark:text-dark-tremor-content"
-                                   aria-hidden={true}
                               >
                                    <RiArrowRightUpLine className="h-4 w-4" aria-hidden={true} />
                               </span>
