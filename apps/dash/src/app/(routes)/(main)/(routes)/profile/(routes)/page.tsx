@@ -216,7 +216,7 @@ const Page = () => {
 
                               <div className="flex flex-col gap-y-[5px]">
                                    <div className="text-slate-800 font-semibold text-[20px] line-clamp-1 leading-[1.5rem]">
-                                        {tProfilePage("name")}
+                                        {capitalize(tProfilePage("name"))}
                                    </div>
 
                                    <div className="flex text-slate-600 font-normal text-[15px] line-clamp-1 leading-[1.5rem]">
@@ -234,21 +234,21 @@ const Page = () => {
                                    variant="secondary"
                                    size="sm"
                                    className="w-min">
-                                   {tProfilePage("follow")}
+                                   {capitalize(tProfilePage("follow"))}
                               </Button>
 
                               <Button
                                    variant="secondary"
                                    size="sm"
                                    className="w-min">
-                                   {tProfilePage("connect")}
+                                   {capitalize(tProfilePage("connect"))}
                               </Button>
 
                               <Button
                                    variant="secondary"
                                    size="sm"
                                    className="w-min">
-                                   {tProfilePage("send_message")}
+                                   {capitalize(tProfilePage("send_message"))}
                               </Button>
                          </div>
 

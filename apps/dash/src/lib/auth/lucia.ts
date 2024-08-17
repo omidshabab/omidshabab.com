@@ -3,7 +3,7 @@ import { nextjs_future } from "lucia/middleware";
 import { cache } from "react";
 import * as context from "next/headers";
 import { postgres as postgresAdapter } from "@lucia-auth/adapter-postgresql";
-import { client } from "@/lib/db/index";
+import { client } from "@/lib/db";
 
 export const auth = lucia({
   adapter: postgresAdapter(client, {
