@@ -54,7 +54,7 @@ export const POST = async (req: NextRequest) => {
     return NextResponse.json(session, {
       status: 200,
     });
-  } catch (e) {
+  } catch (e: any) {
     if (
       e instanceof LuciaError &&
       (e.message === "AUTH_INVALID_KEY_ID" ||

@@ -1,10 +1,9 @@
 "use client"
 
-import { SiGithub, SiInstagram, SiTwitter, SiX, SiYoutube } from "react-icons/si";
+import { SiGithub, SiInstagram, SiX, SiYoutube } from "react-icons/si";
 import SocialCard from "../cards/SocialCard";
 import { site } from "@/config/site";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 
 const SocialBlock = () => {
      const router = useRouter()

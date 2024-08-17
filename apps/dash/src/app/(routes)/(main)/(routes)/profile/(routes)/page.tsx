@@ -13,6 +13,7 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 import { capitalize } from '@/lib/utils';
+import { Delete } from 'react-iconly';
 
 const { TextArea } = Input
 
@@ -31,14 +32,11 @@ const Page = () => {
      const [isLoggingOut, setIsLoggingOut] = useState(false)
 
      const signOut = async () => {
-          const response = await fetch("/api/sign-out", {
+          const response = await fetch("/api/logout", {
                method: "POST",
-               redirect: "manual",
           });
 
-          if (response.status === 0) {
-               return router.refresh();
-          }
+          router.refresh()
      }
 
      const handleSignOut = async () => {
@@ -52,7 +50,7 @@ const Page = () => {
 
           setIsLoggingOut(false)
 
-          return router.refresh();
+          router.refresh();
      };
 
      return (
@@ -173,8 +171,8 @@ const Page = () => {
                                    <div className="flex items-center justify-end gap-x-[10px]">
                                         <IconButton
                                              onClick={() => null}
-                                             className="p-[10px]">
-                                             <TrashIcon className="size-[20px] sm:size-[25px] text-primary" />
+                                             className="p-[10px] text-primary">
+                                             <Delete />
                                         </IconButton>
 
                                         <p className="w-min min-w-[100px] text-start text-[15px] leading-[1.25rem] text-slate-600 font-normal opacity-50">

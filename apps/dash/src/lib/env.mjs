@@ -11,6 +11,12 @@ export const env = createEnv({
     DATABASE_URL: z.string().min(1),
 
     RESEND_API_KEY: z.string().min(1),
+
+    GOOGLE_CLIENT_ID: z.string().min(1),
+    GOOGLE_CLIENT_SECRET: z.string().min(1),
+
+    NEXTAUTH_URL: z.string().min(),
+
     STRIPE_SECRET_KEY: z.string().min(1),
     STRIPE_WEBHOOK_SECRET: z.string().min(1),
   },
@@ -23,9 +29,13 @@ export const env = createEnv({
   // For Next.js >= 13.4.4, you only need to destructure client variables:
   experimental__runtimeEnv: {
     DASHBOARD_GOOGLE_ANALYTICS_ID: process.env.DASHBOARD_GOOGLE_ANALYTICS_ID,
+
     NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY:
       process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
     NEXT_PUBLIC_STRIPE_PRO_PRICE_ID:
       process.env.NEXT_PUBLIC_STRIPE_PRO_PRICE_ID,
+
+    GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
+    GOOGLE_CLIENT_SECRET: process.env.GOOGLE_CLIENT_SECRET,
   },
 });

@@ -24,6 +24,15 @@ const nextConfig = {
       },
     ];
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "utfs.io",
+        pathname: "/a/8r38blljlt/*",
+      },
+    ],
+  },
 };
 
 export default withNextIntl(nextConfig);

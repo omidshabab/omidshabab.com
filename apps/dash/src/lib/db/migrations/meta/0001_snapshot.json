@@ -1,11 +1,11 @@
 {
-  "id": "73b6ffb2-d3b4-41e9-bdb6-9adf9374ff7b",
-  "prevId": "00000000-0000-0000-0000-000000000000",
+  "id": "86b1132b-f857-4812-bc03-e6a1e4b36723",
+  "prevId": "73b6ffb2-d3b4-41e9-bdb6-9adf9374ff7b",
   "version": "5",
   "dialect": "pg",
   "tables": {
-    "user_key": {
-      "name": "user_key",
+    "passwords": {
+      "name": "passwords",
       "schema": "",
       "columns": {
         "id": {
@@ -29,9 +29,9 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "user_key_user_id_users_id_fk": {
-          "name": "user_key_user_id_users_id_fk",
-          "tableFrom": "user_key",
+        "passwords_user_id_users_id_fk": {
+          "name": "passwords_user_id_users_id_fk",
+          "tableFrom": "passwords",
           "tableTo": "users",
           "columnsFrom": [
             "user_id"
@@ -46,8 +46,8 @@
       "compositePrimaryKeys": {},
       "uniqueConstraints": {}
     },
-    "user_session": {
-      "name": "user_session",
+    "sessions": {
+      "name": "sessions",
       "schema": "",
       "columns": {
         "id": {
@@ -77,9 +77,9 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "user_session_user_id_users_id_fk": {
-          "name": "user_session_user_id_users_id_fk",
-          "tableFrom": "user_session",
+        "sessions_user_id_users_id_fk": {
+          "name": "sessions_user_id_users_id_fk",
+          "tableFrom": "sessions",
           "tableTo": "users",
           "columnsFrom": [
             "user_id"

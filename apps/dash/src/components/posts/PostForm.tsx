@@ -20,6 +20,9 @@ import { englishBricolageGrotesqueFont, LangDir, LangFont } from "@/lib/fonts";
 import { dashRoutes } from "@/config/routes";
 import { capitalize, createSlug, generateRandomString, isValidLocale } from "@/lib/utils";
 import { useLocale, useTranslations } from "next-intl";
+import Image from "next/image";
+import { uploadFiles } from "@/uploadthing/client";
+import { preloadImage } from "@/uploadthing/novel-plugin";
 
 
 const { TextArea } = Input;
@@ -111,41 +114,23 @@ const PostForm = ({ post }: { post?: Post }) => {
      };
 
      const handlePostCover = (file: File) => {
-          const promise = fetch("/api/upload", {
-               method: "POST",
-               headers: {
-                    "content-type": file?.type || "application/octet-stream",
-                    "x-vercel-filename": file?.name || "image.png",
-               },
-               body: file,
+          const uploadPromise = uploadFiles("imageUploader", {
+               files: [file],
+               skipPolling: true,
           });
 
-          return new Promise((resolve) => {
+          return new Promise<string>((resolve) => {
                toast.promise(
-                    promise.then(async (res) => {
-                         if (res.status === 200) {
-                              const { url } = (await res.json()) as any;
-                              let image = new Image();
-                              image.src = url;
-                              image.onload = () => {
-                                   setImage(url);
-                                   resolve(url);
-                              };
-                         } else if (res.status === 401) {
-                              resolve(file);
-                              throw new Error(
-                                   "`BLOB_READ_WRITE_TOKEN` environment variable not found, reading image locally instead.",
-                              );
-                              // Unknown error
-                         } else {
-                              throw new Error(`Error uploading image. Please try again.`);
-                         }
+                    uploadPromise.then(async (res) => {
+                         const [uploadedFileData] = res;
+                         const imageUrl = await preloadImage(uploadedFileData!.url);
+                         resolve(imageUrl);
                     }),
                     {
                          loading: "Uploading image...",
                          success: "Image uploaded successfully.",
                          error: (e) => e.message,
-                    },
+                    }
                );
           });
      };
@@ -204,15 +189,16 @@ const PostForm = ({ post }: { post?: Post }) => {
                                         )}>
 
                                         {image && (
-                                             <img
-                                                  alt={post?.slug}
+                                             <Image
+                                                  alt={post?.slug ?? "post-cover"}
                                                   src={image}
+                                                  fill={true}
                                                   className="w-full h-full object-cover" />
                                         )}
 
                                    </div>
                                    <div className="pb-[35px]">
-                                        <Editor initialValue={desc} onChange={setDesc} locale={newLocale} />
+                                        <Editor initialValue={desc} onChange={setDesc} />
                                    </div>
                               </div>
                          </ScrollArea>

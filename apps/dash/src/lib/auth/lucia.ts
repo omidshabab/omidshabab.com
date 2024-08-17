@@ -8,8 +8,8 @@ import { client } from "@/lib/db/index";
 export const auth = lucia({
   adapter: postgresAdapter(client, {
     user: "users",
-    key: "user_key",
-    session: "user_session",
+    key: "passwords",
+    session: "sessions",
   }),
   env: "DEV",
   middleware: nextjs_future(),
