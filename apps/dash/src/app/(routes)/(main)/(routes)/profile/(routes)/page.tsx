@@ -5,15 +5,16 @@ import { Input } from "antd";
 import { cn } from "@repo/ui/lib/utils";
 import { englishBricolageGrotesqueFont, LangDir, LangFont } from "@/lib/fonts";
 import { Spacer } from "@nextui-org/spacer";
-import { Button } from "@repo/ui/components/ui/button";
+import { Button } from "@repo/ui/components/button";
 import IconButton from "@/components/buttons/icon-button";
-import { ScrollArea } from "@repo/ui/components/ui/scroll-area";
+import { ScrollArea } from "@repo/ui/components/scroll-area";
 import { useLocale, useTranslations } from 'next-intl';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { toast } from 'sonner';
 import { capitalize } from '@/lib/utils';
 import { Delete } from 'react-iconly';
+import { signOut } from 'next-auth/react';
 
 const { TextArea } = Input
 
@@ -30,14 +31,6 @@ const Page = () => {
      const router = useRouter();
 
      const [isLoggingOut, setIsLoggingOut] = useState(false)
-
-     const signOut = async () => {
-          const response = await fetch("/api/logout", {
-               method: "POST",
-          });
-
-          router.refresh()
-     }
 
      const handleSignOut = async () => {
           setIsLoggingOut(true);
@@ -142,8 +135,8 @@ const Page = () => {
                               {capitalize(tProfilePage("about"))}
                               <TextArea
                                    placeholder={tProfilePage("type_about_yourself_here")}
-                                   autoSize={{ maxRows: 1 }}
-                                   maxLength={25}
+                                   autoSize={{ maxRows: 5 }}
+                                   maxLength={250}
                                    autoComplete="off"
                                    className={cn(
                                         "h-full text-[15px] sm:text-[18px] px-[15px] py-[15px] none-scroll-bar focus:ring-0 focus-visible:ring-0 bg-primary/[3%] rounded-none border-0 border-b-[2px] border-primary/10 hover:bg-primary/[5%] focus:bg-primary/[5%] hover:border-primary/10 focus:border-primary/10 transition-all duration-500 cursor-text",

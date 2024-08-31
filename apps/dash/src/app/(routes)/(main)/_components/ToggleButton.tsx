@@ -3,7 +3,7 @@
 import * as React from "react"
 
 import { useSidebar } from '@/lib/hooks/useSidebar'
-import { Button } from '@repo/ui/components/ui/button'
+import { Button } from '@repo/ui/components/button'
 import { PanelLeft } from 'lucide-react'
 
 const ToggleButton = () => {

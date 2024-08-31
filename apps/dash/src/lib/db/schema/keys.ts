@@ -1,12 +1,7 @@
 import { getKeys } from "@/lib/api/keys/queries";
 import { nanoid, timestamps } from "@/lib/utils";
 import { sql } from "drizzle-orm";
-import {
-  pgEnum,
-  pgTable,
-  timestamp,
-  varchar,
-} from "drizzle-orm/pg-core";
+import { pgTable, timestamp, varchar } from "drizzle-orm/pg-core";
 import { createInsertSchema, createSelectSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -44,10 +39,9 @@ export const insertKeyParams = baseSchema
   });
 
 export const updateKeySchema = baseSchema;
-export const updateKeyParams = baseSchema
-.omit({
-    userId: true,
-  });
+export const updateKeyParams = baseSchema.omit({
+  userId: true,
+});
 
 export const keyIdSchema = baseSchema.pick({ id: true });
 
@@ -59,6 +53,4 @@ export type UpdateKeyParams = z.infer<typeof updateKeyParams>;
 export type KeyId = z.infer<typeof keyIdSchema>["id"];
 
 // this type infers the return from getKey() - meaning it will include any joins
-export type CompleteKey = Awaited<
-  ReturnType<typeof getKeys>
->["keys"][number];
+export type CompleteKey = Awaited<ReturnType<typeof getKeys>>["keys"][number];

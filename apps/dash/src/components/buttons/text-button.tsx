@@ -1,5 +1,5 @@
 import { cn } from "@repo/ui/lib/utils";
-import { Button } from "@repo/ui/components/ui/button";
+import { Button } from "@repo/ui/components/button";
 
 type TextButtonType = "default" | "outline";
 

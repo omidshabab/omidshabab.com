@@ -1,6 +1,6 @@
 "use client"
 
-import { Button } from '@repo/ui/components/ui/button'
+import { Button } from '@repo/ui/components/button'
 import { useRouter } from 'next/navigation'
 
 export default function NotFound() {

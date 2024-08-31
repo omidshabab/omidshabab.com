@@ -8,12 +8,12 @@ import {
      useEffect,
      useRef,
 } from "react";
-import { Button } from "@repo/ui/components/ui/button";
+import { Button } from "@repo/ui/components/button";
 import {
      PopoverContent,
      Popover,
      PopoverTrigger,
-} from "@repo/ui/components/ui/popover";
+} from "@repo/ui/components/popover";
 
 export function isValidUrl(url: string) {
      try {

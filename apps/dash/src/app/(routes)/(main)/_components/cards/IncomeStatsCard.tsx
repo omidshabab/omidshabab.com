@@ -9,14 +9,14 @@ import {
      CardDescription,
      CardHeader,
      CardTitle,
-} from "@repo/ui/components/ui/card"
+} from "@repo/ui/components/card"
 
 import {
      ChartConfig,
      ChartContainer,
      ChartTooltip,
      ChartTooltipContent,
-} from "@repo/ui/components/ui/chart"
+} from "@repo/ui/components/chart"
 
 const chartData = [
      { date: "2024-04-01", desktop: 222, mobile: 150 },

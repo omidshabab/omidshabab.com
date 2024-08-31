@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "@repo/ui/globals.css"
 import { LangDir, LangFont } from "@/lib/fonts";
 import { NextIntlClientProvider } from "next-intl";
-import { Toaster } from "@repo/ui/components/ui/sonner";
+import { Toaster } from "@repo/ui/components/sonner";
 import { getLocale, getMessages, getTranslations } from "next-intl/server";
 import { GoogleAnalytics } from "@next/third-parties/google"
 import { Analytics } from '@vercel/analytics/react';
@@ -14,6 +14,7 @@ import Providers from "@/components/ProvidersWrapper";
 
 import "@/styles/editor.css";
 import { env } from "@/lib/env.mjs";
+import NextAuthProvider from "@/lib/auth/Provider";
 
 // Dynamic Metadata based on locales
 export async function generateMetadata(): Promise<Metadata> {
@@ -47,19 +48,21 @@ export default async function RootLayout({
         font,
         "cursor-default"
       )}>
-        <Providers>
-          <NextIntlClientProvider
-            locale={locale}
-            messages={messages}>
-            <NextSSRPlugin routerConfig={extractRouterConfig(uploadRouter)} />
-            {children}
-            <Toaster
-              font={font}
-              others={{
-                position: "top-center",
-              }} />
-          </NextIntlClientProvider>
-        </Providers>
+        <NextAuthProvider>
+          <Providers>
+            <NextIntlClientProvider
+              locale={locale}
+              messages={messages}>
+              <NextSSRPlugin routerConfig={extractRouterConfig(uploadRouter)} />
+              {children}
+              <Toaster
+                font={font}
+                others={{
+                  position: "top-center",
+                }} />
+            </NextIntlClientProvider>
+          </Providers>
+        </NextAuthProvider>
       </body>
       <Analytics />
       <GoogleAnalytics gaId={env.DASHBOARD_GOOGLE_ANALYTICS_ID} />

@@ -10,7 +10,7 @@ import {
      BreadcrumbList,
      BreadcrumbPage,
      BreadcrumbSeparator,
-} from "@repo/ui/components/ui/breadcrumb"
+} from "@repo/ui/components/breadcrumb"
 
 import { dashRoutes } from "@/config/routes";
 import { useRouter, useSelectedLayoutSegments } from "next/navigation";

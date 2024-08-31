@@ -3,10 +3,13 @@
     "omidshabab": "omidshabab.",
     "dashboard": "dashboard",
     "create": "create",
+    "update": "update",
+    "delete": "delete",
     "edit": "edit",
     "language": "language",
     "separator": ",",
     "soon": "soon",
+    "post": "post",
     "lorem": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure mollitia at consectetur ducimus expedita minus debitis nisi perspiciatis accusantium asperiores, vero libero ab quisquam quod sed eius sequi rem nam!"
   },
   "lang": {
@@ -35,7 +38,7 @@
     "created_podcasts": "Your Created Podcasts",
     "add_podcast": "Add a new amazing Podcast",
     "users": "Users",
-    "website_users": "This Website Users",
+    "website_users": "Your Website Users",
     "users_analytics": "Users Website Analytics",
     "api_keys": "API Keys",
     "created_api_keys": "Your Created API Keys",
@@ -56,9 +59,17 @@
     "podcasts": "podcasts",
     "portfolio": "portfolio",
     "posts": "posts",
+    "users": "users",
+    "analytics": "analytics",
     "profile": "profile",
     "settings": "settings",
     "usage": "usage"
+  },
+  "actions": {
+    "create": "{type} created",
+    "update": "{type} updated",
+    "delete": "{type} deleted",
+    "failed": "{type} {action} failed"
   },
   "metadata": {
     "name": "omidshabab",

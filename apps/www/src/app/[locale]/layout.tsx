@@ -9,6 +9,7 @@ import { getMessages, getTranslations } from "next-intl/server";
 import { env } from "@/lib/env.mjs";
 import { LangDir, LangFont } from "@/lib/fonts";
 import { NextIntlClientProvider } from "next-intl";
+import "@/styles/globals.css";
 
 import "@/styles/editor.css";
 import Head from "next/head";
@@ -99,6 +100,7 @@ export default async function RootLayout({
         "cursor-default"
       )}>
         <NextIntlClientProvider
+          locale={locale}
           messages={messages}>
           {children}
         </NextIntlClientProvider>

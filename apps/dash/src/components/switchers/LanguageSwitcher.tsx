@@ -7,14 +7,14 @@ import {
      Popover,
      PopoverContent,
      PopoverTrigger
-} from "@repo/ui/components/ui/popover";
+} from "@repo/ui/components/popover";
 import {
      Command,
      CommandGroup,
      CommandInput,
      CommandItem
-} from "@repo/ui/components/ui/command";
-import { Button } from "@repo/ui/components/ui/button";
+} from "@repo/ui/components/command";
+import { Button } from "@repo/ui/components/button";
 
 import { Check, ChevronDown } from "lucide-react";
 import { Spacer } from "@nextui-org/spacer";

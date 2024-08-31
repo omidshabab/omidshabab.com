@@ -1,6 +1,6 @@
 import { RedoIcon, UndoIcon } from "lucide-react"
-import { Form, FormField } from "@repo/ui/components/ui/form"
-import { Input } from "@repo/ui/components/ui/input"
+import { Form, FormField } from "@repo/ui/components/form"
+import { Input } from "@repo/ui/components/input"
 import { cn } from "@repo/ui/lib/utils"
 import { englishBricolageGrotesqueFont } from "@/lib/fonts"
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -14,6 +14,8 @@ import IconButton from "@/components/buttons/icon-button"
 import GithubButton from "./GithubButton"
 import TextButton from "@/components/buttons/text-button"
 import { useRouter } from "next/navigation"
+import { toast } from "sonner"
+import { signIn } from "next-auth/react"
 
 type AuthStep = "email" | "password" | "confirm"
 
@@ -71,12 +73,28 @@ const AuthForm = () => {
           }
      }
 
-     async function googleRegister() {
+     function googleRegister() {
           setIsLoading(true);
+
+          toast.promise(signIn("google", {
+               redirect: false,
+          }).then((_) => {
+               setIsLoading(false);
+          }), {
+               loading: `${tRegister("in_progress")}`,
+          })
      }
 
      function githubRegister() {
-          setIsLoading(true)
+          setIsLoading(true);
+
+          toast.promise(signIn("github", {
+               redirect: false,
+          }).then((_) => {
+               setIsLoading(false);
+          }), {
+               loading: `${tRegister("in_progress")}`,
+          })
      }
 
      return (

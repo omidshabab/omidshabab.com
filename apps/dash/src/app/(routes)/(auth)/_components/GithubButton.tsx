@@ -8,13 +8,13 @@ const GithubButton = ({
      onClick,
 }: {
      disabled?: boolean,
-     onClick?: React.MouseEventHandler<HTMLButtonElement>
+     onClick?: React.MouseEventHandler<HTMLDivElement>
 }) => {
 
      return (
           <div className="aspect-square">
                <IconButton
-                    onClick={() => onClick}
+                    onClick={onClick}
                     animateOnHover
                     disabled={disabled}>
                     <GithubIcon className="h-7 sm:h-9 aspect-square text-orange-600" />

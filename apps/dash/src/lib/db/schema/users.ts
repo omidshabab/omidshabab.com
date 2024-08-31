@@ -1,38 +1,17 @@
-import {
-  pgTable,
-  varchar,
-  pgEnum,
-} from "drizzle-orm/pg-core";
+import { pgTable, varchar, pgEnum, text, timestamp } from "drizzle-orm/pg-core";
 
-export const roleEnums = pgEnum("role", ["user", "admin", "manager"]);
+export const roleEnums = pgEnum("role", ["user", "admin", "manager", "editor"]);
 
 export const users = pgTable("users", {
-  id: varchar("id", {
-    length: 15, // change this when using custom user ids
-  })
+  id: text("id")
     .primaryKey()
-    .unique(),
-  // other user attributes
-  name: varchar("name", { length: 255 }),
+    .$defaultFn(() => crypto.randomUUID()),
+  name: text("name"),
   displayName: varchar("display_name", { length: 255 }),
-  email: varchar("email", { length: 255 }).unique(),
-  username: varchar("username", { length: 255 }).unique(),
+  email: text("email"),
+  emailVerified: timestamp("email_verified", { mode: "date" }),
   phone: varchar("phone", { length: 15 }).unique(),
-  image: varchar("image", { length: 255 }),
+  username: varchar("username", { length: 255 }).unique(),
+  image: text("image"),
   role: roleEnums("role").notNull().default("user"),
-  googleId: varchar("google_id", { length: 255 }),
-});
-
-export const passwords = pgTable("passwords", {
-  id: varchar("id", {
-    length: 255,
-  }).primaryKey(),
-  userId: varchar("user_id", {
-    length: 15,
-  })
-      .notNull()
-      .references(() => users.id),
-  hashedPassword: varchar("hashed_password", {
-    length: 255,
-  }),
 });

@@ -10,3 +10,5 @@ export type AuthFormPasswordSchema = z.infer<typeof passwordFormSchema>;
 export type AuthFormSchema = z.infer<typeof authFormSchema>;
 
 export type RegisterStatus = "success" | "error";
+
+export type RoleType = "user" | "admin" | "manager" | "editor";

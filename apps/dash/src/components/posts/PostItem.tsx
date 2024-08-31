@@ -11,7 +11,7 @@ import {
      ContextMenuContent,
      ContextMenuItem,
      ContextMenuTrigger,
-} from "@repo/ui/components/ui/context-menu";
+} from "@repo/ui/components/context-menu";
 import { Delete, EditSquare, CaretRight } from "react-iconly";
 import { generateRandomString, isValidLocale } from "@/lib/utils";
 import { cn } from "@repo/ui/lib/utils";
@@ -34,6 +34,8 @@ const PostItem = ({
           newLocale = locale;
      }
 
+     const tGeneral = useTranslations("general")
+     const tActions = useTranslations("actions")
      const tPostPage = useTranslations("post_page")
 
      const onSuccess = async (action: "create" | "update" | "delete", data?: { error?: string, post: Post }) => {
@@ -50,7 +52,7 @@ const PostItem = ({
                router.refresh();
           }
 
-          toast.success(`Post ${action}d!`);
+          toast.success(tActions(action, { type: tGeneral("post") }));
      };
 
      const onError = async (action: "create" | "update" | "delete", data?: { error?: string }) => {
@@ -59,7 +61,7 @@ const PostItem = ({
                return;
           }
 
-          toast.error(`Post ${action} failed!`);
+          toast.error(tActions("failed", { type: tGeneral("post"), action: tGeneral(action) }));
      };
 
      const { mutate: createPost, isLoading: isCreating } = trpc.posts.createPost.useMutation({
