@@ -1,4 +1,5 @@
-import { defaultRoutes } from "@/config/routes";
+import React from "react"
+import { defaultRoutes } from "@/config/routes"
 import {
      NavigationMenu,
      NavigationMenuContent,
@@ -6,10 +7,9 @@ import {
      NavigationMenuLink,
      NavigationMenuList,
      NavigationMenuTrigger,
-} from "@repo/ui/components/ui/navigation-menu"
-import { cn } from "@repo/ui/lib/utils";
-import { useTranslations } from "next-intl";
-import React from "react";
+} from "@repo/ui/components/navigation-menu"
+import { cn } from "@repo/ui/lib/utils"
+import { useTranslations } from "next-intl"
 
 const Menu = ({
      dir = "ltr"

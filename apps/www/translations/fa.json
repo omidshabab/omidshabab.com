@@ -14,6 +14,20 @@
     "default_title": "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ",
     "updated_at": "بروزرسانی در {day} {month} {year}"
   },
+  "month": {
+    "january": "ژانویه",
+    "february": "فوریه",
+    "march": "مارس",
+    "april": "آوریل",
+    "may": "مه",
+    "june": "ژوئن",
+    "july": "ژوئیه",
+    "august": "اوت",
+    "september": "سپتامبر",
+    "october": "اکتبر",
+    "november": "نوامبر",
+    "december": "دسامبر"
+  },
   "lang": {
     "english": "انگلیسی",
     "persian": "فارسی",

@@ -4,7 +4,7 @@ import PostItem from "@/components/posts/PostItem";
 import PostItemShimmer from "@/components/posts/PostItemShimmer";
 import { LangDir } from "@/lib/fonts";
 import { trpc } from "@/lib/trpc/client";
-import { ScrollArea } from "@repo/ui/components/ui/scroll-area";
+import { ScrollArea } from "@repo/ui/components/scroll-area";
 import { useLocale, useTranslations } from "next-intl";
 
 const Page = () => {

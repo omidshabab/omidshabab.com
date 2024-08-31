@@ -6,7 +6,7 @@ import PortfolioSection from "./sidebar/sections/PortfolioSection";
 import PostSection from "./sidebar/sections/PostSection";
 import ProfileSection from "./sidebar/sections/ProfileSection";
 import { useState } from "react";
-import { ScrollArea } from "@repo/ui/components/ui/scroll-area";
+import { ScrollArea } from "@repo/ui/components/scroll-area";
 import { Card, ProgressBar } from '@tremor/react';
 import ComponentSection from "./sidebar/sections/ComponentSection";
 import BookSection from "./sidebar/sections/BookSection";
@@ -33,7 +33,7 @@ const SidebarDesktop = () => {
                {user && (
                     <ScrollArea dir={dir}>
                          <div className="flex flex-col justify-between gap-y-[20px] px-[25px] py-[15px] pb-[30px]">
-                              {(user?.role === "admin" || user?.role === "manager") && (
+                              {(user.role !== "user") && (
                                    <>
                                         {/* Posts Section */}
                                         <PostSection />

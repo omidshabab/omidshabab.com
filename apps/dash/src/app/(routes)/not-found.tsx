@@ -1,7 +1,7 @@
 "use client"
 
 import { dashRoutes } from '@/config/routes'
-import { Button } from '@repo/ui/components/ui/button'
+import { Button } from '@repo/ui/components/button'
 import { useRouter } from 'next/navigation'
 
 export default function NotFound() {

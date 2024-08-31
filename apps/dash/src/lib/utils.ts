@@ -18,8 +18,9 @@ export const timestamps: { createdAt: true; updatedAt: true } = {
 export function createSlug(title: string): string {
   return title
     .toLowerCase() // Convert to lowercase
+    .normalize("NFKD") // Normalize the string
     .trim() // Remove leading and trailing whitespace
-    .replace(/[^\w\s-]/g, "") // Remove special characters
+    .replace(/[^\u0600-\u06FF\w\s-]/g, "") // Remove special characters, but keep Persian characters
     .replace(/\s+/g, "-") // Replace spaces with hyphens
     .replace(/-+/g, "-"); // Replace multiple hyphens with a single hyphen
 }

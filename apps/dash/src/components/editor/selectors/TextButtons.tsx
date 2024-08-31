@@ -8,7 +8,7 @@ import {
      CodeIcon,
 } from "lucide-react";
 import type { SelectorItem } from "./NodeSelector";
-import { Button } from "@repo/ui/components/ui/button";
+import { Button } from "@repo/ui/components/button";
 
 export const TextButtons = () => {
      const { editor } = useEditor();

@@ -21,6 +21,7 @@ const Page = ({
      }
 }) => {
      const tGeneral = useTranslations("general");
+     const tMonth = useTranslations("month")
 
      const [post, setPost] = useState<Post | null>(null);
 
@@ -37,9 +38,27 @@ const Page = ({
           fetchPost();
      }, [params.slug]);
 
+     // Helper function to add IDs to headings
+     const addIdsToHeadings = (html: string) => {
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(html, 'text/html');
+          const headingElements = doc.querySelectorAll('h1, h2, h3, h4, h5, h6');
+
+          headingElements.forEach((heading) => {
+               // Generate a unique ID based on the heading text or other logic
+               const id = heading.textContent ? heading.textContent.trim().replace(/\s+/g, '-').toLowerCase() : '';
+               if (id) {
+                    heading.id = encodeURIComponent(id); // Encode the ID to handle non-ASCII characters
+               }
+          });
+
+          return doc.body.innerHTML; // Return the modified HTML with IDs
+     };
+
      const output = useMemo(() => {
           if (post) {
-               return generateHTML(JSON.parse(post.desc), defaultExtensions);
+               const html = generateHTML(JSON.parse(post.desc), defaultExtensions);
+               return addIdsToHeadings(html); // Add IDs to the generated HTML
           }
           return "";
      }, [post]);
@@ -62,7 +81,7 @@ const Page = ({
                               </div>
 
                               <div className="text-[15px] font-light text-slate-600">
-                                   {tGeneral("updated_at", { day: date.day, month: date.month, year: date.year })}
+                                   {tGeneral("updated_at", { day: date.day, month: tMonth(date.month.toLowerCase()), year: date.year })}
                               </div>
                          </div>
 

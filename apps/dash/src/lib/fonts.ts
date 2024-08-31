@@ -1,6 +1,11 @@
-// import { useLocale } from "next-intl";
 import { isRtlLang } from "rtl-detect";
 import localFont from "next/font/local";
+
+export const isRTL = (char: string): boolean => {
+  const rtlCharRegExp =
+    /[\u0590-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF\u0600-\u06FF]/;
+  return rtlCharRegExp.test(char);
+};
 
 // ENGLISH FONTS
 export const englishBricolageGrotesqueFont = localFont({
@@ -92,8 +97,23 @@ export function LangFont(locale: string): string {
   }
 }
 
+export function fontByValue(value: string): string {
+  const isValueRTL = Array.from(value).some((char) => isRTL(char));
+
+  switch (isValueRTL) {
+    case true:
+      return persianEstedadFont.className;
+    default:
+      return englishBricolageGrotesqueFont.className;
+  }
+}
+
 export function LangDir(locale: string) {
-  // const defaultLocale = useLocale();
-  // if (!locale) locale = defaultLocale;
   return isRtlLang(locale) ? "rtl" : "ltr";
+}
+
+export function dirByValue(value: string) {
+  const isValueRTL = Array.from(value).some((char) => isRTL(char));
+
+  return isValueRTL ? "rtl" : "ltr";
 }

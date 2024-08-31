@@ -1,22 +1,22 @@
 "use client";
 
 import Editor from "@/components/editor/Editor";
-import { ScrollArea } from "@repo/ui/components/ui/scroll-area";
+import { ScrollArea } from "@repo/ui/components/scroll-area";
 import { useRouter } from "next/navigation";
 import { defaultEditorValue, defaultPersianEditorValue } from "@/config/defaultEditorValue";
 import { JSONContent } from "novel";
 import { Input } from 'antd';
-import { Button } from "@repo/ui/components/ui/button";
+import { Button } from "@repo/ui/components/button";
 import { toast } from "sonner";
 import { insertPostParams, NewPostParams, Post } from "@/lib/db/schema/posts";
-import { Form, FormControl, FormField, FormItem, FormMessage } from "@repo/ui/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormMessage } from "@repo/ui/components/form";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { trpc } from "@/lib/trpc/client";
 import { useEffect, useState } from "react";
 import { cn } from "@repo/ui/lib/utils";
-import { englishBricolageGrotesqueFont, LangDir, LangFont } from "@/lib/fonts";
+import { dirByValue, englishBricolageGrotesqueFont, fontByValue, LangDir, LangFont } from "@/lib/fonts";
 import { dashRoutes } from "@/config/routes";
 import { capitalize, createSlug, generateRandomString, isValidLocale } from "@/lib/utils";
 import { useLocale, useTranslations } from "next-intl";
@@ -42,6 +42,7 @@ const PostForm = ({ post }: { post?: Post }) => {
      }
 
      const tGeneral = useTranslations("general")
+     const tActions = useTranslations("actions")
      const tPostPage = useTranslations("post_page")
 
      const dir = LangDir(locale)
@@ -83,7 +84,7 @@ const PostForm = ({ post }: { post?: Post }) => {
                router.refresh();
           }
 
-          toast.success(`Post ${action}d!`);
+          toast.success(tActions(action, { type: tGeneral("post") }));
      };
 
      const onError = async (action: "create" | "update" | "delete", data?: { error?: string }) => {
@@ -92,7 +93,7 @@ const PostForm = ({ post }: { post?: Post }) => {
                return;
           }
 
-          toast.error(`Post ${action} failed!`);
+          toast.error(tActions("failed", { type: tGeneral("post"), action: tGeneral(action) }));
      };
 
      const { mutate: createPost, isLoading: isCreating } = trpc.posts.createPost.useMutation({
@@ -217,12 +218,12 @@ const PostForm = ({ post }: { post?: Post }) => {
                                                        placeholder="type the post slug here ..."
                                                        autoSize
                                                        variant="borderless"
-                                                       dir="ltr"
+                                                       dir={dirByValue(slug)}
                                                        maxLength={100}
                                                        onChange={(value) => setSlug(value.currentTarget.value)}
                                                        className={cn(
                                                             "text-start sm:text-[16px] py-[10px] leading-[1.5rem] h-min text-[32px] px-0 none-scroll-bar focus:ring-0 focus-visible:ring-0 cursor-text",
-                                                            englishBricolageGrotesqueFont.className,
+                                                            fontByValue(slug),
                                                        )}
                                                   />
                                              </div>
