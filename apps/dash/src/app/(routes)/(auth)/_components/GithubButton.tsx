@@ -2,7 +2,6 @@ import React from "react";
 import GithubIcon from "@/components/icons/github";
 import IconButton from "@/components/buttons/icon-button";
 
-
 const GithubButton = ({
      disabled,
      onClick,

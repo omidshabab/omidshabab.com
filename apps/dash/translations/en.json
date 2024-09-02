@@ -110,14 +110,12 @@
   "register_page": {
     "title": "Register",
     "desc": "Don't matter you have an account or not, to login enter your email address and the password.",
-    "password_desc": "And now, just enter your password and then press the login button to access your account.",
-    "go_to_next_button": "Go to next step",
-    "login_button": "Login to Account now",
+    "submit_email": "Send a verification email",
     "google": "Register with Google",
     "github": "Register with Github",
     "in_progress": "Please wait a minute. It's in progress ...",
-    "success": "You are very welcome 😊 Your login was successful",
-    "error": "Your login was not successful. You should try again or contact support"
+    "success": "Check your email to verify and register",
+    "error": "Something went wrong. Try again later"
   },
   "post_page": {
     "edit_post": "Edit Post",

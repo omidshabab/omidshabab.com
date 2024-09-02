@@ -68,11 +68,11 @@ export const VerifyEmail = ({ url }: VerifyEmailProps) => (
           </Text>
 
           <Text className="text-[15px] leading-[1.5rem] text-slate-800 sm:text-[20px] sm:leading-[2rem] font-normal">
-            If you did not sign up for a mulibox account, please ignore this email.
+            If you did not sign up for a omidshabab account, please ignore this email.
           </Text>
 
           <Text className="text-[15px] leading-[1.5rem] text-slate-800 sm:text-[20px] sm:leading-[2rem] font-normal">
-            Thank you for choosing mulibox to help you enhance your learning process. We&apos;re here to support you every step of the way!
+            Thank you for choosing omidshabab to help you enhance your learning process. We&apos;re here to support you every step of the way!
           </Text>
 
           <Container className="h-[40px] sm:h-[50px]" />
@@ -80,7 +80,7 @@ export const VerifyEmail = ({ url }: VerifyEmailProps) => (
           <Container className="bg-black/5 w-full h-[1px]" />
 
           <Text className="text-[13px] leading-[1.25rem] text-slate-800/50 sm:text-[16px] sm:leading-[2rem] font-normal">
-            Need help? Visit our Support Center or contact us at mulibox.com
+            Need help? Visit our Support Center or contact us at omidshabab.com
           </Text>
         </Container>
       </Body>

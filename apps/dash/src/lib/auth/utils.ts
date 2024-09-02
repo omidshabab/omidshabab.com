@@ -90,7 +90,7 @@ export const authOptions: NextAuthOptions = {
         };
 
         const result = await resend.emails.send({
-          from: "omidshabab. <hey@omidshabab.com>",
+          from: "omidshabab. <onboarding@resend.dev>",
           to: [payload.email],
           subject: "Confirm Your Email to Access Your Account",
           react: VerifyEmail({ url: payload.url }),

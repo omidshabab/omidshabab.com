@@ -97,7 +97,7 @@ export default async function RootLayout({
       </Head>
       <body className={cn(
         font,
-        "cursor-default"
+        "cursor-default antialiased"
       )}>
         <NextIntlClientProvider
           locale={locale}
