@@ -6,7 +6,6 @@ import { site } from "@/config/site";
 import { cn } from "@repo/ui/lib/utils";
 import { type Locale } from "@/lib/locales";
 import { getMessages, getTranslations } from "next-intl/server";
-import { env } from "@/lib/env.mjs";
 import { LangDir, LangFont } from "@/lib/fonts";
 import { NextIntlClientProvider } from "next-intl";
 import "@/styles/globals.css";
@@ -106,7 +105,7 @@ export default async function RootLayout({
         </NextIntlClientProvider>
       </body>
       <Analytics />
-      <GoogleAnalytics gaId={env.WWW_GOOGLE_ANALYTICS_ID} />
+      <GoogleAnalytics gaId={process.env.WWW_GOOGLE_ANALYTICS_ID!} />
     </html>
   );
 }

@@ -1,6 +1,6 @@
 "server-only";
 
-import { notFound, redirect } from "next/navigation";
+import { redirect } from "next/navigation";
 import { getRequestConfig } from "next-intl/server";
 import { type AbstractIntlMessages } from "next-intl";
 import { locales, type Locale } from "@/lib/locales";

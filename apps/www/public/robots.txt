@@ -2,16 +2,6 @@
 User-agent: *
 Allow: /
 
-# *
-User-agent: *
-Disallow: /books/*
-Disallow: /components/*
-Disallow: /courses/*
-Disallow: /podcasts/*
-Disallow: /portfolio/*
-Disallow: /subscription
-Disallow: /about
-
 # Host
 Host: http://localhost:3000
 

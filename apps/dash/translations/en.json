@@ -109,7 +109,7 @@
   },
   "register_page": {
     "title": "Register",
-    "desc": "Don't matter you have an account or not, to login enter your email address and the password.",
+    "desc": "Doesn't matter if you have an account or not. To register, enter your email address, and we will send you a verification link via email.",
     "submit_email": "Send a verification email",
     "google": "Register with Google",
     "github": "Register with Github",
