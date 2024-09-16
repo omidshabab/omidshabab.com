@@ -11,6 +11,7 @@ import { NextSSRPlugin } from "@uploadthing/react/next-ssr-plugin";
 import { uploadRouter } from "@/uploadthing/server";
 import { extractRouterConfig } from "uploadthing/server";
 import Providers from "@/components/ProvidersWrapper";
+import "@/styles/globals.css";
 
 import "@/styles/editor.css";
 import { env } from "@/lib/env.mjs";
@@ -46,7 +47,7 @@ export default async function RootLayout({
     <html lang={locale} dir={dir}>
       <body className={cn(
         font,
-        "cursor-default"
+        "cursor-default antialiased"
       )}>
         <NextAuthProvider>
           <Providers>

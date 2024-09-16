@@ -28,7 +28,7 @@ export default async function layout({
 
      return (
           <TrpcProvider cookies={cookies().toString()}>
-               <div className="flex w-full h-full">
+               <div className="flex w-full h-screen">
                     {children}
                </div>
           </TrpcProvider>

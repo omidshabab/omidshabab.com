@@ -1,4 +1,5 @@
 export const baseApiUrl = process.env.API_BASE_URL;
+export const siteUrl = process.env.SITE_URL;
 
 export const defaultRoutes = {
   default: "/",

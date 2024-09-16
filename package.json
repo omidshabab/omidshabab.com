@@ -22,8 +22,5 @@
   "workspaces": [
     "apps/*",
     "packages/*"
-  ],
-  "dependencies": {
-    "next-intl": "^3.14.0"
-  }
+  ]
 }
