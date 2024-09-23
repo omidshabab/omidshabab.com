@@ -18,16 +18,16 @@ const Page = () => {
      const tPostPage = useTranslations("blog_page")
 
      useEffect(() => {
-          const fetchPost = async () => {
+          const getPosts = async () => {
                try {
                     const response = await axios.get(`${baseApiUrl}/posts?locale=${locale}`);
                     setPosts(response.data);
                } catch (error) {
-                    console.error('Error fetching the post:', error);
+                    console.error('Error getting the post:', error);
                }
           };
 
-          fetchPost();
+          getPosts();
      }, [locale]);
 
      return (
