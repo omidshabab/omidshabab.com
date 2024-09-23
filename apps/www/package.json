@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && next-sitemap",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
@@ -26,7 +26,6 @@
     "mdast-util-toc": "^7.1.0",
     "next": "14.2.3",
     "next-intl": "^3.19.0",
-    "next-sitemap": "^4.2.3",
     "react": "^18",
     "react-dom": "^18",
     "react-icons": "^5.1.0",

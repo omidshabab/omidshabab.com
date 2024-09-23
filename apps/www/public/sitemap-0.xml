@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
-<url><loc>http://localhost:3000/blog/lorem-ipsum-dolor-sit-amet-consectetur-adipisicing-elit-facilis-pariatur-quos-possimus-beatae</loc><lastmod>2024-08-31T16:29:42.047Z</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-<url><loc>http://localhost:3000/fa/blog/لورم-ایپسوم-متن-ساختگی-با-تولید-سادگی-نامفهوم-از-صنعت-چاپ-و-با-استفاده-از-طراحان-گرافیک-است</loc><lastmod>2024-08-31T15:08:54.118Z</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-<url><loc>http://localhost:3000/fa/blog/lorem-ipsum</loc><lastmod>2024-08-31T15:09:07.660Z</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-<url><loc>http://localhost:3000/fa/blog/لورم-ایپسوم-متن-ساختگی-با-تولید-سادگی-نامفهوم-از-صنعت-چاپ-و-با-استفاده-از-طراحان</loc><lastmod>2024-09-01T16:09:33.796Z</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-<url><loc>http://localhost:3000/fa/blog/لورم-ایپسوم-متن-ساختگی-با-تولید-سادگی-نامفهوم-از-صنعت-چاپ</loc><lastmod>2024-09-01T16:31:21.043Z</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-<url><loc>http://localhost:3000/fa/blog/لورم-ایپسوم-متن-ساختگی-با-تولید-سادگی-نامفهوم-از-صنعت</loc><lastmod>2024-09-01T16:59:38.331Z</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
-</urlset>

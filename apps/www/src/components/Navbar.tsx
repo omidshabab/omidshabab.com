@@ -6,20 +6,15 @@ import { defaultRoutes } from "@/config/routes";
 import Menu from "./Menu";
 import { useTranslations } from "next-intl";
 import { useRouter } from "next/navigation";
+import { Direction } from "@/types";
+import LocaleSwitcher from "./LocaleSwitcher";
 
 const Navbar = ({
      dir
 }: {
-     dir?: "ltr" | "rtl"
+     dir?: Direction
 }) => {
-     const router = useRouter();
-
      const tGeneral = useTranslations("general");
-     const tLang = useTranslations("lang");
-
-     const changeLanguage = (locale: string) => {
-          router.push("/" + locale);
-     };
 
      return (
           <div className="flex sticky top-0 z-50 items-center justify-between gap-x-5 shrink-0 py-[20px]">
@@ -45,9 +40,7 @@ const Navbar = ({
                </div>
 
                <div className="flex w-min min-w-[50px] sm:w-auto sm:min-w-auto gap-x-[20px] items-center justify-end">
-                    <div className="hidden sm:flex gap-x-[5px] text-[15px] font-light text-slate-600 cursor-pointer">
-                         <div onClick={() => changeLanguage("en")}>{tLang("en")}</div> / <div onClick={() => changeLanguage("fa")}>{tLang("fa")}</div>
-                    </div>
+                    <LocaleSwitcher />
                </div>
           </div>
      );
