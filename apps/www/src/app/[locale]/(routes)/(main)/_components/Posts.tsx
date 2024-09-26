@@ -36,7 +36,7 @@ const Posts = () => {
                     <div className="flex flex-col w-full">
                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[45px] gap-y-[35px] sm:gap-y-[50px] leading-[2rem]">
                               {posts && posts.map((post, index) => (
-                                   <div key={index} className={`${index % 2 === 1 && 'md:-mt-[25px]'}`}>
+                                   <div key={index} className="even:md:-mt-[25px]">
                                         <PostItem post={post} />
                                    </div>
                               )).reverse()}
