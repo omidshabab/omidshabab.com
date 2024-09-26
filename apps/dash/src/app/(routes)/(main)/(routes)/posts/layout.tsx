@@ -1,7 +1,6 @@
 import { Metadata } from "next"
 import { getTranslations } from "next-intl/server"
 
-// Dynamic Metadata based on locales
 export async function generateMetadata(): Promise<Metadata> {
      const tGeneral = getTranslations("general")
      const tMetadata = getTranslations("posts_metadata")

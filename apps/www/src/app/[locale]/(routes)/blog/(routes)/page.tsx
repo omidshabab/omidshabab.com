@@ -2,11 +2,13 @@
 
 import { Post } from "@/types";
 import axios from "axios";
+import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import PostItem from "../_components/PostItem";
 import PostItemShimmer from "../_components/PostItemShimmer";
 import { baseApiUrl } from "@/config/routes";
 import { useLocale, useTranslations } from "next-intl";
+import Container from "@/components/Container";
 
 const Page = () => {
      const tBlogPage = useTranslations("blog_page");
@@ -31,30 +33,48 @@ const Page = () => {
      }, [locale]);
 
      return (
-          <div className="flex flex-col flex-grow w-full h-full gap-y-[20px] py-[20px] sm:py-[25px]">
-               <h2 className="text-[20px] font-medium leading-[1.8rem] sm:leading-[2.5rem]">
-                    {tBlogPage("desc")}
-               </h2>
-               <div className="flex flex-col w-full">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-[20px] gap-y-[30px] leading-[2rem]">
-                         {posts && posts.map((post, index) => (
-                              <PostItem
-                                   key={index}
-                                   post={post} />
-                         )).reverse()}
+          <Container>
+               <div className="flex flex-col flex-grow w-full h-full gap-y-[20px] py-[20px] sm:py-[25px]">
+                    <motion.h2
+                         initial={{
+                              opacity: 0.05
+                         }}
+                         whileInView={{
+                              opacity: 1,
+                         }}
+                         viewport={{
+                              once: false,
+                              amount: 0.5,
+                         }}
+                         transition={{
+                              ease: "easeInOut",
+                              duration: 0.8,
+                         }}
+                         className="text-[35px] sm:text-[45px] tracking-tight bg-gradient-to-b from-orange-400 to-orange-600 inline-block text-transparent bg-clip-text font-bold leading-[3.5rem] sm:leading-[4.5rem] py-[30px] mb-[30px] max-w-[650px] cursor-text">
+                         {tBlogPage("desc")}
+                    </motion.h2>
+                    <div className="flex flex-col w-full">
+                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[45px] gap-y-[35px] sm:gap-y-[50px] leading-[2rem]">
+                              {posts && posts.map((post, index) => (
+                                   <div key={index} className={`${index % 2 === 1 && 'md:-mt-[25px]'}`}>
+                                        <PostItem post={post} />
+                                   </div>
+                              )).reverse()}
 
-                         {!posts && [1, 2, 3, 4, 5, 6].map((index) => (
-                              <PostItemShimmer
-                                   key={index} />
-                         )).reverse()}
+                              {!posts && [1, 2, 3, 4, 5, 6].map((index) => (
+                                   <div key={index} className={`${index % 2 === 1 && 'md:-mt-[25px]'}`}>
+                                        <PostItemShimmer />
+                                   </div>
+                              )).reverse()}
+                         </div>
+
+                         {posts?.length === 0 &&
+                              <div className="flex w-full min-w-max h-full">
+                                   {tPostPage("not_found")}
+                              </div>}
                     </div>
-
-                    {posts?.length === 0 &&
-                         <div className="flex w-full min-w-max h-full">
-                              {tPostPage("not_found")}
-                         </div>}
                </div>
-          </div>
+          </Container>
      );
 }
 

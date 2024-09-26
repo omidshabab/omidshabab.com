@@ -10,12 +10,13 @@ import {
 } from "@repo/ui/components/navigation-menu"
 import { cn } from "@repo/ui/lib/utils"
 import { useTranslations } from "next-intl"
+import { TransitionLink } from "./TransitionLink"
 
-const Menu = ({
+export default function Menu({
      dir = "ltr"
 }: {
      dir?: "rtl" | "ltr"
-}) => {
+}) {
      const tGeneral = useTranslations("general");
      const tMenu = useTranslations("menu");
 
@@ -71,13 +72,16 @@ const Menu = ({
                          <NavigationMenuContent>
                               <ul className="grid w-[300px] gap-3 p-4 md:w-[400px] md:grid-cols-2 lg:w-[600px] rtl:grid-rtl">
                                    {tabs.map((tab) => (
-                                        <ListItem
-                                             key={tab.title}
-                                             title={tab.title}
-                                             href={tab.href}
-                                             className="cursor-pointer">
-                                             {tab.description}
-                                        </ListItem>
+                                        <NavigationMenuLink key={tab.title}>
+                                             <NavigationMenuItem asChild>
+                                                  <ListItem
+                                                       title={tab.title}
+                                                       href={tab.href}
+                                                       className="cursor-pointer">
+                                                       {tab.description}
+                                                  </ListItem>
+                                             </NavigationMenuItem>
+                                        </NavigationMenuLink>
                                    ))}
                               </ul>
                          </NavigationMenuContent>
@@ -87,30 +91,32 @@ const Menu = ({
      );
 }
 
-export default Menu;
-
-const ListItem = React.forwardRef<
-     React.ElementRef<"a">,
-     React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, ...props }, ref) => {
+const ListItem = ({
+     className,
+     title,
+     href,
+     children,
+     ...props
+}: {
+     className?: string,
+     title?: string,
+     href: string,
+     children: React.ReactNode,
+}) => {
      return (
-          <li>
-               <NavigationMenuLink asChild>
-                    <a
-                         ref={ref}
-                         className={cn(
-                              "block select-none space-y-[8px] border-[2px] border-primary/5 rounded-[15px] px-[20px] py-[15px] leading-none no-underline outline-none transition-colors hover:bg-primary/5 hover:text-slate-800 focus:bg-primary/5 focus:text-slate-800",
-                              className
-                         )}
-                         {...props}
-                    >
-                         <div className="font-medium leading-none text-text text-[16px]">{title}</div>
-                         <p className="line-clamp-2 text-sm leading-snug text-slate-600 font-light">
-                              {children}
-                         </p>
-                    </a>
-               </NavigationMenuLink>
-          </li>
+          <TransitionLink
+               href={href}
+               className={cn(
+                    "block select-none space-y-[8px] border-[2px] border-primary/5 rounded-[15px] px-[20px] py-[15px] leading-none no-underline outline-none transition-colors hover:bg-primary/5 hover:text-slate-800 focus:bg-primary/5 focus:text-slate-800",
+                    className
+               )}
+               {...props}>
+
+               <div className="font-medium leading-none text-text text-[16px]">{title}</div>
+               <p className="line-clamp-2 text-sm leading-snug text-slate-600 font-light">
+                    {children}
+               </p>
+
+          </TransitionLink>
      )
-})
-ListItem.displayName = "ListItem"
+}

@@ -5,7 +5,6 @@ import { getTranslations } from "next-intl/server";
 import { cookies } from "next/headers";
 import { ReactNode } from "react";
 
-// Dynamic Metadata based on locales
 export async function generateMetadata(): Promise<Metadata> {
      const tGeneral = getTranslations("general")
      const tMetadata = getTranslations("dash_metadata")

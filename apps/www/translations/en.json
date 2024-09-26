@@ -11,7 +11,7 @@
     "soon": "soon",
     "table_of_contents": "Table of Contents",
     "copyright": "Crafted with care by omidshabab. All Rights Preserved and Protected.",
-    "default_title": "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+    "lorem": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Iure mollitia at consectetur ducimus expedita minus debitis nisi perspiciatis accusantium asperiores, vero libero ab quisquam quod sed eius sequi rem nam!",
     "updated_at": "Updated at {day} {month} of {year}"
   },
   "month": {
@@ -54,13 +54,17 @@
     "about_desc": "Learn more about me and this website.\nGet to know my journey and purpose."
   },
   "home_page": {
-    "title": "omidshabab.",
-    "desc": "dreaming, designing, and building world-changing softwares is my business. welcome to my world",
-    "contact_me": "contact me"
+    "title": "Omid Shabab",
+    "hero_section": {
+      "title": "Software Engineering, How create my own Software?"
+    },
+    "posts_section": {
+      "title": "Looking for new ways to solve your software challenges? This is the place where you can learn from my experience and level up your skills. Read on and get started!"
+    }
   },
   "blog_page": {
     "title": "blog",
-    "desc": "Mastering Software Creation: Your Guide",
+    "desc": "Learn How to Build or Enginneer Software",
     "not_found": "Not Found Any Post!"
   },
   "home_metadata": {

@@ -17,7 +17,6 @@ import "@/styles/editor.css";
 import { env } from "@/lib/env.mjs";
 import NextAuthProvider from "@/lib/auth/Provider";
 
-// Dynamic Metadata based on locales
 export async function generateMetadata(): Promise<Metadata> {
   const tGeneral = getTranslations("general")
   const tMetadata = getTranslations("metadata")
