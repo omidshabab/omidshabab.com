@@ -3,7 +3,6 @@ import { Metadata } from "next"
 import { getLocale, getTranslations } from "next-intl/server"
 import { redirect } from "next/navigation"
 
-// Dynamic Metadata based on locales
 export async function generateMetadata(): Promise<Metadata> {
   const tMetadata = getTranslations("register_metadata")
 

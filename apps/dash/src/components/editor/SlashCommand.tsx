@@ -97,7 +97,7 @@ export const suggestionItems = createSuggestionItems([
           icon: <GalleryThumbnailsIcon size={18} />,
           command: ({ editor, range }) => {
                editor.chain().focus().deleteRange(range).run();
-               // upload image
+
                const input = document.createElement("input");
                input.type = "file";
                input.accept = "image/*";

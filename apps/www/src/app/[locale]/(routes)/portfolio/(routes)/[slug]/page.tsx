@@ -1,10 +1,13 @@
+import Container from "@/components/Container";
 import { useTranslations } from "next-intl";
 
 const Page = () => {
      const tGeneral = useTranslations("general");
 
      return (
-          <div>{tGeneral("soon")} ...</div>
+          <Container>
+               <div>{tGeneral("soon")} ...</div>
+          </Container>
      );
 }
 

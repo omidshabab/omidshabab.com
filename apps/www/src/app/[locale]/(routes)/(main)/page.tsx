@@ -1,22 +1,38 @@
 "use client"
 
-import BlogSection from "./_components/sections/BlogSection";
-import IntroSection from "./_components/sections/IntroSection";
-import LastSection from "./_components/sections/LastSection";
-import PortfolioSection from "./_components/sections/PortfolioSection";
+import { useEffect, useRef } from "react";
+import Hero from "./_components/Hero";
+import Posts from "./_components/Posts";
+import { usePathname } from "next/navigation";
 
 const Page = () => {
+     const scrollRef = useRef<HTMLDivElement | null>(null);
+     const pathname = usePathname()
+
+     useEffect(() => {
+          const initLocomotiveScroll = async () => {
+               if (!scrollRef.current) return;
+
+               const LocomotiveScroll = (await import('locomotive-scroll')).default;
+               const locomotiveScroll = new LocomotiveScroll({
+                    el: scrollRef.current,
+                    smooth: true,
+               });
+
+               return () => {
+                    locomotiveScroll.destroy();
+               };
+          };
+
+          initLocomotiveScroll();
+     }, [pathname]);
+
      return (
-          <div className="flex flex-col sm:flex-row w-full h-full gap-x-[30px] py-0 sm:py-[15px]">
-               <div className="grid grid-cols-12 grid-flow-dense gap-5">
-                    <IntroSection />
+          <div
+               className="flex flex-col w-full cursor-default">
+               <Hero />
 
-                    <PortfolioSection />
-
-                    <BlogSection />
-
-                    <LastSection />
-               </div>
+               <Posts />
           </div>
      );
 }

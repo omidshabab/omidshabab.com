@@ -2,7 +2,6 @@ import { PostId } from '@/lib/db/schema/posts'
 import { Metadata } from 'next'
 import { getTranslations } from 'next-intl/server'
 
-// Dynamic Metadata based on locales
 export async function generateMetadata({
      params: {
           postId
