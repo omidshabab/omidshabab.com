@@ -67,12 +67,17 @@
     "desc": "Learn How to Build or Enginneer Software",
     "not_found": "Not Found Any Post!"
   },
+  "not_found": {
+    "title": "Not Found what you looking for!",
+    "desc": "Try it again or contact the support to help you.",
+    "button": "Return Home"
+  },
   "home_metadata": {
     "title": "software",
-    "desc": ""
+    "desc": "Hey there! Here, you’ll learn step by step how to build your own software. Stick with me, and let's explore the world of coding with the simplest methods!"
   },
   "blog_metadata": {
     "title": "blog",
-    "desc": ""
+    "desc": "On this blog, you’ll find interesting tips and insights about software development and programming. From personal experiences to practical guides, learn how to turn your ideas into real projects."
   }
 }

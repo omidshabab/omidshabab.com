@@ -44,6 +44,9 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} dir={dir}>
+      <head>
+        <meta name="robots" content="noindex, nofollow" />
+      </head>
       <body className={cn(
         font,
         "cursor-default antialiased"
