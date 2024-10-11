@@ -155,7 +155,7 @@ const PostForm = ({ post }: { post?: Post }) => {
                                                             <div {...field}>
                                                                  <TextArea
                                                                       value={title}
-                                                                      placeholder="Type the post title here..."
+                                                                      placeholder={tPostPage("title_placeholder")}
                                                                       variant="borderless"
                                                                       autoSize
                                                                       maxLength={150}
@@ -215,15 +215,15 @@ const PostForm = ({ post }: { post?: Post }) => {
                                              <div className="border-b-[2px] border-primary/10 mb-[5px]">
                                                   <TextArea
                                                        value={slug}
-                                                       placeholder="type the post slug here ..."
+                                                       placeholder={tPostPage("slug_placeholder")}
                                                        autoSize
                                                        variant="borderless"
-                                                       dir={dirByValue(slug)}
+                                                       dir={dirByValue(slug != "" ? slug : tPostPage("slug_placeholder"))}
                                                        maxLength={100}
                                                        onChange={(value) => setSlug(value.currentTarget.value)}
                                                        className={cn(
                                                             "text-start sm:text-[16px] py-[10px] leading-[1.5rem] h-min text-[32px] px-0 none-scroll-bar focus:ring-0 focus-visible:ring-0 cursor-text",
-                                                            fontByValue(slug),
+                                                            fontByValue(slug != "" ? slug : tPostPage("slug_placeholder")),
                                                        )}
                                                   />
                                              </div>

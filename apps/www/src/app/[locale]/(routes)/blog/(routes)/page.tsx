@@ -54,7 +54,7 @@ const Page = () => {
                          {tBlogPage("desc")}
                     </motion.h2>
                     <div className="flex flex-col w-full">
-                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[45px] gap-y-[35px] sm:gap-y-[50px] leading-[2rem]">
+                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[45px] gap-y-[35px] sm:gap-y-[50px] leading-[2rem] pb-[30px]">
                               {posts && posts.map((post, index) => (
                                    <div key={index} className="even:md:-mt-[25px]">
                                         <PostItem post={post} />
