@@ -124,7 +124,9 @@
     "slug_seperate_hint": "کلمات را با خط تیره از هم جدا کنید",
     "created_posts": "پست‌های ایجاد شده توسط شما",
     "default_title": "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است",
-    "not_found": "هیچ پستی پیدا نشد!"
+    "not_found": "هیچ پستی پیدا نشد!",
+    "title_placeholder": "عنوان پست رو اینجا تایپ کن ...",
+    "slug_placeholder": "اسلاگ پست رو اینجا تایپ کن ..."
   },
   "profile_page": {
     "profile": "پروفایل",
@@ -148,20 +150,35 @@
     "continue_of_profile": "ادامه پروفایل از اینجا آغاز می شود!"
   },
   "suggestion_items": {
-    "textTitle": "متن",
-    "textDescription": "لورم ایپسوم دلار سیت آمیت...",
-    "heading1Title": "هدینگ 1",
-    "heading1Description": "لورم ایپسوم دلار سیت آمیت...",
-    "heading2Title": "هدینگ 2",
-    "heading2Description": "لورم ایپسوم دلار سیت آمیت...",
-    "heading3Title": "هدینگ 3",
-    "heading3Description": "لورم ایپسوم دلار سیت آمیت...",
-    "heading4Title": "هدینگ 4",
-    "heading4Description": "لورم ایپسوم دلار سیت آمیت...",
-    "codeTitle": "کد بلاک",
-    "codeDescription": "لورم ایپسوم دلار سیت آمیت...",
-    "imageTitle": "تصویر",
-    "imageDescription": "لورم ایپسوم دلار سیت آمیت..."
+    "text": {
+      "title": "متن",
+    "description": "لورم ایپسوم دلار سیت آمیت..."
+    },
+    "heading1": {
+      "title": "هدینگ 1",
+    "description": "لورم ایپسوم دلار سیت آمیت..."
+    },
+    "heading2": {
+      "title": "هدینگ 2",
+    "description": "لورم ایپسوم دلار سیت آمیت..."
+    },
+    "heading3": {
+      "title": "هدینگ 3",
+    "description": "لورم ایپسوم دلار سیت آمیت..."
+    },
+    "heading4": {
+      "title": "هدینگ 4",
+    "description": "لورم ایپسوم دلار سیت آمیت..."
+    },
+    "code": {
+      "title": "کد بلاک",
+    "description": "لورم ایپسوم دلار سیت آمیت..."
+    },
+    "image": {
+      "title": "تصویر",
+    "description": "لورم ایپسوم دلار سیت آمیت..."
+    },
+    "no_results": "هیچ چیزی پیدا نشد"
   },
   "server": {
     "error": "An error occurred while trying to connect to the server."

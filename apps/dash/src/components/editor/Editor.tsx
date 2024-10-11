@@ -20,11 +20,13 @@ import { NodeSelector } from "./selectors/NodeSelector"
 import { LinkSelector } from "./selectors/LinkSelector"
 
 import { TextButtons } from "./selectors/TextButtons"
-import { slashCommand, suggestionItems } from "./SlashCommand"
 import { handleImageDrop, handleImagePaste } from "novel/plugins"
 import { uploadFn } from "@/uploadthing/novel-plugin";
 
-const extensions = [...defaultExtensions, slashCommand]
+import { useTranslations } from "next-intl";
+import { Code, GalleryThumbnailsIcon, Heading1, Heading2, Heading3, Heading4, Text } from "lucide-react";
+import { createSuggestionItems } from "novel/extensions";
+import { Command, renderItems } from "novel/extensions";
 
 interface EditorProp {
      initialValue?: JSONContent;
@@ -34,6 +36,119 @@ interface EditorProp {
 const Editor = ({ initialValue, onChange }: EditorProp) => {
      const [openNode, setOpenNode] = useState(false);
      const [openLink, setOpenLink] = useState(false);
+
+     const t = useTranslations("suggestion_items");
+
+     const suggestionItems = createSuggestionItems([
+          {
+               title: t("text.title"),
+               description: t("text.description"),
+               searchTerms: ["p", "paragraph"],
+               icon: <Text size={18} />,
+               command: ({ editor, range }) => {
+                    editor
+                         .chain()
+                         .focus()
+                         .deleteRange(range)
+                         .toggleNode("paragraph", "paragraph")
+                         .run();
+               },
+          },
+          {
+               title: t("heading1.title"),
+               description: t("heading1.description"),
+               searchTerms: ["title", "big", "large"],
+               icon: <Heading1 size={18} />,
+               command: ({ editor, range }) => {
+                    editor
+                         .chain()
+                         .focus()
+                         .deleteRange(range)
+                         .setNode("heading", { level: 1 })
+                         .run();
+               },
+          },
+          {
+               title: t("heading2.title"),
+               description: t("heading2.description"),
+               searchTerms: ["subtitle", "medium"],
+               icon: <Heading2 size={18} />,
+               command: ({ editor, range }) => {
+                    editor
+                         .chain()
+                         .focus()
+                         .deleteRange(range)
+                         .setNode("heading", { level: 2 })
+                         .run();
+               },
+          },
+          {
+               title: t("heading3.title"),
+               description: t("heading3.description"),
+               searchTerms: ["subtitle", "small"],
+               icon: <Heading3 size={18} />,
+               command: ({ editor, range }) => {
+                    editor
+                         .chain()
+                         .focus()
+                         .deleteRange(range)
+                         .setNode("heading", { level: 3 })
+                         .run();
+               },
+          },
+          {
+               title: t("heading4.title"),
+               description: t("heading4.description"),
+               searchTerms: ["subtitle", ""],
+               icon: <Heading4 size={18} />,
+               command: ({ editor, range }) => {
+                    editor
+                         .chain()
+                         .focus()
+                         .deleteRange(range)
+                         .setNode("heading", { level: 4 })
+                         .run();
+               },
+          },
+          {
+               title: t("code.title"),
+               description: t("code.description"),
+               searchTerms: ["codeblock"],
+               icon: <Code size={18} />,
+               command: ({ editor, range }) =>
+                    editor.chain().focus().deleteRange(range).toggleCodeBlock().run(),
+          },
+          {
+               title: t("image.title"),
+               description: t("image.description"),
+               searchTerms: ["photo", "picture", "media"],
+               icon: <GalleryThumbnailsIcon size={18} />,
+               command: ({ editor, range }) => {
+                    editor.chain().focus().deleteRange(range).run();
+
+                    const input = document.createElement("input");
+                    input.type = "file";
+                    input.accept = "image/*";
+                    input.onchange = async () => {
+                         if (input.files?.length) {
+                              const file = input.files[0];
+                              const pos = editor.view.state.selection.from;
+                              uploadFn(file!, editor.view, pos);
+                         }
+                    };
+                    input.click();
+               },
+          },
+     ]);
+
+     const slashCommand = Command.configure({
+          suggestion: {
+               items: () => suggestionItems,
+               render: renderItems,
+          },
+     });
+
+     const extensions = [...defaultExtensions, slashCommand]
 
      return (
           <EditorRoot>
@@ -58,7 +173,7 @@ const Editor = ({ initialValue, onChange }: EditorProp) => {
                >
                     <EditorCommand className="z-50 none-scroll-bar w-[160px] h-auto max-h-[300px] overflow-y-auto rounded-[15px] bg-primary/10 backdrop-blur-3xl border-[1px] border-primary/20 px-[5px] py-[5px] transition-all">
                          <EditorCommandEmpty className="px-[20px] text-text">
-                              No results
+                              {t("no_results")}
                          </EditorCommandEmpty>
                          <EditorCommandList>
                               {suggestionItems.map((item) => (

@@ -127,7 +127,9 @@
     "slug_seperate_hint": "seperate words with a dash",
     "created_posts": "Your Created Posts",
     "default_title": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis pariatur quos possimus beatae",
-    "not_found": "Not Found Any Post!"
+    "not_found": "Not Found Any Post!",
+    "title_placeholder": "Type the post title here...",
+    "slug_placeholder": "type the post slug here ..."
   },
   "profile_page": {
     "profile": "profile",
@@ -151,20 +153,35 @@
     "continue_of_profile": "Continue of your profile start from here!"
   },
   "suggestion_items": {
-    "textTitle": "Text",
-    "textDescription": "Lorem ipsum dolor sit amet...",
-    "heading1Title": "Heading 1",
-    "heading1Description": "Lorem ipsum dolor sit amet...",
-    "heading2Title": "Heading 2",
-    "heading2Description": "Lorem ipsum dolor sit amet...",
-    "heading3Title": "Heading 3",
-    "heading3Description": "Lorem ipsum dolor sit amet...",
-    "heading4Title": "Heading 4",
-    "heading4Description": "Lorem ipsum dolor sit amet...",
-    "codeTitle": "Code",
-    "codeDescription": "Lorem ipsum dolor sit amet...",
-    "imageTitle": "Image",
-    "imageDescription": "Lorem ipsum dolor sit amet..."
+    "title": {
+      "title": "Text",
+    "description": "Lorem ipsum dolor sit amet..."
+    },
+    "heading1": {
+      "title": "Heading 1",
+    "description": "Lorem ipsum dolor sit amet..."
+    },
+    "heading2": {
+      "title": "Heading 2",
+    "description": "Lorem ipsum dolor sit amet..."
+    },
+    "heading3": {
+      "title": "Heading 3",
+    "description": "Lorem ipsum dolor sit amet..."
+    },
+    "heading4": {
+      "title": "Heading 4",
+    "description": "Lorem ipsum dolor sit amet..."
+    },
+    "code": {
+      "title": "Code",
+    "description": "Lorem ipsum dolor sit amet..."
+    },
+    "image": {
+      "title": "Image",
+    "description": "Lorem ipsum dolor sit amet..."
+    },
+    "no_results": "No results"
   },
   "server": {
     "error": "An error occurred while trying to connect to the server."
